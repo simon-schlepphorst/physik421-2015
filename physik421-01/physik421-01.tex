@@ -1,0 +1,94 @@
+\documentclass[11pt, ngerman, fleqn, DIV=15, headinclude]{scrartcl}
+
+\usepackage[bibatend, color]{../header}
+
+\hypersetup{
+    pdftitle=
+}
+
+%\subject{}
+\title{Hausaufgabe 1}
+%\subtitle{}
+\author{
+    Jan Weber
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Erinnerung Wahrscheinlichkeitsrechnung}
+
+\subsection{a}
+
+Gegeben ist die die Gausverteilung mit
+
+\begin{align*}
+  f\del{x}=\frac1{a_0\sqrt{2\pi}}\eup^{-\frac{x^2}{2a_0^2}}
+\end{align*}
+
+Gesucht sind Mittelwert und Varianz.\\
+Der Mittelwert ist für kontinuierliche Funktionen gegben durch
+
+\begin{align*}
+  \bracket{x}	&=\int_{-\infty}^{\infty}xf\del{x}\dif x\\
+		&=\int_{-\infty}^{\infty}\frac{x}{a_0\sqrt{2\pi}}\eup^{-\frac{x^2}{2a_0^2}}\dif x\\
+		&=\left[-\frac{a_0}{\sqrt{2\pi}}\eup^{-\frac{x^2}{2a_0^2}}\right]_{-\infty}^{\infty}\\
+		&=0
+\end{align*}
+
+Die Varianz einer kontinuierlichen Funktion ist gegeben durch
+
+\begin{align*}
+  \del{\Delta x}^2	&=\int_{-\infty}^{\infty}x^2f\del{x}\dif x-\del{\int_{-\infty}^{\infty}xf\del{x}\dif x}^2\\
+  					&=\int_{-\infty}^{\infty}\frac{x^2}{a_0\sqrt{2\pi}}\eup^{-\frac{x^2}{2a_0^2}}\dif x\\
+  					&=\int_{-\infty}^{\infty}x\frac{x}{a_0\sqrt{2\pi}}\eup^{-\frac{x^2}{2a_0^2}}\dif x\\
+  					&=\left[-\frac{xa_0}{\sqrt{2\pi}}\eup^{-\frac{x^2}{2a_0^2}}\right]_{-\infty}^{\infty} + \int_{-\infty}^{\infty}\frac{a_0}{\sqrt{2\pi}}\eup^{-\frac{x^2}{2a_0^2}}\dif x\\
+  \intertext{%
+  	Substituiere $y=\frac{x}{a_0}\Leftrightarrow\dif x=a_0\dif y$
+  }
+  					&=\int_{-\infty}^{\infty}\frac{a_0^2}{\sqrt{2\pi}}\eup^{-\frac{y^2}{2}}\dif y\\
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+% vim: spell spelllang=de tw=79
