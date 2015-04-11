@@ -1,4 +1,10 @@
 physik421-??/physik421-??.pdf
+physik421-??/*-blx.bib
 physik421-??/*.aux
+physik421-??/*.bbl
+physik421-??/*.blg
+physik421-??/*.fdb_latexmk
+physik421-??/*.fls
 physik421-??/*.log
 physik421-??/*.out
+physik421-??/*.run.xml
