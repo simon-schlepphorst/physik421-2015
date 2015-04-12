@@ -6,29 +6,33 @@
     pdftitle=
 }
 
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
 %\subject{}
-\title{Hausaufgabe 1}
+\title{Quantenmechanik, Blatt 1}
 %\subtitle{}
 \author{
-    Jan Weber
+    Frederike Schrödel \and Jan Weber \and Simon Schlepphorst
 }
 
 \begin{document}
 
 \maketitle
 
+\setcounter{section}{1}
+
 \section{Erinnerung Wahrscheinlichkeitsrechnung}
 
-\subsection{a}
+\subsection{}
 
-Gegeben ist die die Gausverteilung mit
+Gegeben ist die die Gausverteilung mit:
 
 \begin{align*}
   f\del{x}=\frac1{a_0\sqrt{2\pi}}\eup^{-\frac{x^2}{2a_0^2}}
 \end{align*}
 
 Gesucht sind Mittelwert und Varianz.\\
-Der Mittelwert ist für kontinuierliche Funktionen gegben durch
+Der Mittelwert ist für kontinuierliche Funktionen gegeben durch:
 
 \begin{align*}
   \bracket{x}	&=\int_{-\infty}^{\infty}xf\del{x}\dif x\\
@@ -48,44 +52,56 @@ Die Varianz einer kontinuierlichen Funktion ist gegeben durch
   	Substituiere $y=\frac{x}{a_0}\Leftrightarrow\dif x=a_0\dif y$
   }
   					&=\int_{-\infty}^{\infty}\frac{a_0^2}{\sqrt{2\pi}}\eup^{-\frac{y^2}{2}}\dif y\\
+ \intertext{Mit $\frac1{2a_0^2} > 0$ gilt:}
+ &=\frac{a_0}{\sqrt{2\pi}} \sqrt{\frac{\pi}{\frac12 a_0^2}}\\
+ &=a_0^2
 \end{align*}
 
 
+\subsection{}
+
+Gegeben ist die Poissonverteilung mit:
+
+\begin{align}
+	f_\lambda\del k = \lambda^k \frac{\eup^{-\lambda}}{k!} \quad\text{ mit } k =
+	0,1,2,\ldots,\infty
+\end{align}
+
+Der Mittelwert ist gegeben durch:
+\begin{align*}
+	\bracket{x} &= \sum_{i=1}^\infty f_\lambda\del k i\\
+	&= \sum_{i=1}^\infty \frac{\lambda^i \eup^{-\lambda}}{i!}i\\
+	&= \sum_{i=0}^\infty \frac{\lambda^{i+1}
+	\eup^{-\lambda}}{\del{i+1-1}!}\\
+	&= \lambda \eup^{-\lambda} \sum_{i=0}^\infty \frac{\lambda^i}{i!}\\
+	&= \lambda
+\end{align*}
+
+Die Varianz ist gegeben durch:
+\begin{align*}
+	\del{\Delta x} &= \sum_{i=1}^\infty \frac{\lambda^i
+		\eup^{-\lambda}}{i!} i^2 - \del{\sum_{i=1}^\infty
+		\frac{\lambda^i \eup^{-\lambda}}{i!} i}^2\\
+		&= \sum_{i=1}^\infty \frac{\lambda^i
+			\eup^{-\lambda}}{\del{i-1}!} i - \lambda^2\\
+			&= \lambda \eup^{-\lambda} \sum_{i=0}^\infty
+			\frac{\lambda^i}{i!} \del{i+1} - \lambda^2\\
+		&= \lambda + \lambda \eup^{-\lambda}\del{ \frac{\lambda^0 0}0 +
+		\sum_{i=1}^\infty \frac{\lambda^{i-1}}{\del{i-1}!} }
+		-\lambda^2\\
+	\intertext{Mit $n := i-1$ ergibt sich:}
+	&= \lambda + \lambda^2 \eup^{-\lambda} \sum_{n=0}^\infty
+	\frac{\lambda^n}{n!} - \lambda^2\\
+	&= \lambda
+\end{align*}
+
+\subsection{}
 
 
+\section{Fouriertransformation}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\section{Unschärferelationen}
 
 
 
