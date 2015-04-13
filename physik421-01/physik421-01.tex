@@ -15,6 +15,9 @@
     Frederike Schrödel \and Jan Weber \and Simon Schlepphorst
 }
 
+\usepackage{mathtools}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+
 \begin{document}
 
 \maketitle
@@ -101,7 +104,83 @@ Die Varianz ist gegeben durch:
 \section{Fouriertransformation}
 
 
-\section{Unschärferelationen}
+\section{Unschärferelation}
+
+\subsection*{4.A}
+
+Gegeben sind die folgenden Relationen:
+
+\begin{align*}
+	\braket{p_x} &= \int_{-\infty}^{\infty} \dif^3\vec{p}\; p_x \abs{g\del{\vec{p}}}\\
+	\braket{p_x^2} &= \int_{-\infty}^{\infty} \dif^3\vec{p}\; p_x^2 \abs{g\del{\vec{p}}}
+\end{align*}
+
+Analog für $\bracket{x}$ und $\bracket{x^2}$ für $f\del{\vec{r}}$.\\
+
+Gezeigt werden soll die Ort-Zeitunschärfe in der Form
+
+\begin{align*}
+	\Delta x\Delta p_x \geq \frac{\hbar}{2}
+\end{align*}
+
+Dabei ist der folgende Ansatz geben:
+
+\begin{align*}
+	I\del{\lambda} = \int \dif k\; \abs{kf\del{k}+\lambda\od{f}{k}}^2
+\end{align*}
+
+Sei $\psi$ eine Wellenfunktion im Ortsraum und $\fourier\psi$ die Fouriertransformierte von $\psi$ im Impulsraum. Für ein eindimensionales Wellenpaket folgt:
+\begin{align*}
+	I\del{\lambda} 	&= \int\dif x\; \abs{x\psi + \lambda\pd{\psi}{x}}^2  \\
+					&= \int\dif x\; x^2\psi^*\psi + \lambda \int\dif x\; x\del{\psi^*\pd{\psi}{x} + \psi\pd{\psi^*}{x}} + \lambda^2 \int\dif x\; \pd{\psi^*}{x}\pd{\psi}{x}\\
+	\intertext{%
+		Partielle Integration des mittleren Integrales gibt:
+	}
+					&= \int\dif x\; \psi^*x^2\psi - \lambda \underbrace{\int\dif x\; \psi^*\psi}_{=1} - \lambda^2 \int\dif x\; \pd{\psi^*}{x}\pd{\psi}{x}\\
+	\intertext{%
+		Nach dem Theorem von Parselval-Plancherel gilt:
+	}
+					&= \int\dif x\; \psi^*x^2\psi - \lambda - \lambda^2 \int\dif x\; \fourier\del{\pd{\psi^*}{x}}\fourier\del{\pd{\psi}{x}}\\
+	\intertext{%
+		Nach Aufgabenteil 3B gilt
+	}
+					&= \int\dif x\; \psi^*x^2\psi - \lambda + \lambda^2 \int\dif x\; k^2\fourier\del{\psi^*}\fourier\del{\psi}\\
+	\intertext{%
+		Da die Varianz der Welllenfunktion sowohl im Orts-, wie auch im Impulsraum verschwindet folgt:
+	}
+					&= \del{\Delta x}^2 - \lambda + \lambda^2 \del{\Delta k}^2\\
+\end{align*}
+
+Mit $k=\frac{p_x}{\hbar}$ folgt:
+\begin{align}
+	I\del{\lambda} = \del{\Delta x}^2 - \lambda + \frac{\lambda^2}{\hbar^2} \del{\Delta p_x}^2 \overset{!}{\geq} 0
+\end{align}
+
+$I\del{\lambda}$ ist eine Parabel. Für den Scheitelpunkt ($\od{I\del{\lambda}}{\lambda} = 0$) gilt:
+
+\begin{align*}
+	\od{I\del{\lambda}}{\lambda} = -1 + \frac{2\lambda}{\hbar^2}\del{\Delta p_x}^2\overset{!}{=}0 \Leftrightarrow \lambda\left.\right|_{\od{I\del{\lambda}}{\lambda} = 0} \coloneqq \lambda_S = \frac{\hbar^2}{2\del{\Delta p_x}^2}
+\end{align*}
+
+Einsetzen in (1) gibt:
+\begin{align*}
+	I\del{\lambda_S} = \del{\Delta x}^2 - \frac{\hbar^2}{2\del{\Delta p_x}^2} + \frac{\hbar^2}{4\del{\Delta p_x}^2} \overset{!}{\geq} 0 \Leftrightarrow \del{\Delta x}^2\del{\Delta p_x}^2 \geq \frac{\hbar^2}4
+\end{align*}
+
+Und somit folgt als Endergebnis die Orts-Impulsunschärfe mit:
+\begin{align*}
+	\del{\Delta x}\del{\Delta p_x} \geq \frac{\hbar}2
+\end{align*}
+
+
+
+\subsection*{4.B}
+
+Gegeben ist die Gaussfunktion mit
+
+\begin{align*}
+	b
+\end{align*}
 
 
 
