@@ -35,7 +35,44 @@
 \section{Wellenfunktion}
 
 \section{Kommutatoren}
+\subsection{ }
+$\hat A$, $\hat B$ und $\hat C$ sind Observablen.
+\begin{align*}
+	\sbr{\hat A, \hat B \hat C}
+	&= \hat A \hat B \hat C - \hat B \hat C \hat A \\
+	&= \hat A \hat B \hat C - \hat B \hat A \hat C + \hat B \hat A \hat C -
+	\hat B \hat C \hat A\\
+	&= \sbr{\hat A,\hat B} \hat C + \hat B \sbr{\hat A, \hat C}
+\end{align*}
 
+\subsection{ }
+Gegeben ist ein Teilchen im Potential mit $\hat {\vec L} = \hat {\vec r} \times
+\hat {\vec p}$ und $\hat H = \frac{\hat p^2}{2m} + V\del{\abs{\hat r}}$.
+
+\begin{align*}
+	\sbr{\hat L_k, \hat r_j}
+	&= \varepsilon_{ilk} \sbr{\hat r_i \hat p_l, \hat r_j}\\
+	&= \varepsilon_{ilk} \hat r_i \underbrace{\sbr{\hat p_l, \hat r_j}}_{-\iup\hbar
+		\delta_{lj}}\\
+		&= \iup\hbar \varepsilon_{kji} \hat r_i \\
+\end{align*}
+
+\begin{align*}
+	\sbr{\hat  L_k, \hat p_j}
+	&= \varepsilon_{ilk} \sbr{\hat r_i \hat p_l, \hat p_j}\\
+	&= \varepsilon_{ilk} \hat p_l \underbrace{\sbr{\hat r_i,
+	\hat p_j}}_{-\iup\hbar\delta_{ij}}\\
+	&= \iup\hbar\varepsilon_{jkl}\hat  p_l
+\end{align*}
+
+\begin{align*}
+	\sbr{\hat L_k, \hat L_j}
+	&= \sbr{\hat L_k,\hat r_l \hat p_k - \hat r_k \hat p_l}\\
+	&= \sbr{\hat L_k, \hat r_l} \hat p_k - \hat r_k \sbr{\hat L_k, \hat p_l}\\
+	&= - \iup \hbar \hat r_j \hat p_k + \iup \hbar \hat r_k \hat p_j\\
+	&= \iup \hbar \hat L_l
+\end{align*}
+		
 \end{document}
 
 % vim: spell spelllang=de tw=79
