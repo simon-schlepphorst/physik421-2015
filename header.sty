@@ -164,13 +164,16 @@
 \RequirePackage{amsthm}
 
 % Common math constructs like partial derivatives.
-\newcommand\sbr[1]{\left[ #1 \right]}
+\newcommand\abs[1]{\left| #1 \right|}
 \newcommand\cbr[1]{\left\{ #1 \right\}}
 \newcommand\del[1]{\left( #1 \right)}
-\newcommand{\dif}{\mathop{}\!\mathrm d}
-\newcommand\pd[2]{\frac{\partial {#1}}{\partial {#2}}}
 \newcommand\od[2]{\frac{\dif {#1}}{\dif {#2}}}
+\newcommand\pd[2]{\frac{\partial {#1}}{\partial {#2}}}
 \newcommand\pdx[3]{\frac{\partial^{#1} {#2}}{\partial {#3}^{#1}}}
+\newcommand\sbr[1]{\left[ #1 \right]}
+\newcommand\eval[1]{\left. #1 \right|}
+\newcommand\dif{\mathop{}\!\mathrm d}
+\newcommand\Dif{\mathop{}\!\mathrm D}
 
 % Physical units.
 \RequirePackage[output-decimal-marker={,}]{siunitx}
@@ -191,8 +194,10 @@
 \DeclareMathOperator{\asinh}{arsinh}
 \DeclareMathOperator{\card}{card}
 \DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\diam}{diam}
 \DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\tr}{tr}
 \renewcommand{\Im}{\mathop{{}\mathrm{Im}}\nolimits}
 \renewcommand{\Re}{\mathop{{}\mathrm{Re}}\nolimits}
 
@@ -206,11 +211,11 @@
 
 % Symbols for the various mathematical fields (natural numbers, integers,
 % rational numbers, real numbers, complex numbers).
-\newcommand{\C}{\ensuremath{\mathbb C}}
-\newcommand{\N}{\ensuremath{\mathbb N}}
-\newcommand{\Q}{\ensuremath{\mathbb Q}}
-\newcommand{\R}{\ensuremath{\mathbb R}}
-\newcommand{\Z}{\ensuremath{\mathbb Z}}
+\newcommand{\C}{\ensuremath{\mathbf C}}
+\newcommand{\N}{\ensuremath{\mathbf N}}
+\newcommand{\Q}{\ensuremath{\mathbf Q}}
+\newcommand{\R}{\ensuremath{\mathbf R}}
+\newcommand{\Z}{\ensuremath{\mathbf Z}}
 
 % Shape like operators.
 \DeclareMathOperator{\dalambert}{\Box}
@@ -223,7 +228,7 @@
 \newcommand{\half}{\frac 12}
 
 % Unit vector (German „Einheitsvektor“).
-\newcommand{\ev}{\hat{\vec e}}
+\newcommand{\ev}{\vec e}
 
 % Mathematician's notation for the inner (scalar, dot) product.
 \newcommand{\bracket}[1]{\langle #1 \rangle}
@@ -245,6 +250,11 @@
 \newcommand\tdpd[3]{\del{\dpd{#1}{#2}}_{#3}}
 
 \newcommand\hodge{^\star\!}
+
+\newcommand\inv{^{-1}}
+
+\newcommand\cc{\mathrm{c.c.}}
+\newcommand\hc{\mathrm{h.c.}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                  Headings                                   %
@@ -278,7 +288,7 @@
 {
     \IfFileExists{central-bibtex/Central}
     {\newcommand{\bibliographyfile}{central-bibtex/Central}}
-    {\newcommand{\bibliographyfile}{../../../zentrale_BibTeX/Central}}
+    {\newcommand{\bibliographyfile}{../../../../zentrale_BibTeX/Central}}
 }
 
 \RequirePackage[
