@@ -1,0 +1,300 @@
+\documentclass[11pt, ngerman, fleqn, DIV=15, headinclude]{scrartcl}
+
+\usepackage[bibatend, color]{../header}
+
+\hypersetup{
+    pdftitle=
+}
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+%\subject{}
+\title{Quantenmechanik, Blatt 1}
+%\subtitle{}
+\author{
+    Frederike Schrödel \and Jan Weber \and Simon Schlepphorst
+}
+
+\usepackage{mathtools}
+\newcommand\odx[3]{\frac{\dif^{#1} {#2}}{\dif {#3}^{#1}}}
+
+\usepackage{cancel}
+
+\begin{document}
+
+\maketitle
+
+\section{De Broglie Wellenlänge}
+
+Es soll die de Broglie Wellenlänge $\lambda_{dB}$ berechnet werden.
+
+Für diese gilt:
+\begin{align*}
+	\lambda_{dB}=\frac{h}{p}
+\end{align*}
+Die kinetische Energie ist in erster Näherung ($E_{kin}<<mc^2$) gegeben durch:
+Für diese gilt:
+\begin{align*}
+	E_{kin}=\frac{p^2}{2m} \Leftrightarrow p=\sqrt{2mE_{kin}}
+\end{align*}
+Es folgt:
+\begin{align*}
+	\lambda_{dB}=\frac{h}{\sqrt{2mE_{kin}}}
+\end{align*}
+
+\subsection{}
+
+Zuerst von einem Elektron mit einer kinetischen Energie von 20 $\eup$V:
+\begin{align*}
+	\lambda_{dB}=\frac{h}{\sqrt{2mE_{kin}}}\approx2,743\times10^{-10}\text{m}
+\end{align*}
+
+\subsection{}
+
+Nun von einem thermischen Neutron mit einer kinetischen Energie von 0,03 $eV$:
+\begin{align*}
+	\lambda_{dB}=\frac{h}{\sqrt{2mE_{kin}}}\approx1,652\times10^{-10}\text{m}
+\end{align*}
+
+
+\section{Zeitentwicklung einer Wellenfunktion}
+
+Betrachtet wird ein Gausspacket mit
+\begin{align*}
+	\psi\del{x,t_0=0}=\del{\frac1{\pi a_0^2}}^{\frac14}\eup^{-\frac{\del{x+d}^2}{2a_0^2}}
+\end{align*}
+Dabei sind $a_0=\sqrt{\frac{\hbar}{m\omega}}$ die Breite, $-d$ die Position, $m$ die Masse und $\omega$ die Frequenz. Der Übersichtlichkeit halber definiere ich $\psi\coloneqq\psi\del{x,t}$, $\varphi\coloneqq\varphi\del{p,t}$, $\psi_0\coloneqq\psi\del{x,t_0=0}$ und $\varphi_0\coloneqq\varphi\del{p,t_0=0}$.
+
+\subsection{}
+
+Zuerst soll die Wahrscheinlichkeit $n\del{p,t}=\abs{\varphi}^2$, ein Teilchen zum Zeitpunkt $t$ mit Impuls $p$ bestimmt werden.\\
+Die Zeitentwicklung im Impulsraum ist gegeben durch die Schrödingergleichung mit:
+\begin{align*}
+	\iup\hbar\pd{\varphi\del{p,t}}{t}=\frac{p^2}{2m}\varphi\del{p,t} \Leftrightarrow \dot{\varphi}+\iup\frac{p^2}{2m\hbar}\varphi=0
+\end{align*}
+Die Lösung ist:
+\begin{align*}
+	\varphi=\varphi_0\eup^{-\iup\frac{p^2}{2m\hbar}}
+\end{align*}
+Es muss also noch $\varphi_0$ bestimmt werden.\\
+$\varphi_0$ ist über die Fouriertransformation mit $\psi_0$ verknüpft durch:
+\begin{align*}
+	\varphi_0 	&= \frac1{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}\dif x\;\eup^{-\iup\frac{px}{\hbar}}\psi_0\\
+				&= \del{\frac1{4\pi^3a_0^2\hbar^2}}^{\frac14}\int_{-\infty}^{\infty}\dif x\; \eup^{-\iup\frac{px}{\hbar}}\eup^{-\frac{\del{x+d}^2}{2a_0^2}}\\
+	\intertext{%
+		Setze $y\coloneqq\frac{\del{x+d}}{\sqrt{2}a_0}\Rightarrow \dif x=\sqrt{2}a_0\dif y$
+	}
+				&= \del{\frac{a_0^2}{\pi^3\hbar^2}}^{\frac14}\eup^{\iup\frac{p}{\hbar}d}\int_{-\infty}^{\infty}\dif y\; \eup^{-y^2-\iup\frac{\sqrt2pa_0}{\hbar}y}\\
+				&= \del{\frac{a_0^2}{\pi^3\hbar^2}}^{\frac14}\eup^{\iup\frac{p}{\hbar}d}\int_{-\infty}^{\infty}\dif y\; \eup^{-\del{y^2+\iup\frac{\sqrt2pa_0}{\hbar}y\pm\iup^2\frac{p^2a_0^2}{2\hbar^2}}}\\
+				&= \del{\frac{a_0^2}{\pi^3\hbar^2}}^{\frac14}\eup^{\iup\frac{p}{\hbar}d-\frac{p^2a_0^2}{2\hbar^2}}\underbrace{\int_{-\infty}^{\infty}\dif x\; \eup^{-\del{y^2+\iup\frac{pa_0}{\sqrt2\hbar}}^2}}_{=\sqrt{\pi}}\\
+				&= \del{\frac{a_0^2}{\pi\hbar^2}}^{\frac14}\eup^{\iup\frac{p}{\hbar}d-\frac{p^2a_0^2}{2\hbar^2}}
+\end{align*}
+Dieser Ausdruck lässt sich noch vereinfachen zu:
+\begin{align*}
+	\varphi_0=\del{\frac{a_0^2}{\pi\hbar^2}}^{\frac14}\eup^{-\frac{d^2}{2a_0}}\eup^{-\frac{a_0^2}{2\hbar^2}\del{p-\iup\frac{\hbar d}{a_0^2}}^2}
+\end{align*}
+Also ist $\varphi$:
+\begin{align*}
+	\varphi	&= \del{\frac{a_0^2}{\pi\hbar^2}}^{\frac14}\eup^{-\frac{d^2}{2a_0}}\eup^{-\frac{a_0^2}{2\hbar^2}\del{p-\iup\frac{\hbar d}{a_0^2}}^2}\eup^{-\iup\frac{p^2}{2m\hbar}}
+\end{align*}
+Mit $a_0=\sqrt{\frac{\hbar}{m\omega}}\Rightarrow m=\frac{\hbar}{a_0^2\omega}$ lässt sich dieser Ausdruck noch vereinfachen:
+\begin{align*}
+	\varphi	&= \del{\frac{a_0^2}{\pi\hbar^2}}^{\frac14}\eup^{-\frac{d^2}{2a_0}}\eup^{-\frac{a_0^2}{2\hbar^2}\del{p-\iup\frac{\hbar d}{a_0^2}}^2}\eup^{-\iup\frac{a_0^2p^2}{2\hbar^2}\omega t}\\
+			&= \del{\frac{a_0^2}{\pi\hbar^2}}^{\frac14}\eup^{-\cancel{\frac{d^2}{2a_0}}-\frac{a_0^2p^2}{2\hbar}+\iup\frac{pd}{\hbar}+\cancel{\frac{d^2}{2a_0^2}}-\iup\frac{a_0^2p^2}{2\hbar^2}\omega t}\\
+			&= \del{\frac{a_0^2}{\pi\hbar^2}}^{\frac14}\eup^{-\frac{a_0^2p^2}{2\hbar}\del{1+\iup\omega t}+\iup\frac{pd}{\hbar}}\\
+\end{align*}
+Es folgt für die Wahrscheinlichkeit:
+\begin{align*}
+	n\del{p,t}	&= \abs{\varphi}^2\\
+				&= \frac{a_0^2}{\sqrt{\pi}\hbar^2}\eup^{-\frac{a_0^2p^2}{\hbar}}\\
+\end{align*}
+Aufgrund der fehlenden Zeitabhängigkeit werde ich mich entweder verrechnet haben, oder aber die Impulsverteilung ist zeitlich konstant.
+
+\subsection{}
+
+Nun soll die zeitabhängige Wellenfunktion im Impulsraum in den Ortsraum zurück transformiert werden.\\
+Die Rücktransformation ist gegeben durch:
+\begin{align*}
+	\psi	&= \frac1{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}\dif p\;\eup^{\iup\frac{px}{\hbar}}\varphi\\
+			&= \del{\frac{a_0^2}{4\pi^3}}^{\frac14}\frac1{\hbar}\int_{-\infty}^{\infty}\dif p\;\eup^{\iup\frac{px}{\hbar}}\eup^{-\frac{a_0^2p^2}{2\hbar}\del{1+\iup\omega t}+\iup\frac{pd}{\hbar}}\\
+			&= \del{\frac{a_0^2}{4\pi^3}}^{\frac14}\frac1{\hbar}\int_{-\infty}^{\infty}\dif p\;\eup^{-\frac{a_0^2p^2}{2\hbar}\del{1+\iup\omega t}+\iup\frac{p\del{x+d}}{\hbar}}\\
+	\intertext{%
+		Setze $y\coloneqq\frac{a_0p}{\sqrt2\hbar}\sqrt{1+\iup\omega t}\Rightarrow \dif p=\frac{\sqrt2\hbar}{a_0\sqrt{1+\iup\omega t}}\dif y$
+	}
+			&= \del{\frac1{\pi^3a_0^2}}^{\frac14}\frac1{\sqrt{1+\iup\omega t}}\int_{-\infty}^{\infty}\dif y\;\eup^{-y^2+\iup\frac{\sqrt2\del{x+d}}{a_0\sqrt{1+\iup\omega t}}y\pm\iup^2\frac{\del{x+d}^2}{2a_0^2\del{1+\iup\omega t}}}\\
+			&= \del{\frac1{\pi^3a_0^2}}^{\frac14}\frac1{\sqrt{1+\iup\omega t}}\eup^{-\frac{\del{x+d}^2}{2a_0^2\del{1+\iup\omega t}}}\underbrace{\int_{-\infty}^{\infty}\dif y\;\eup^{-\del{y-\iup\frac{\del{x+d}}{a_0\sqrt2\sqrt{1+\iup\omega t}}}^2}}_{=\sqrt{\pi}}\\
+			&= \del{\frac1{\pi a_0^2}}^{\frac14}\frac1{\sqrt{1+\iup\omega t}}\eup^{-\frac{\del{x+d}^2}{2a_0^2\del{1+\iup\omega t}}}
+\end{align*}
+
+\subsection{}
+
+Nun soll die Wahrscheinlichkeit $n\del{x,t}$ ausgerechnet werden:
+\begin{align*}
+	n\del{x,t}	&= \abs{\psi}^2\\
+				&= 	\frac1{\sqrt{\pi}a_0}\frac1{\sqrt{1+\iup\omega t}}\frac1{\sqrt{1-\iup\omega t}}\eup^{-\frac{\del{x+d}^2}{2a_0^2}\del{\frac1{\del{1+\iup\omega t}}\frac1{\del{1-\iup\omega t}}}}\\
+				&= 	\frac1{\sqrt{\pi}a_0}\frac1{\sqrt{1-\omega^2t^2}}\eup^{-\frac{\del{x+d}^2}{2a_0^2\del{1-\omega^2t^2}}}\\	
+\end{align*}
+
+
+\section{Interferenz von zwei Gauss'schen Wellen}
+
+Gegeben sind zwei Atomwolken, welche durch die folgenden Gauss'schen Wellenpackete beschrieben werden können:
+\begin{align*}
+		\psi_1\del{x,t_0=0}=\del{\frac1{\pi a_0^2}}^{\frac14}\eup^{-\frac{\del{x+d}^2}{2a_0^2}},&&\psi_2\del{x,t_0=0}=\del{\frac1{\pi a_0^2}}^{\frac14}\eup^{\iup\Phi}\eup^{-\frac{\del{x-d}^2}{2a_0^2}}
+\end{align*}
+Die Gesamtwellenfunktion ist gegeben durch:
+\begin{align*}
+	\Psi\del{x,t}=\psi_1\del{x,t}+\psi_2\del{x,t}
+\end{align*}
+
+\subsection{}
+
+Es soll die Wahrscheinlichkeit $n\del{x,t}$ berechnet werden:
+\begin{align*}
+	n\del{x,t}	&= \abs{\Psi\del{x,t}}^2\\
+				&= \abs{\psi_1+\psi_2}^2\\
+				&= \del{\psi_1+\psi_2}\del{\psi_1^*+\psi_2^*}\\
+				&= \psi_1\psi^*_1+\psi_2\psi^*_2+\psi_1\psi^*_2+\psi^*_1\psi_2
+\end{align*}
+Aufgrund von Übersichtlichkeit werde ich die Summanden einzeln behandeln:
+\begin{align*}
+	\psi_1\psi^*_1	&= \frac1{\sqrt{\pi}a_0}\frac1{\sqrt{1-\omega^2t^2}}\eup^{-\frac{\del{x+d}^2}{2a_0^2}\del{\frac1{1+\iup\omega t}+\frac1{1-\iup\omega t}}}\\
+					&= \frac1{\sqrt{\pi}a_0}\frac1{\sqrt{1-\omega^2t^2}}\eup^{-\frac{\del{x+d}^2}{2a_0^2\del{1-\omega^2t^2}}}\\
+\end{align*}
+Analog folgt:
+\begin{align*}
+	\psi_2\psi^*_2	&= \frac1{\sqrt{\pi}a_0}\frac1{\sqrt{1-\omega^2t^2}}\eup^{-\frac{\del{x-d}^2}{2a_0^2\del{1-\omega^2t^2}}}\\
+\end{align*}
+Nun die Mischterme:
+\begin{align*}
+	\psi_1\psi^*_2	&= \frac1{\sqrt{\pi}a_0}\frac1{\sqrt{1-\omega^2t^2}}\eup^{-\iup\Phi}\eup^{-\frac1{2a_0}\del{\frac{\del{x+d}^2}{\del{1+\omega^2t^2}}+\frac{\del{x-d}^2}{\del{1-\omega^2t^2}}}}\\
+					&= \frac1{\sqrt{\pi}a_0}\frac1{\sqrt{1-\omega^2t^2}}\eup^{-\iup\Phi}\eup^{-\frac{x^2-2\iup xd\omega t+d^2}{2a_0\del{1-\omega^2t^2}}}\\
+\end{align*}
+Und analog
+\begin{align*}
+	\psi^*_1\psi_2	&= \frac1{\sqrt{\pi}a_0}\frac1{\sqrt{1-\omega^2t^2}}\eup^{\iup\Phi}\eup^{-\frac{x^2+2\iup xd\omega t+d^2}{2a_0\del{1-\omega^2t^2}}}\\
+\end{align*}
+Also insgesamt:
+\begin{align*}
+	n\del{x,t}	&= \abs{\Psi\del{x,t}}^2\\
+				&= \frac1{\sqrt{\pi}a_0}\frac1{\sqrt{1-\omega^2t^2}}\del{\eup^{-\frac{\del{x+d}^2}{2a_0^2\del{1-\omega^2t^2}}}+\eup^{-\frac{\del{x-d}^2}{2a_0^2\del{1-\omega^2t^2}}}+\eup^{-\iup\Phi}\eup^{-\frac{x^2-2\iup xd\omega t+d^2}{2a_0\del{1-\omega^2t^2}}}+\eup^{\iup\Phi}\eup^{-\frac{x^2+2\iup xd\omega t+d^2}{2a_0\del{1-\omega^2t^2}}}}
+\end{align*}
+
+\section{Ausbreitung eines freien Wellenpackets}
+
+Betrachtet wird ein freies Teilchen, welches sich entlang der $x$-Achse bewege.
+
+\subsection{}
+
+Aufgrund der Schrödingergleichung gilt:
+\begin{align*}
+	\od{\psi}{t}=\frac{\iup\hbar}{2m}\laplace\psi
+\end{align*}
+
+Zunächst soll die Zeitliche Entwicklung von $\bracket{x^2}_t$ betrachtet werden:
+\begin{align*}
+	\od{\bracket{x^2}_t}{t}	&= \od{}{t}\int_{-\infty}^{\infty}\dif x\; x^2\psi\psi^*\\
+							&= \int_{-\infty}^{\infty}\dif x\; x^2\del{\od{\psi}{t}\psi^*+\psi\od{\psi^*}{t}}\\
+							&= \frac{\iup\hbar}{2m}\int_{-\infty}^{\infty}\dif x\; x^2\del{\del{\laplace\psi}\psi^*-\psi\laplace\psi^*}\\
+	\intertext{%
+		An dieser Stelle zeige ich einmal im Detail wie ich die Partielle Integration ausfürhre und überspringe das dann im folgenen:
+	}
+							&= \frac{\iup\hbar}{2m}\int\dif x\; \textcolor{red}{x^2}\del{\del{\textcolor{blue}{\laplace\psi}}\textcolor{red}{\psi^*}-\textcolor{red}{\psi}\textcolor{blue}{\laplace\psi^*}}\\
+	\intertext{%
+		Die in \textcolor{red}{rot} geschriebenen Variablen sind \textcolor{red}{$u$}, die in \textcolor{blue}{blau} geschriebenen Variablen sind \textcolor{blue}{$v'$}, so dass folgt:
+		\begin{align*}
+			\left.\textcolor{red}{u}\textcolor{blue}{v}\right|_{-\infty}^{\infty}=\left.\textcolor{red}{x^2}\del{\del{\textcolor{blue}{\nabla\psi}}\textcolor{red}{\psi^*}-\textcolor{red}{\psi}\textcolor{blue}{\nabla\psi^*}}\right|_{-\infty}^{\infty}=0
+		\end{align*}
+		$\textcolor{red}{u}\textcolor{blue}{v}$ über den gesamten Raum integriert ist gerade null, weil die Wellenfunktion, und auch ihre Ableitungen, quadratintegrabel sein müssen. Es folgt
+	}
+							&= -\frac{\iup\hbar}{2m}\int\dif x\; \textcolor{red}{\od{}{x}\del{x^2\psi^*}}\textcolor{blue}{\nabla\psi}-\textcolor{red}{\od{}{x}\del{x^2\psi}}\textcolor{blue}{\nabla\psi^*}\\
+							&= -\frac{\iup\hbar}{2m}\int\dif x\; \del{2x\psi^*+x^2\nabla\psi^*}\nabla\psi-\del{2x\psi+x^2\nabla\psi}\nabla\psi^*\\
+							&= \frac{\iup\hbar}{2m}\int\dif x\; 2x\psi\nabla\psi^*-2x\psi^*\nabla\psi\\
+							&= \frac{\iup\hbar}{m}\int\dif x\; x\del{\psi\nabla\psi^*-\psi^*\nabla\psi}\\
+\end{align*}
+
+\subsection{}
+
+Als nächstes soll obiger Ausdruck ein weiteres mal zeitlich abgeleitet werden:
+\begin{align*}
+	\odx{2}{\bracket{x^2}_t}{t}	&= \odx{2}{}{t}\int_{-\infty}^{\infty}\dif x\; x^2\psi\psi^*\\
+								&= \od{}{t}\frac{\iup\hbar}{m}\int\dif x\; x\del{\psi\nabla\psi^*-\psi^*\nabla\psi}\\
+								&= \frac{\iup\hbar}{m}\int\dif x\; x\del{\od{\psi}{t}\nabla\psi^*+\psi\nabla\del{\od{\psi^*}{t}}-\od{\psi^*}{t}\nabla\psi-\psi^*\nabla\del{\od{\psi}{t}}}\\
+								&= -\frac{\hbar^2}{2m^2}\int\dif x\; x\del{\laplace\psi\nabla\psi^*-\psi\nabla^3\psi^*+\laplace\psi^*\nabla\psi-\psi^*\nabla^3\psi}\\
+								&= \frac{\hbar^2}{2m^2}\int\dif x\; \od{}{x}\del{x\nabla\psi^*}\nabla\psi+\od{}{x}\del{x\nabla\psi}\nabla\psi^*-\od{}{x}\del{x\psi}\laplace\psi^*-\od{}{x}\del{x\psi^*}\laplace\psi\\
+								&= \frac{\hbar^2}{2m^2}\int\dif x\; \del{\nabla\psi^*+x\laplace\psi^*}\nabla\psi+\del{\nabla\psi+x\laplace\psi}\nabla\psi^*\\
+								&\;\;\;\;-\frac{\hbar^2}{2m^2}\int\dif x\;\del{\nabla\psi+x\nabla\psi}\laplace\psi^*+\del{\nabla\psi^*+x\nabla\psi^*}\laplace\psi\\
+								&= \frac{\hbar^2}{2m^2}\int\dif x\; \nabla\psi^*\nabla\psi+\nabla\psi\nabla\psi^*-\del{\psi\laplace\psi^*+\psi^*\laplace\psi}\\
+								&= \frac{\hbar^2}{2m^2}\int\dif x\; \nabla\psi^*\nabla\psi+\nabla\psi\nabla\psi^*+\nabla\psi^*\nabla\psi+\nabla\psi\nabla\psi^*\\
+								&= \frac{2\hbar^2}{m^2}\int\dif x\; \nabla\psi^*\nabla\psi
+\end{align*}
+
+\subsection{}
+
+Als nächstes (wer hätts gedacht) soll der Ausdruck nochmal zeitlich abgeleitet werden:
+\begin{align*}
+	\odx{3}{\bracket{x^2}_t}{t}	&= \odx{3}{}{t}\int_{-\infty}^{\infty}\dif x\; x^2\psi\psi^*\\
+								&= \od{}{t}\frac{2\hbar^2}{m^2}\int\dif x\; \nabla\psi^*\nabla\psi\\
+								&= \frac{2\hbar^2}{m^2}\int\dif x\; \nabla\del{\od{\psi^*}{t}}\nabla\psi+\nabla\psi^*\nabla\del{\od{\psi}{t}}\\
+								&= \od{}{t}\frac{\iup\hbar^3}{m^3}\int\dif x\; \nabla^3\psi^*\nabla\psi-\nabla\psi^*\nabla^3\psi\\
+								&= \od{}{t}\frac{\iup\hbar^3}{m^3}\int\dif x\; \laplace\psi^*\laplace\psi-\laplace\psi^*\laplace\psi\\
+								&= 0
+\end{align*}
+
+\subsection{}
+
+An dieser Stelle wird in der Aufgabenstellung wild rumdefiniert und dann eine Gleichung für $\bracket{x^2}_t$ angegeben. Das Rumdefinieren spare ich mir erst mal. Stattdessen betrachte ich zuerst die Taylorentwicklung von $\bracket{x^2}_t$ um $t=0$:
+\begin{align*}
+	\bracket{x^2}_t	&= \left.\bracket{x^2}\right|_{t=0}+\left.\od{}{t}\bracket{x^2}_t\right|_{t=0}t+\left.\odx{2}{}{t}\bracket{x^2}_t\right|_{t=0}t^2+\left.\odx{3}{}{t}\bracket{x^2}_t\right|_{t=0}t^3\\
+					&= \bracket{x^2}_0+\underbrace{\left.\frac{\iup\hbar}{m}\int\dif x\; x\del{\psi\nabla\psi^*-\psi^*\nabla\psi}\right|_{t=0}}_{\coloneqq \xi_0}t+\underbrace{\left.\frac{2\hbar^2}{m^2}\int\dif x\; \nabla\psi^*\nabla\psi\right|_{t=0}}_{\coloneqq v_1^2}t^2\\
+					&= \bracket{x^2}_0+\xi_0t+v_1^2t^2
+\end{align*}
+
+\subsection{}
+
+Nun soll die Varianz $\Delta x_t^2$ betrachtet werden. Taylorentwicklung um $t=0$ ergibt:
+\begin{align*}
+	\Delta x_t^2	&= \left.\Delta x_t^2\right|_{t=0}+\left.\od{}{t}\Delta x_t^2\right|_{t=0}t+\left.\odx{2}{}{t}\Delta x_t^2\right|_{t=0}t^2+\left.\odx{3}{}{t}\Delta x_t^2\right|_{t=0}t^3\\
+					&= \left.\bracket{x^2}-\bracket{x}^2\right|_{t=0}+\left.\od{}{t}\del{\bracket{x^2}_t-\bracket{x}_t^2}\right|_{t=0}t+\left.\odx{2}{}{t}\del{\bracket{x^2}_t-\bracket{x}_t^2}\right|_{t=0}t^2-\left.\odx{3}{}{t}\bracket{x}_t^2\right|_{t=0}t^3\\
+					&= \Delta x_0^2+\xi_0t-\left.\od{}{t}\bracket{x}_t^2\right|_{t=0}t+v_1^2t^2-\left.\odx{2}{}{t}\bracket{x}_t^2\right|_{t=0}t^2-\left.\odx{3}{}{t}\bracket{x}_t^2\right|_{t=0}t^3\\
+\end{align*}
+Als nächstes betrachten wir also die zeitlichen Ableitungen von $\bracket{x}_t^2$:
+\begin{align*}
+	\od{}{t}\bracket{x}_t^2	&= 2\bracket{x}_t\od{}{t}\bracket{x}_t
+	\intertext{%
+		nach Vorlesung folgt:
+	}
+							&= 2\bracket{x}_t\underbrace{\frac{\iup\hbar}{2m}\int_{-\infty}^{\infty}\dif x\;\psi\nabla\psi^*-\psi^*\nabla\psi}_{\coloneqq v_0}
+\end{align*}
+Und:
+\begin{align*}
+	\odx{2}{}{t}\bracket{x}_t^2	&= \od{}{t}\del{2\bracket{x}_t\frac{\iup\hbar}{2m}\int_{-\infty}^{\infty}\dif x\;\psi\nabla\psi^*-\psi^*\nabla\psi}\\
+								&= 2v_0^2+2\bracket{x}_t\frac{\iup\hbar}{2m}\od{}{t}\int_{-\infty}^{\infty}\dif x\;\psi\nabla\psi^*-\psi^*\nabla\psi\\
+								&= 2v_0^2+2\bracket{x}_t\frac{\iup\hbar}{2m}\od{}{t}\int_{-\infty}^{\infty}\dif x\; \od{\psi}{t}\nabla\psi^*+\psi\nabla\del{\od{\psi^*}{t}}-\od{\psi^*}{t}\nabla\psi-\psi^*\nabla\del{\od{\psi}{t}}\\
+								&= 2v_0^2-2\bracket{x}_t\frac{\hbar^2}{4m^2}\od{}{t}\int_{-\infty}^{\infty}\dif x\; \laplace\psi\nabla\psi^*+\psi\nabla^3\psi^*-\laplace\psi^*\nabla\psi-\psi^*\nabla^3\psi\\
+								&= 2v_0^2-2\bracket{x}_t\frac{\hbar^2}{4m^2}\od{}{t}\int_{-\infty}^{\infty}\dif x\; \underbrace{\laplace\psi\nabla\psi^*+\nabla\psi\laplace\psi^*-\laplace\psi^*\nabla\psi-\nabla\psi^*\laplace\psi}_{=0}\\
+								&= 2v_0^2
+\end{align*}
+Somit folgt insgesamt:
+\begin{align*}
+	\Delta x_t^2	&= \Delta x_0^2+\xi_0t-2\bracket{x}_0v_0t+v_1^2t^2-2v_0^2t^2\\
+					&= \Delta x_0^2+\underbrace{\del{\xi_0-2\bracket{x}_0v_0}}_{=\xi_1}t+\underbrace{\del{v_1^2-2v_0^2}}_{=\Delta v^2}t^2\\
+					&= \Delta x_0^2+\xi_1t+\Delta v^2t^2
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+% vim: spell spelllang=de tw=79
