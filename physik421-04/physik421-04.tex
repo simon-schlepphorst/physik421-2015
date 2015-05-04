@@ -28,6 +28,165 @@
 
 \section{Zeitentwicklung}
 
+Betrachtet werden die ersten beiden normierten Eigenzustände des harmonischen Oszillators,
+\begin{align*}
+	\psi_0	&= \del{\frac1{\pi a^2}}^{\frac14} \eup^{-\frac{x^2}{2a^2}}\\
+	\psi_1	&= \del{\frac4{\pi a^6}}^{\frac14} x \eup^{-\frac{x^2}{2a^2}},
+\end{align*}
+mit den Eigenenergien $E_0$ und $E_1$.\\
+Nun werden diese Überlagert zu:
+\begin{align*}
+	\psi_s	&= N\del{\psi_0 + \psi_1}\\
+	\psi_a	&= N\del{\psi_0 - \psi_1}
+\end{align*}
+Im folgenden werde ich zur Vereinfachung der Aufgaben benutzen, dass die Eigenzustände orthogonal zueinander sind, also:
+\begin{align*}
+	\left<\psi_n,\psi_m\right> = \int_{-\infty}^{\infty}\dif x\; \psi_n^*\psi_m = \delta_{nm}
+\end{align*}
+
+\subsection{}
+
+Zuerst soll der Normierungsfaktor $N$ ausgerechnet werden. Dazu bilde ich das Skalarprodukt und fordere, dass dieses 1 sein soll:
+\begin{align*}
+	\left<\psi_{s,a},\psi_{s,a}\right>	&= N^2\left<\psi_0 \pm \psi_1,\psi_0 \pm \psi_1\right>\\
+										&= N^2\del{\left<\psi_0,\psi_0\right> + \left<\psi_1,\psi_1\right> \pm \left<\psi_0,\psi_1\right> \pm \left<\psi_1,\psi_0\right>}\\
+										&= 2N^2\\
+										&\overset{!}{=} 1
+\end{align*}
+Also:
+\begin{align*}
+	N=\frac1{\sqrt{2}}
+\end{align*}
+Außerdem soll der Mittelpunkt des Ortes ausgerechnet werden:
+\begin{align*}
+	\left<\psi_{s,a},x\psi_{s,a}\right>	&= \half\left<\psi_0 \pm \psi_1,x\psi_0 \pm x\psi_1\right>\\
+										&= \half\del{\left<\psi_0,x\psi_0\right> + \left<\psi_1,x\psi_1\right> \pm \left<\psi_0,x\psi_1\right> \pm \left<\psi_1,x\psi_0\right>}\\
+	\intertext{%
+		An dieser Stelle betrachte ich zuerst die Parität von $x$, $\psi_0$ und $\psi_1$. Und zwar hat $x$ die Parität -1, $\psi_0$ die Parität 1 und $\psi_s$ die Parität -1. Da das Integral mit gleichen Grenzen über Funktionen mit Parität -1 verschwindet kann man sich zur Vereinfachung die Gesammtparität der einzelnen Skalarprodukte des obigen Summanden anschauen: Die ersten beiden Skalarprodukte haben die Parität -1, die letzten beiden haben die Parität 1, so dass folgt:	
+	}
+										&= \pm\half\del{\left<\psi_0,x\psi_1\right> + \left<\psi_1,x\psi_0\right>}\\
+	\intertext{%
+		Weder $\psi_0$ noch $\psi_1$ sind komplexwertig, so dass die oben stehenden Skalarprodukte gleich sind. Es folgt:
+	}
+										&= \pm\left<\psi_0,x\psi_1\right>\\
+										&= \pm\int_{-\infty}^{\infty}\dif x\; \psi_0x\psi_1\\
+										&= \pm\del{\frac2{\pi}}^{\frac12} \int_{-\infty}^{\infty}\dif x\; \frac{x^2}{a^2}\eup^{-\frac{x^2}{a^2}}\\
+	\intertext{%
+		Substituiere $q=\frac{x}{a}\Rightarrow\dif x=a\dif q$:
+	}
+										&= \pm\del{\frac2{\pi}}^{\frac12}a \int_{-\infty}^{\infty}\dif x\; q^2\eup^{-q^2}\\
+										&= \pm\del{\frac2{\pi}}^{\frac12}a \int_{-\infty}^{\infty}\dif x\; \half\eup^{-q^2}\\
+										&= \pm\del{\frac1{2\pi}}^{\frac12}a \underbrace{\int_{-\infty}^{\infty}\dif x\; \eup^{-q^2}}_{=\sqrt{\pi}}\\
+										&= \pm\frac{a}{\sqrt{2}}
+\end{align*}
+Also:
+\begin{align*}
+	\left<\psi_s,x\psi_s\right> &= \frac{a}{\sqrt{2}}\\
+	\left<\psi_a,x\psi_a\right> &= -\frac{a}{\sqrt{2}}\\
+\end{align*}
+
+\subsection{}
+
+Nun wird der Zustand des Systems zum Zeitpunkt $t=0$ auf $\psi_1$ festgelegt. Es soll berechnet werden mit welcher Wahrscheinlichkeit der Zustand $\psi_a$ zum Zeitpunkt $t$ zu finden sei.\\
+Die Wahrscheinlichkeit $P\del{t}$ ein System, welches sich bei $t=0$ in einem Zustand $\phi$ befindet bei $t$ im einem Zustand $\psi\del{t}$ zu finden ist gegeben durch das Betragsquadrat des Skalarproduktes der Wellenfunktionen, also:
+\begin{align*}
+	P\del{t}=\abs{\left<\phi,\psi\del{t}\right>}^2
+\end{align*}
+Da wir stationäre Zustände betrachten ist die Zeitentwicklung vollständig durch die Schrödingergleichung gegeben, so dass gilt:
+\begin{align*}
+	\psi_0\del{t}	&= \del{\frac1{\pi a^2}}^{\frac14} \eup^{-\frac{x^2}{2a^2}}\eup^{-\iup\frac{E_0}{\hbar}t}\\
+	\psi_1\del{t}	&= \del{\frac4{\pi a^6}}^{\frac14} x \eup^{-\frac{x^2}{2a^2}}\eup^{-\iup\frac{E_1}{\hbar}t}
+\end{align*}
+Somit ist die zu berechnende Wahrscheinlichkeit $P\del{t}$:
+\begin{align*}
+	P\del{t}	&= \abs{\left<\psi_1,\psi_a\del{t}\right>}^2\\
+				&= \abs{N\left<\psi_1,\psi_0\del{t}-\psi_1\del{t}\right>}^2\\
+				&= \half\abs{\eup^{-\iup\frac{E_0}{\hbar}t}\left<\psi_1,\psi_0\right> - \eup^{-\iup\frac{E_1}{\hbar}t}\left<\psi_1,\psi_1\right>}^2\\
+				&= \half\abs{-\eup^{-\iup\frac{E_1}{\hbar}t}}^2\\
+				&= \half
+\end{align*}
+Dieses Ergebnis ist nicht zeitabhängig. Das ist allerdings auch nicht verwunderlich, weil ein System, welches sich in einem stationären, orthonormierten Eigenzustand befindet nicht in einen anderen, orthonormierten Zustand wechseln wird. Da $\psi_a$ und $\psi_s$ Überlagerungen von jeweils $\psi_0$ und $\psi_1$ sind findet man das System je zur Hälfte im Zustand $\psi_a$ und $\psi_s$.
+
+\subsection{}
+
+Nun befinde sich das System zum Zeitpunkt $t=0$ im Zustand $\psi_s$. Es soll erneut die Wahrscheinlichkeit berechnet werden, das System im Zustand $\psi_a$ zu finden:
+\begin{align*}
+	P\del{t}	&= \abs{\left<\psi_s,\psi_a\del{t}\right>}^2\\
+				&= \abs{N^2\left<\psi_1+\psi_0,\psi_0\del{t}-\psi_1\del{t}\right>}^2\\
+				&= \frac14\abs{\left<\psi_1,\psi_0\del{t}\right> + \left<\psi_0,\psi_0\del{t}\right> - \left<\psi_1,\psi_1\del{t}\right> - \left<\psi_0,\psi_1\del{t}\right>}^2\\
+				&= \frac14\abs{\eup^{-\iup\frac{E_0}{\hbar}t}\left<\psi_1,\psi_0\right> + \eup^{-\iup\frac{E_0}{\hbar}t}\left<\psi_0,\psi_0\right> - \eup^{-\iup\frac{E_1}{\hbar}t}\left<\psi_1,\psi_1\right> - \eup^{-\iup\frac{E_1}{\hbar}t}\left<\psi_0,\psi_1\right>}^2\\
+				&= \frac14\abs{\eup^{-\iup\frac{E_0}{\hbar}t} - \eup^{-\iup\frac{E_1}{\hbar}t}}^2\\
+				&= \frac14\del{\eup^{\iup\frac{E_0}{\hbar}t} - \eup^{\iup\frac{E_1}{\hbar}t}}\del{\eup^{-\iup\frac{E_0}{\hbar}t} - \eup^{-\iup\frac{E_1}{\hbar}t}}\\
+				&= \frac14\del{\eup^{\iup\frac{E_0}{\hbar}t}\eup^{-\iup\frac{E_0}{\hbar}t} - \eup^{\iup\frac{E_0}{\hbar}t}\eup^{-\iup\frac{E_1}{\hbar}t} - \eup^{\iup\frac{E_1}{\hbar}t}\eup^{-\iup\frac{E_0}{\hbar}t} + \eup^{\iup\frac{E_1}{\hbar}t}\eup^{-\iup\frac{E_1}{\hbar}t}}\\
+				&= \frac14\del{2-2\frac{\eup^{\iup\frac{E_1-E_0}{\hbar}t}+\eup^{-\iup\frac{E_1-E_0}{\hbar}t}}{2}}\\
+				&= \half-\half\cos\del{\frac{E_1-E_0}{\hbar}t}
+\end{align*}
+Die Zeitentwicklung der Wahrscheinlichkeit von $\psi_a$ entspricht also einem Kosinus um $\half$, so dass die Wahrscheinlichkeit zwischen 0 und 1 oszilliert. Das heißt:\\
+Das System schwingt mit der Frequenz $\omega_{10}=\frac{E_1-E_0}{\hbar}$ zwischen den Zuständen $\psi_s$ und $\psi_a$ hin und her, wobei es bei $\psi_s$ startet.\\
+
+Nun sollen noch die Erwartungswerte von $x\del{t}$ und $p\del{t}$ ausgerechnet werden:
+\begin{align*}
+	\left<x\del{t}\right>	&= \left<\psi_s\del{t},x\psi_s\del{t}\right>\\
+							&= \half\del{\left<\psi_0\del{t}+\psi_1\del{t},x\psi_0\del{t}+x\psi_1\del{t}\right>}\\
+							&= \half\del{\left<\psi_0\del{t},x\psi_0\del{t}\right> + \left<\psi_0\del{t},x\psi_1\del{t}\right> + \left<\psi_1\del{t},x\psi_0\del{t}\right> + \left<\psi_1\del{t},x\psi_1\del{t}\right>}\\
+							&= \half\del{\left<\psi_0,x\psi_0\right> + \eup^{\iup\frac{E_1-E_0}{\hbar}t}\left<\psi_0,x\psi_1\right> + \eup^{-\iup\frac{E_1-E_0}{\hbar}t}\left<\psi_1,x\psi_0\right> + \left<\psi_1,x\psi_1\right>}\\
+	\intertext{%
+		In Aufgabenteil a. habe ich gezeigt, dass $\left<\psi_0,x\psi_0\right>=\left<\psi_1,x\psi_1\right>=0$ und $\left<\psi_0,x\psi_1\right>=\left<\psi_1,x\psi_0\right>=\frac{a}{\sqrt{2}}$, so dass folgt:
+	}
+							&= \half\del{\frac{a}{\sqrt{2}}\eup^{\iup\frac{E_1-E_0}{\hbar}t} + \frac{a}{\sqrt{2}}\eup^{-\iup\frac{E_1-E_0}{\hbar}t}}\\
+							&= \frac{a}{\sqrt{2}}\cos\del{\frac{E_1-E_0}{\hbar}t}
+\end{align*}
+und 
+\begin{align*}
+	\left<p\del{t}\right>	&= \left<\psi_s\del{t},\hat{p}\psi_s\del{t}\right>\\
+							&= \half\del{\left<\psi_0\del{t}+\psi_1\del{t},\hat{p}\psi_0\del{t}+\hat{p}\psi_1\del{t}\right>}\\
+							&= \half\del{\left<\psi_0\del{t},\hat{p}\psi_0\del{t}\right> + \left<\psi_0\del{t},\hat{p}\psi_1\del{t}\right> + \left<\psi_1\del{t},\hat{p}\psi_0\del{t}\right> + \left<\psi_1\del{t},\hat{p}\psi_1\del{t}\right>}\\
+							&= \half\del{\left<\psi_0,\hat{p}\psi_0\right> + \eup^{\iup\frac{E_1-E_0}{\hbar}t}\left<\psi_0,\hat{p}\psi_1\right> + \eup^{-\iup\frac{E_1-E_0}{\hbar}t}\left<\psi_1,\hat{p}\psi_0\right> + \left<\psi_1,\hat{p}\psi_1\right>}\\
+							&= -\frac{\iup\hbar}{2}\del{\left<\psi_0,\nabla\psi_0\right> + \eup^{\iup\frac{E_1-E_0}{\hbar}t}\left<\psi_0,\nabla\psi_1\right> + \eup^{-\iup\frac{E_1-E_0}{\hbar}t}\left<\psi_1,\nabla\psi_0\right> + \left<\psi_1,\nabla\psi_1\right>}\\
+	\intertext{%
+		Hier hilft es wieder sich die Parität anzuschauen: Die Ableitung einer Funktion mit Parität 1 hat die Parität -1 und umgekehrt. Also ist die Gesammtparität des ersten und letzten Skalarproduktes -1 (und verschwindet somit) und die der beiden mittleren Skalarprodukte 1. Definiere außerdem $u=\eup^{-\iup\frac{E_1-E_0}{\hbar}t}$. Es folgt also:
+	}
+							&= -\frac{\iup\hbar}{2}\del{u\left<\psi_0,\nabla\psi_1\right> + u^*\left<\psi_1,\nabla\psi_0\right>}\\
+							&= -\frac{\iup\hbar}{2}\del{\frac2{\pi a^4}}^{\frac12}\del{u\int_{-\infty}^{\infty}\dif x\;\eup^{-\frac{x^2}{2a^2}}\pd{}{x}x\eup^{-\frac{x^2}{2a^2}} + u^*\int_{-\infty}^{\infty}\dif x\;x\eup^{-\frac{x^2}{2a^2}}\pd{}{x}\eup^{-\frac{x^2}{2a^2}}}\\
+							&= -\frac{\iup\hbar}{2}\del{\frac2{\pi a^4}}^{\frac12}\del{u\int_{-\infty}^{\infty}\dif x\;\del{\eup^{-\frac{x^2}{a^2}} - \frac{x^2}{a^2}\eup^{-\frac{x^2}{a^2}}} - u^*\int_{-\infty}^{\infty}\dif x\;\frac{x^2}{a^2}\eup^{-\frac{x^2}{a^2}}}\\
+	\intertext{%
+		Substituiere wieder $q=\frac{x}{a}\Rightarrow\dif x=a\dif q$:
+	}
+							&= -\frac{\iup\hbar}{2}\del{\frac2{\pi a^2}}^{\frac12}\del{u\int_{-\infty}^{\infty}\dif x\;\del{\eup^{-q^2} - q^2\eup^{-q^2}} - u^*\int_{-\infty}^{\infty}\dif x\;q^2\eup^{-q^2}}\\
+							&= -\frac{\iup\hbar}{2}\del{\frac2{\pi a^2}}^{\frac12}\del{u\int_{-\infty}^{\infty}\dif x\;\half\eup^{-q^2} - u^*\int_{-\infty}^{\infty}\dif x\;\half\eup^{-q^2}}\\
+							&= -\frac{\iup\hbar}{4}\del{\frac2{\pi a^2}}^{\frac12}\del{u\int_{-\infty}^{\infty}\dif x\;\eup^{-q^2} - u^*\int_{-\infty}^{\infty}\dif x\;\eup^{-q^2}}\\
+							&= -\frac{\iup\hbar}{4}\del{\frac2{a^2}}^{\frac12}\del{u - u^*}\\
+							&= \frac{\hbar}{\sqrt{2}a}\frac1{2\iup}\del{\eup^{\iup\frac{E_1-E_0}{\hbar}t}-\eup^{-\iup\frac{E_1-E_0}{\hbar}t}}\\
+							&= \frac{\hbar}{\sqrt{2}a}\sin\del{\frac{E_1-E_0}{\hbar}t}
+\end{align*}
+Diese Ergebnisse waren zu Erwarten: Der Mittelwert des Ortes schwingt mit der Frequenz $\omega_{10}$ zwischen den Punkten $\frac{a}{\sqrt{2}}$ und $-\frac{a}{\sqrt{2}}$ hin und her während der Impuls mit transformierter Amplitude um $\frac{\pi}{2}$ hinterher schwingt.
+
+\subsection{}
+
+Zuletzt ist nach der Messung der Energie gefragt. Dabei sei das System wieder zum Zeitpunkt $t=0$ im Zustand $\psi_s$ gegeben. Misst man jetzt nach einer Zeit $t_1$ die Energie des Systems, so kann man entweder die zu $\psi_0$ gehörende Energie $E_0$ oder die zu $\psi_1$ gehörende Energie $E_1$ finden. Ähnlich wie in Aufgabenteil b. folgt für die Wahrscheinlichkeit:
+\begin{align*}
+	P\del{t}	&= \abs{\left<\psi_s,\psi_1\del{t}\right>}^2\\
+				&= \abs{N\left<\psi_0 + \psi_1,\psi_1\del{t}\right>}^2\\
+				&= \half\abs{\left<\psi_0,\psi_1\del{t}\right> + \left<\psi_1,\psi_1\del{t}\right>}^2\\
+				&= \half\abs{\eup^{-\iup\frac{E_1}{\hbar}t}\left<\psi_0,\psi_1\right> + \eup^{-\iup\frac{E_1}{\hbar}t}\left<\psi_1,\psi_1\right>}^2\\
+				&= \half\abs{\eup^{-\iup\frac{E_1}{\hbar}t}}^2\\
+				&= \half
+\end{align*} 
+Und wiederum ist das Ergebnis nicht überraschend: Unser Grundzustand $\psi_s$ besteht zur Hälfte aus $\psi_0$ und $\psi_1$. Die Zeitentwicklung ändert daran nichts, sie lässt das System lediglich schwingen. Daher ist es nicht verwunderlich, dass, ohne Äußeres einwirken, die Energie des Systems erhalten bleibt.\\
+Misst man nun die Energie $E_1$ so wird der Zustand des Systems festgelegt auf $\psi_1$. Da dies ein Energieeigenzustand ist, bleibt das System von diesem Zeitpunkt an in diesem Zustand und eine erneute Energiemessung zum Zeitpunkt $t=t_2>t_1$ ergibt zu 100$\%$ wieder die Energie $E_1$.
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Teilchen im Potentialtopf}
 
 \section{Ausbreitung in zwei Dimensionen}
