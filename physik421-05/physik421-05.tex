@@ -30,10 +30,118 @@
 
 \section{Gebundene Zustände eines $\delta$-Potentials}
 
+Betrachtet wird ein Teilchen mit Masse $m$, dass sich in einem Potential
+\begin{align*}
+	V\del{x}=V_0\delta\del{x}&&V_0<0
+\end{align*}
+bewege.\\
+Es sollen die gebundenen Zustände und Eigenenergie bestimmt werden.\\
+Ansatz:
+\begin{align*}
+	\psi_-	&= A\eup^{qx}+A'\eup^{-qx}\\
+	\psi_+	&= B'\eup^{qx}+B\eup^{-qx}
+\end{align*}
+Dabei ist
+\begin{align*}
+	q=\sqrt{\frac{-2mE}{\hbar^2}}&&E<0
+\end{align*}
+Da die Wellenfunktionen $\psi_-$ und $\psi_+$ normierbar sein sollen muss gelten:
+\begin{align*}
+	\psi_-	&= A\eup^{qx}\\
+	\psi_+	&= B\eup^{-qx}
+\end{align*}
+Aufgrund der Stetigkeit muss
+\begin{align*}
+	&\psi_-\del{0}=\psi_+\del{0}\\
+	&\Rightarrow A=B
+\end{align*}
+sein.\\
+Um den Normierungsfaktor auszurechnen bilde ich das Skalarprodukt:
+\begin{align*}
+	\inner{\psi}{\psi}	&= \int_{-\infty}^{\infty}\dif x\;\psi^*\psi\\
+						&= \abs{A}^2\del{\int_{-\infty}^0\dif x\;\eup^{2qx} + \int_0^{\infty}\dif x\;\eup^{-2qx}}\\
+						&= \abs{A}^2\del{\sbr{\frac1{2q}\eup^{2qx}}_{-\infty}^0 - \sbr{\frac1{2q}\eup^{-2qx}}_0^{\infty}}\\
+						&= \frac{\abs{A}^2}{q}
+	\intertext{%
+		Wegen $\inner{\psi}{\psi}\overset{!}{=}1$ folgt
+	}
+						\Rightarrow A&=\sqrt{q}
+\end{align*}
+Also:
+\begin{align*}
+	\psi_-	&= \sqrt{q}\eup^{qx}\\
+	\psi_+	&= \sqrt{q}\eup^{-qx}
+\end{align*}
+Um die Energie zu bestimmen löse ich die Schrödingergleichung:
+\begin{align*}
+	&\frac{\hbar^2}{2m}\psi'' + E\psi = V_0\delta\del{x}\psi\\
+	\intertext{%
+		Integration von $\-\epsilon$ bis $\epsilon$ über $x$ und bilden des Limes gibt:
+	}
+	\Leftrightarrow&\lim_{\epsilon\to0}\del{\int_{-\epsilon}^{\epsilon}\dif x\;\frac{\hbar^2}{2m}\psi'' + \int_{-\epsilon}^{\epsilon}\dif x\;E\psi} = \lim_{\epsilon\to0}\int_{-\epsilon}^{\epsilon}\dif x\;V_0\delta\del{x}\psi\\
+	\intertext{%
+		Die Integration beim zweiten Integral gibt nach dem ausführen des Limes null für den Rest ergibt sich:
+	}
+	\Leftrightarrow&\frac{\hbar^2}{2m}\lim_{\epsilon\to0}\del{\psi'\del{\epsilon}-\psi'\del{-\epsilon}}=V_0\psi\del{0}\\
+	\Leftrightarrow&\frac{\hbar^2}{2m}\lim_{\epsilon\to0}\del{-\sqrt{q}q\eup^{-q\epsilon}-\sqrt{q}q\eup^{-q\epsilon}}=V_0\sqrt{q}\\
+	\Leftrightarrow&-\frac{\hbar^2q}{m}=V_0\\
+	\intertext{%
+		Einsetzen von $q$ gibt:
+	}
+	\Leftrightarrow&-\frac{2E\hbar^2}{m}=V_0^2\\
+	\Leftrightarrow&E=-\frac{mV_0^2}{2\hbar^2}\\
+\end{align*}
+
 \section{Gebundene Zustände von zwei $\delta$-Potentialen}
 
 \section{Adjungieren}
 
+Gegeben sind mehrere Ausdrücke. Es sollen der Typ und das Adjungierte bestimmt werden.
+
+\subsection{}
+\begin{align*}
+	\del{\hat{A}+\lambda\hat{B}^{\dagger}}\ket{\psi_1}
+\end{align*}
+ist ein Zustand, das Adjungierte ist:
+\begin{align*}
+	\bra{\psi_1}\del{\hat{A}^{\dagger}+\lambda^*\hat{B}}
+\end{align*}
+
+\subsection{}
+\begin{align*}
+	\hat{A}\ket{\psi_1}\bra{\psi_2}\lambda\hat{B}\hat{C}
+\end{align*}
+ist ein Operator, das Adjungierte ist:
+\begin{align*}
+	\lambda^*\hat{C}^{\dagger}\hat{B}^{\dagger}\ket{\psi_2}\bra{\psi_1}\hat{A}^{\dagger}
+\end{align*}
+
+\subsection{}
+\begin{align*}
+	\bra{\psi_1}\hat{A}\ket{\psi_2}\ket{\psi_1}
+\end{align*}
+ist ein Zustand, das Adjungierte ist:
+\begin{align*}
+	\bra{\psi_1}\bra{\psi_2}\hat{A}^{\dagger}\ket{\psi_1}
+\end{align*}
+
+\subsection{}
+\begin{align*}
+	\bra{\psi_2}\hat{A}\hat{B}^{\dagger}\hat{C}^{\dagger}\ket{\psi_1}
+\end{align*}
+ist ein Skalar, das Adjungierte ist:
+\begin{align*}
+	\bra{\psi_1}\hat{C}\hat{B}\hat{A}^{\dagger}\ket{\psi_2}
+\end{align*}
+
+\subsection{}
+\begin{align*}
+	\bra{\psi_1}\del{\hat{C}+\hat{D}^{\dagger}}\del{\hat{A}-\iup\hat{B}}\ket{\psi_2}
+\end{align*}
+ist ein Skalar, das Adjungierte ist:
+\begin{align*}
+	\bra{\psi_2}\del{\hat{A}^{\dagger}+\iup\hat{B}^{\dagger}}\del{\hat{C}^{\dagger}+\hat{D}}\ket{\psi_1}
+\end{align*}
 
 \end{document}
 
