@@ -32,6 +32,90 @@
 
 \section{Matrixdarstellung von Operatoren}
 
+\subsection{ }
+Die gesuchte Matrix ist:
+\begin{align*}
+	\hat A = \begin{pmatrix}
+		5 & \alpha & 0\\
+		\beta & 0 & \iup\\
+		0 & -\iup & \gamma
+	\end{pmatrix}
+\end{align*}
+
+\subsection{ }
+Damit $\hat A$ hermitesch ist muss gelten:
+\begin{align*}
+	\hat A = \hat A^\dagger
+\end{align*}
+Das ist gegeben für $\gamma \in \mathbb R$ und $\alpha, \beta \in \mathbb C$
+mit $\alpha^* = \beta$.
+
+\subsection{ }
+Im folgenden wird $\alpha = \beta = 0$ gesetzt und die Matrix $\hat A$ genutzt.
+\begin{align*}
+	\hat A = \begin{pmatrix}
+		5 & 0 & 0\\
+		0 & 0 & \iup\\
+		0 & -\iup & \gamma
+	\end{pmatrix}
+\end{align*}
+
+Es sind die Eigenvektoren zu bestimmen.
+\begin{align*}
+	\det\del{\hat A - \lambda \mathbb 1} &=
+	\begin{vmatrix}
+		5-\lambda & 0 & 0\\
+		0 & -\lambda & \iup\\
+		0 & -\iup & \gamma-\lambda
+	\end{vmatrix}\\
+	&= \del{\lambda - 5} \del{\lambda - \del{\frac\gamma2 + \frac12
+		\sqrt{\gamma^2 + 4}}} \del{\lambda - \del{\frac\gamma2 - \frac12
+			\sqrt{\gamma^2 + 4}}}
+			\overset{!}{=} 0
+	\intertext{Damit ergeben sich die normierten Eigenvektoren}
+	\vec v_1 &= \begin{pmatrix}
+		1\\
+		0\\
+		0
+	\end{pmatrix}\\
+	\vec v_2 &= \frac1{\sqrt{\frac12 \gamma\sqrt{\gamma^2 + 4}}}
+	\begin{pmatrix}
+		0\\
+		-\frac\iup2\gamma + \frac\iup2 \sqrt{\gamma^2 + 4}\\
+		1
+	\end{pmatrix}\\
+	\vec v_3 &= \frac1{\sqrt{\frac12\del{\gamma\sqrt{\gamma^2 + 4} +
+\gamma^2 + 4}}}
+	\begin{pmatrix}
+		0\\
+		-\frac\iup2\gamma - \frac\iup2 \sqrt{\gamma^2 + 4}\\
+		1
+	\end{pmatrix}
+\end{align*}
+
+\subsection{ }
+\begin{align*}
+	\Bracket{\hat A} &= \Braket{\psi^* | \hat A | \psi} = \begin{pmatrix}
+		a^* & b^* & 0
+	\end{pmatrix} \begin{pmatrix}
+		5 & 0 & 0\\
+		0 & 0 & \iup\\
+		0 & -\iup & \gamma
+	\end{pmatrix} \begin{pmatrix}
+		a \\
+		b \\
+		0
+	\end{pmatrix} \\
+	&= 5\abs{a}^2
+\end{align*}
+
+\subsection{ }
+\fehlt %TODO 
+
+\subsection{ }
+\fehlt %TODO
+
+
 \section{Zwei-Niveau System}
 
 
