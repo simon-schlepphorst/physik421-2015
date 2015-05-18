@@ -270,25 +270,24 @@ Es sind die Eigenvektoren zu bestimmen.
 		\sqrt{\gamma^2 + 4}}} \del{\lambda - \del{\frac\gamma2 - \frac12
 			\sqrt{\gamma^2 + 4}}}
 			\overset{!}{=} 0
-	\intertext{Damit ergeben sich die normierten Eigenvektoren}
+	\intertext{Setze $\gamma_{\pm}\equiv-\frac\iup2\gamma \pm \frac\iup2 \sqrt{\gamma^2 + 4}$. Damit ergeben sich die normierten Eigenvektoren}
 	\vec v_1 &= \begin{pmatrix}
 		1\\
 		0\\
 		0
 	\end{pmatrix}\\
-	\vec v_2 &= \frac1{\sqrt{\frac12 \gamma\sqrt{\gamma^2 + 4}}}
+	\vec v_2 &= \frac1{\sqrt{1+\abs{\gamma_+}^2}}
 	\begin{pmatrix}
 		0\\
-		-\frac\iup2\gamma + \frac\iup2 \sqrt{\gamma^2 + 4}\\
+		\gamma_+\\
 		1
 	\end{pmatrix}\\
-	\vec v_3 &= \frac1{\sqrt{\frac12\del{\gamma\sqrt{\gamma^2 + 4} +
-\gamma^2 + 4}}}
+	\vec v_3 &= \frac1{\sqrt{1+\abs{\gamma_-}^2}}
 	\begin{pmatrix}
 		0\\
-		-\frac\iup2\gamma - \frac\iup2 \sqrt{\gamma^2 + 4}\\
+		\gamma_-\\
 		1
-	\end{pmatrix}
+	\end{pmatrix}\\
 \end{align*}
 
 \subsection{ }
@@ -307,11 +306,42 @@ Es sind die Eigenvektoren zu bestimmen.
 	&= 5\abs{a}^2
 \end{align*}
 
-\subsection{ }
-\fehlt %TODO 
+\subsection{}
+
+Das System befinde sich im Zustand $\ket{\psi}$. Misst man den Operator $\hat{A}$, so können als Ergebnis nur die Eigenwerte von $\hat{A}$ auftreten. Die Wahrscheinlichkeit diese zu messen ist gegeben durch
+\begin{align*}
+	P\del{v_1}	&= \abs{
+		\begin{pmatrix}
+			a\\b\\0
+		\end{pmatrix}
+		\begin{pmatrix}
+			1\\0\\0
+		\end{pmatrix}
+	}^2\\
+				&= \abs{a}^2\\
+	P\del{v_2}	&= \frac1{1+\abs{\gamma_+}^2}\abs{
+		\begin{pmatrix}
+			a\\b\\0
+		\end{pmatrix}
+		\begin{pmatrix}
+			0\\\gamma_+\\1
+		\end{pmatrix}
+	}^2\\
+				&= \frac{\abs{b\gamma_+}^2}{1+\abs{\gamma_+}^2}\\
+	P\del{v_3}	&= \frac1{1+\abs{\gamma_-}^2}\abs{
+		\begin{pmatrix}
+			a\\b\\0
+		\end{pmatrix}
+		\begin{pmatrix}
+			0\\\gamma_-\\1
+		\end{pmatrix}
+	}^2\\
+				&= \frac{\abs{b\gamma_-}^2}{1+\abs{\gamma_-}^2}\\
+\end{align*}
 
 \subsection{ }
-\fehlt %TODO
+
+Da $\hat{A}$ auf alle drei Zustände abbildet kann das System entweder im Zustand $\ket{1}$ oder einer Überlagerung von $\ket{2}$ und $\ket{3}$ sein, je nachdem welcher Eigenwert von $\hat{A}$ gemessen worden ist.
 
 
 \section{Zwei-Niveau System}
