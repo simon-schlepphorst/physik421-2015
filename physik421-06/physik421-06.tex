@@ -8,6 +8,7 @@
 
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
 
+\usepackage{units}
 \usepackage{listings}
 \usepackage{beramono}
 \lstset{
@@ -22,13 +23,210 @@
 }
 
 
+
 \begin{document}
 
 \maketitle
 
 \section{Operatoren - Formalismus}
 
+\subsection{}
+
+\begin{align*}
+	\hat{\sigma}_1&=\begin{pmatrix}
+					0 & 1\\
+					1 & 0
+					\end{pmatrix} &
+	\hat{\sigma}_2&=\begin{pmatrix}
+					0& -i \\
+					i& 0
+					\end{pmatrix} &
+	\hat{\sigma}_3&=\begin{pmatrix}
+					1 & 0 \\
+					0 & -1
+					\end{pmatrix}	
+\end{align*}
+\begin{itemize}
+	\item
+	Eigenvektoren von $\hat{\sigma}_1$ sind:
+	$ \begin{pmatrix}1 \\ 1 \end{pmatrix} $ zu Eigenwert 1 und $ \begin{pmatrix} 1 \\ -1 \end{pmatrix} $ zu Eigenwert -1.
+	
+	Es gilt: 
+	\begin{equation*}
+		|\psi\rangle=\begin{pmatrix}1 \\0\end{pmatrix}=\frac{1}{2}\cdot\begin{pmatrix}1\\1\end{pmatrix}+\frac{1}{2}\cdot\begin{pmatrix}1\\-1\end{pmatrix}
+	\end{equation*}
+		
+	\item
+	Eigenvektoren von $\hat{\sigma}_2$ sind:
+	$\begin{pmatrix}1\\-i\end{pmatrix}$ zu Eigenwert -1 und $\begin{pmatrix}1\\i\end{pmatrix}$ zu Eigenwert 1.
+
+	Es gilt:
+	\begin{equation*}
+		|\psi\rangle=\frac{1}{2}\cdot\begin{pmatrix}1\\-i\end{pmatrix}+\frac{1}{2}\cdot\begin{pmatrix}1\\i\end{pmatrix}
+	\end{equation*}
+
+	\item
+	Eigenvektoren von $\hat{\sigma}_3$ sind:
+	$\begin{pmatrix}1\\0\end{pmatrix}$ zu Eigenwert 1 und $\begin{pmatrix}0\\1\end{pmatrix}$ zu Eigenwert -1.
+
+	Es gilt:
+	\begin{equation*}
+		|\psi\rangle=
+		1\cdot\begin{pmatrix}1\\0\end{pmatrix}+0\cdot\begin{pmatrix}0\\1\end{pmatrix}
+	\end{equation*}
+
+	\item Mittelwert von $|\psi\rangle$:
+	\begin{align*}
+		\langle\psi|\hat{\sigma}_1|\psi\rangle=
+			&\begin{pmatrix}1&0\end{pmatrix}	 \begin{pmatrix}0&1\\1&0\end{pmatrix} \begin{pmatrix}1\\0\end{pmatrix}
+			=\begin{pmatrix}1&0\end{pmatrix}\begin{pmatrix}0\\1\end{pmatrix}=0\\
+		\langle\psi|\hat{\sigma}_2|\psi\rangle=&
+			\begin{pmatrix}1&0\end{pmatrix}	 \begin{pmatrix}0&-i\\i&0\end{pmatrix} \begin{pmatrix}1\\0\end{pmatrix}=\begin{pmatrix}1&0\end{pmatrix}\begin{pmatrix}0\\i\end{pmatrix}=0\\
+		\langle\psi|\hat{\sigma}_3|\psi\rangle=&
+			\begin{pmatrix}1&0\end{pmatrix}	 \begin{pmatrix}1&0\\0&-1\end{pmatrix} \begin{pmatrix}1\\0\end{pmatrix}=\begin{pmatrix}1&0\end{pmatrix}\begin{pmatrix}1\\0\end{pmatrix}=1
+	\end{align*}
+
+\end{itemize}
+
+\subsection{}
+
+Ja, die Matrizen $\hat{A}$ und $\hat{B}$ sind hermitesch:
+\begin{align*}
+	\hat{A}=&\begin{pmatrix}1&0&0\\0&1&0\\0&0&-1\end{pmatrix}=\hat{A}^{\dag} & \hat{B}=&\begin{pmatrix}0&i&0\\-i&0&0\\0&0&-1\end{pmatrix}=\hat{B}^{\dag}
+\end{align*}
+Die Eigenwerte von $\hat{A}$ sind 1 und -1 und möglichen Eigenvektorbasis $\begin{pmatrix}\begin{pmatrix}1\\0\\0\end{pmatrix}, \begin{pmatrix}0\\1\\0\end{pmatrix} , \begin{pmatrix}0\\0\\1\end{pmatrix}\end{pmatrix}$, wobei die ersten beiden Vektoren den Eigenraum zum Eigenwert 1 aufspannen und der dritte den zum Eigenwert -1 (ablesbar, da Diagonalmatrix).
+
+Die Eigenwerte von $\hat{B}$ sind auch 1 und -1 und eine mögliche Eigenvektorbasis ist $\begin{pmatrix} \begin{pmatrix}1\\-i\\0\end{pmatrix},\begin{pmatrix}1\\i\\0\end{pmatrix},\begin{pmatrix}0\\0\\1\end{pmatrix}\end{pmatrix}$.
+	Diese kann man ablesen, da $\hat{B}$ sich aufteilt in $-\hat{\sigma}_2$ und -1 auf der Diagonalen. Daher entsprechen die Eigenwerte den negativen von $\hat{\sigma}_2$ und -1.
+
+Die Eigenvektoren zum Eigenwert 1 werden aufgespannt durch den Eigenvektoren von $\hat{\sigma}$ zum Eigenwert -1 mit einer zusätzlichen $0$ als dritten Eintrag und die Eigenvektoren von $\hat{B}$ zum Eigenwert -1 werden aufgespannt von dem Eigenvektor von $\hat{\sigma}_2$ zum Eigenwert 1 mit zusätzlicher $0$ als dritten Eintrag und dem dritten Eigenvektor $\begin{pmatrix}0\\0\\1\end{pmatrix}$, der dem letzten Diagonaleintrag entspricht. 
+
+Da die beiden Eigenvektoren von $\hat{\sigma}_2$ orthogonal zueinander sind und der dritte Vektor in der Basis offensichtlich orthogonal zu den anderen beiden ist, ist die Basis eine Orthogonalbasis. Wir erhalten eine Orthonormalbasis durch Normierung:
+\[
+\begin{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}1\\-i\\0\end{pmatrix}, \frac{1}{\sqrt{2}}\begin{pmatrix}1\\i\\0\end{pmatrix},	\begin{pmatrix}0\\0\\1\end{pmatrix}\end{pmatrix}
+\]
+
+Somit erhalten wir die Spektralzerlegung von $\hat{B}$:
+\begin{align*}
+	\hat{B}=&1\cdot \frac{1}{2}\begin{pmatrix}1\\-i\\0\end{pmatrix} \begin{pmatrix}1&i&0\end{pmatrix}+(-1)\cdot\frac{1}{2}\begin{pmatrix}1\\i\\0\end{pmatrix}\begin{pmatrix}1&-i&0\end{pmatrix}+ (-1)\cdot \begin{pmatrix} 0\\0\\1\end{pmatrix}\begin{pmatrix}0&0&1\end{pmatrix} \\
+		=&1\cdot\frac{1}{2}\begin{pmatrix}1&i&0\\-i&1&0\\0&0&0\end{pmatrix} +(-1)\cdot\frac{1}{2}\begin{pmatrix} 1 &- i & 0\\ i & 1 & 0 \\ 0&0&0\end{pmatrix}+ (-1)\cdot\begin{pmatrix}0&0&0\\0&0&0\\0&0&1\end{pmatrix}
+\end{align*}
+
+\subsection{}
+
+Wir wissen aus der linearen Algebra, dass $\hat{B}$ Diagonalform hat nach konjugieren mit einer Basistransformation zu einer Basis von Eigenvektoren zu $\hat{B}$. Weiter wissen wir auch, dass die Basistransformation zwischen Orthonormalbasen eine unitäre Transformation ist, als auch dass von unitären invertierbaren Matrizen das Inverse die konjugierte transponierte Matrix ist. Somit erfüllt
+\[
+\hat{U}=\begin{pmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\ -\frac{1}{\sqrt{2}}i & \frac{1}{\sqrt{2}}i & 0 \\ 0 & 0 &1\end{pmatrix}
+\]
+das gewünschte (die Spalten von $\hat{U}$ sind die orthonormierte Eigenvektorbasis von $\hat{B}$).
+
+\subsection{}
+
+Ja, $\hat{A}$ und $\hat{B}$ kommutieren, da  $\hat{A}$ sich aufteilt in die Einheitsmatrix $\hat{I}_2$ und -1 auf der Diagonalen. Die Einheitsmatrix kommutiert mit $-\hat{\sigma}_2$, da es eine Einheitsmatrix ist, und -1 kommutiert mit -1, da die Matrizen gleich sind (als auch beide diagonal).
+
+
 \section{Projektoren}
+
+Gegeben ist eine Hilbert-Basis durch $\ket{n}$, $\del{n=1,...,N}$ im Hilbertraum $H$. Der zugehörige Projektor ist gegeben durch $\hat{P}_n=\ket{n}\bra{n}$. Es sollen mehrere Eigenschaften von $\hat{P}_n$ gezeigt werden.
+
+\subsection{}
+
+Es soll gezeigt werden, dass $\hat{P}_n^2=\hat{P}_n$ ist:
+\begin{align*}
+	\hat{P}_n^2	&= \del{\ket{n}\bra{n}}^2\\
+				&= \ket{n}\underbrace{\left<n|n\right>}_{=1}\bra{n}\\
+				&= \ket{n}\bra{n}\\
+				&= \hat{P}_n
+\end{align*}
+
+\subsection{}
+
+Es soll gezeigt werden, dass $\sum_{n=1}^{N}\hat{P}_n=\hat{I}$, wobei $\hat{I}$ die Identität von $H$ ist. Sei $\ket{x}$ ein Zustand in $H$. Dann kann dieser in der Basis $\ket{n}$ geschrieben werden als $\sum_{n=1}^{N}c_n\ket{n}$. Wendet man die Summe aller Projektoren auf diesen Zustand an, so folgt:
+\begin{align*}
+	\sum_{n=1}^{N}\hat{P}_n\ket{x}	&= \sum_{n=1}^{N}\ket{n}\bra{n}\sum_{m=1}^{N}c_m\ket{m}\\
+									&= \sum_{n,m=1}^{N}c_m\ket{n}\underbrace{\left<n|m\right>}_{=\delta_{nm}}\\
+									&= \sum_{n=1}^{N}c_n\ket{n}\\
+									&=	\ket{x}
+\end{align*}
+
+\subsection{}
+
+Gegeben sind die beiden Matrizen
+\begin{align*}
+	\begin{pmatrix}
+		1&0\\
+		0&0
+	\end{pmatrix}
+\end{align*}
+und
+\begin{align*}
+	\begin{pmatrix}
+		0&0\\
+		0&1
+	\end{pmatrix}
+\end{align*}
+Es soll gezeigt werden, dass diese Projektoren sind, also als $\ket{n}\bra{n}$ geschrieben werden können.\\
+Offensichtlich gilt:
+\begin{align*}
+	\begin{pmatrix}
+		1&0\\
+		0&0
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1\\
+		0
+	\end{pmatrix}
+	\begin{pmatrix}
+		1&0
+	\end{pmatrix}
+\end{align*}
+und
+\begin{align*}
+	\begin{pmatrix}
+		0&0\\
+		0&1
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		0\\
+		1
+	\end{pmatrix}
+	\begin{pmatrix}
+		0&1
+	\end{pmatrix}
+\end{align*}
+Die beiden Matrizen projizieren also auf die Zustände $\begin{pmatrix}1\\0\end{pmatrix}$ und $\begin{pmatrix}0\\1\end{pmatrix}$, welche eine Basis eines 2-Niveau-Systems bilden.\\
+Ihre Unterräume sind $\cbr{k\begin{pmatrix}1\\0\end{pmatrix}|k\in\C}$ und $\cbr{k'\begin{pmatrix}0\\1\end{pmatrix}|k'\in\C}$.
+
+\subsection{}
+
+Gegeben ist die Matrix:
+\begin{align*}
+	\begin{pmatrix}
+		\nicefrac12&\nicefrac12\\
+		\nicefrac12&\nicefrac12
+	\end{pmatrix}
+\end{align*}
+Es soll überprüft werden ob diese ein Projektor ist.\\
+Man sieht:
+\begin{align*}
+	\begin{pmatrix}
+		\nicefrac12&\nicefrac12\\
+		\nicefrac12&\nicefrac12
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\nicefrac1{\sqrt{2}}\\
+		\nicefrac1{\sqrt{2}}
+	\end{pmatrix}
+	\begin{pmatrix}
+		\nicefrac1{\sqrt{2}}&\nicefrac1{\sqrt{2}}
+	\end{pmatrix}
+\end{align*}
+Die Matrix projiziert also auf den Zustand $\begin{pmatrix}\nicefrac1{\sqrt{2}}\\\nicefrac1{\sqrt{2}}\end{pmatrix}$.\\
+Der zugehörige Unterraum ist $\cbr{k\begin{pmatrix}\nicefrac1{\sqrt{2}}\\\nicefrac1{\sqrt{2}}\end{pmatrix}|k\in\C}$.
+
 
 \section{Matrixdarstellung von Operatoren}
 
@@ -117,6 +315,59 @@ Es sind die Eigenvektoren zu bestimmen.
 
 
 \section{Zwei-Niveau System}
+
+\subsection{}
+
+Betrachtet wird $\hat{H}=A\hat{\sigma}_3$, $A\in\R$. Es soll der Zeitentwicklungsoperator als Linearkombination von $\hat{I}$ und $\hat{\sigma}_i$ dargestellt werden.\\
+Es gilt:
+\begin{align*}
+	\hat{\sigma}_i^2=
+	\begin{pmatrix}
+		1&0\\
+		0&1
+	\end{pmatrix}
+	=\hat{I}
+\end{align*}
+Der Zeitentwicklungsoperator ist gegeben durch:
+\begin{align*}
+	u\del{t}=\eup^{-\iup\frac{A}{\hbar}\hat{\sigma}_3t}
+\end{align*}
+Setzte $x\equiv\frac{A}{\hbar}t$. Die Exponentialfunktion ist durch die Reihenentwicklung gegeben:
+\begin{align*}
+	\eup^{-\iup\frac{A}{\hbar}\hat{\sigma}_3t}	&= \sum_{n=0}^{\infty}\frac{\del{-\iup x\hat{\sigma}_3}^n}{n!}\\
+												&= \hat{I} - \iup x\hat{\sigma}_3 - \frac{x^2}{2}\hat{I} + \iup\frac{x^3}{6}\hat{\sigma}_3 + \frac{x^4}{24}\hat{I} - \iup\frac{x^5}{120}\hat{\sigma}_3 + \mathbb{O}\del{x^6}\\
+												&= \del{1 - \frac{x^2}{2} + \frac{x^4}{24} + \mathbb{O}\del{x^6}}\hat{I} - \iup\del{x - \frac{x^3}{6} + \frac{x^5}{120} + \mathbb{O}\del{x^7}}\hat{\sigma}_3\\
+												&= \del{\sum_{n=0}^{\infty}\del{-1}^n\frac{x^{2n}}{\del{2n}!}}\hat{I} - \iup\del{\sum_{n=0}^{\infty}\del{-1}^n\frac{x^{2n+1}}{\del{2n+1}!}}\hat{\sigma}_3\\
+												&= \cos\del{x}\hat{I} - \iup\sin\del{x}\hat{\sigma}_3\\
+												&= \cos\del{\frac{A}{\hbar}t}\hat{I} - \iup\sin\del{\frac{A}{\hbar}t}\hat{\sigma}_3\\
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
