@@ -30,6 +30,118 @@
 
 \section{Neutrino Oszillationen}
 
+Betrachtet wird ein Zwei-Niveau-System für die Entstehung von zwei Neutrinos $\nu_e$ und $\nu_{\mu}$ als Mischzustände zweier Eingenfunktionen $\ket{\nu_1}$ und $\ket{\nu_2}$ des Hamilton-Operators mit Mischwinkel $\theta$ durch:
+\begin{align*}
+	\begin{pmatrix}
+		\ket{\nu_e}\\
+		\ket{\nu_{\mu}}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\cos\del{\theta}&\sin\del{\theta}\\
+		-\sin\del{\theta}&\cos\del{\theta}
+	\end{pmatrix}
+	\begin{pmatrix}
+		\ket{\nu_1}\\
+		\ket{\nu_2}
+	\end{pmatrix}
+\end{align*}
+
+\subsection{}
+
+Es soll der Hamilton-Operator in der Basis $\ket{\nu_1}$ und $\ket{\nu_1}$ dargestellt werden:
+\begin{align*}
+	H_0=\ket{\nu_1}\bra{\nu_1}E_1 + \ket{\nu_2}\bra{\nu_2}E_2
+\end{align*}
+
+\subsection{}
+
+Betrachtet wird ein Neutrino, welches zum Zeitpunkt $t=0$ erzeugt wird.Es soll die Zeitliche Entwicklung $\ket{\psi\del{t}}$ in der Basis von $H_0$ angegeben werden.\\
+Für $\ket{\nu_e}$ ergibt sich nach obiger Formel:
+\begin{align*}
+	\ket{\nu_e}=\cos\del{\theta}\ket{\nu_1} + \sin\del{\theta}\ket{\nu_2}
+\end{align*}
+Die Zeitentwicklung ist durch den Zeitentwicklungsoperator
+\begin{align*}
+	u_n\del{t}=\eup^{-\iup\frac{E_n}{\hbar}t}
+\end{align*}
+gegeben, so dass sich für $\ket{\psi\del{t}}$ ergibt:
+\begin{align*}
+	\ket{\psi\del{t}}&=u_n\del{t}\ket{\nu_e}\\
+	&=\cos\del{\theta}u_n\del{t}\ket{\nu_1} + \sin\del{\theta}u_n\del{t}\ket{\nu_2}\\
+	&=\cos\del{\theta}\eup^{-\iup\frac{E_1}{\hbar}t}\ket{\nu_1} + \sin\del{\theta}\eup^{-\iup\frac{E_2}{\hbar}t}\ket{\nu_2}
+\end{align*}
+
+\subsection{}
+
+Nun wird nach der Wahrscheinlichkeit gefragt zum Zeitpunkt $t$ das Teilchen im Zustand $\ket{\nu_{\mu}}$ zu finden.\\
+Dazu berechne ich das Betragsquadrat des Skalarproduktes der beiden Zustände wobei ich die Zeitentwicklung durch $u_n\del{t}$ ausdrücke:
+\begin{align*}
+	P_{\nu_{\mu}}&= \abs{\bra{\nu_e}u_n\del{t}\ket{\nu_{\mu}}}^2\\
+	&= \abs{\del{\cos\del{\theta}\bra{\nu_1} + \sin\del{\theta}\bra{\nu_2}}u_n\del{t}\del{-\sin\del{\theta}\ket{\nu_1} + \cos\del{\theta}\ket{\nu_2}}}^2\\
+	&= \abs{-\sin\del{\theta}\cos\del{\theta}u_1\del{t} + \sin\del{\theta}\cos\del{\theta}u_2\del{t}}^2\\
+	&= \sin^2\del{\theta}\cos^2\del{\theta}\abs{u_2\del{t} - u_1\del{t}}^2\\
+	&= \sin^2\del{\theta}\cos^2\del{\theta}\del{u^*_2\del{t} - u^*_1\del{t}}\del{u_2\del{t} - u_1\del{t}}\\
+	&= \sin^2\del{\theta}\cos^2\del{\theta}\del{1 - u^*_2\del{t}u_1\del{t} - u^*_1\del{t}u_2\del{t} + 1}\\
+	&= \sin^2\del{\theta}\cos^2\del{\theta}\del{2-2\cos\del{\frac{E_2 - E_1}{\hbar}t}}
+\end{align*}
+Außerdem soll die Zeit $T$ angegeben werden zu welcher $P_{\nu_{\mu}}$ maximal wird. Dazu muss gelten:
+\begin{align*}
+	&\cos\del{\frac{E_2 - E_1}{\hbar}t}\overset{!}{=}-1\\
+	\Leftrightarrow&\frac{E_2 - E_1}{\hbar}T_{\text{max}}=\del{2n+1}\pi\\
+	\Leftrightarrow&T_{\text{max}}=\frac{\del{2n+1}\pi\hbar}{E_2 - E_1}
+\end{align*}
+
+\subsection{}
+
+Das Neutrino ist ein relativistisches Teilchen. Für die Energie in Abhängigkeit von Impuls $p$ und Masse $m$ gilt:
+\begin{align*}
+	E^2 = p^2c^2 + m^2c^4
+\end{align*}
+Es soll die in Aufgabenteil 1.c. berechnete Wahrscheinlichkeit $P_{\nu_{\mu}}$ in Abhängigkeit von Impuls und Masse ausgedrückt werden. Dazu berechne ich $E_2 - E_1$:
+\begin{align*}
+	E_2 - E_1 	&= \sqrt{p^2c^2 + m_2^2c^4} - \sqrt{p^2c^2 + m_1^2c^4}\\
+				&= \del{\sqrt{p^2c^2 + m_2^2c^4} - \sqrt{p^2c^2 + m_1^2c^4}}\frac{\sqrt{p^2c^2 + m_2^2c^4} + \sqrt{p^2c^2 + m_1^2c^4}}{\sqrt{p^2c^2 + m_2^2c^4} + \sqrt{p^2c^2 + m_1^2c^4}}\\
+				&= \frac{p^2c^2 + m_2^2c^4 - p^2c^2 - m_1^2c^4}{\sqrt{p^2c^2 + m_2^2c^4} + \sqrt{p^2c^2 + m_1^2c^4}}\\
+				&= \frac{\del{m_2^2 - m_1^2}c^4}{\sqrt{p^2c^2 + m_2^2c^4} + \sqrt{p^2c^2 + m_1^2c^4}}\\
+	\intertext{%
+		Mit der Näherung $pc>>mc^2$ folgt:
+	}
+				&= \frac{\del{m_2^2 - m_1^2}c^4}{2pc}\\
+\end{align*}
+Also ergibt sich für $P_{\nu_{\mu}}$:
+\begin{align*}
+	P_{\nu_{\mu}} = \sin^2\del{\theta}\cos^2\del{\theta}\del{2-2\cos\del{\frac{\del{m_2^2 - m_1^2}c^4}{2p\hbar c}t}}
+\end{align*}
+
+\subsection{}
+
+Nach einer Distanz $l$ wird der Zustand gemessen. Es soll die Wahrscheinlichkeit $P_{\nu_{\mu}}$ in Abhängigkeit von $l$ dargestellt werden. Dabei bewege sich das Teilchen mit der Geschwindigkeit $c\del{1+\epsilon}$.\\
+Es gilt:
+\begin{align*}
+	v = \frac{s}{t}\Leftrightarrow t = \frac{s}{v} = \frac{l}{c\del{1+\epsilon}}
+\end{align*}
+Somit folgt:
+\begin{align*}
+	P_{\nu_{\mu}} = \sin^2\del{\theta}\cos^2\del{\theta}\del{2-2\cos\del{\frac{\del{m_2^2 - m_1^2}c^4}{2p\hbar c^2\del{1+\epsilon}}l}}
+\end{align*}
+
+\subsection{}
+
+Es wird ein Mischungswinkel von $\theta = \frac{\pi}{4}$ angenommen. Es soll die Länge $l$ bestimmt werden bei der die Wahrscheinlichkeit $P_{\nu_{\mu}}$ maximal ist.\\
+Nach Aufgabenteil 1.e. gilt:
+\begin{align*}
+	P_{\nu_{\mu}} = \del{\half-\half\cos\del{\frac{\del{m_2^2 - m_1^2}c^4}{2p\hbar c^2\del{1+\epsilon}}l}}
+\end{align*}
+$P_{\nu_{\mu}}$ ist maximal für:
+\begin{align*}
+	&\cos\del{\frac{\del{m_2^2 - m_1^2}c^4}{2p\hbar c^2\del{1+\epsilon}}l_{\text{max}}}\overset{!}{=}\del{2n+1}\pi\\
+	\Leftrightarrow&l_{\text{max}}=\frac{2p\hbar c^2\del{1+\epsilon}}{\del{m_2^2 - m_1^2}c^4}\del{2n+1}\pi
+	\intertext{%
+		Mit $\epsilon\approx0$, $\del{m_2^2 - m_1^2}c^4 = 1\del{\text{eV}}^2$, $pc = 10^{10}\del{\text{eV}}^2$ und $\hbar c = 2\cdot10^{-7}$eV$\cdot$m folgt:
+	}
+	\Leftrightarrow&l_{\text{max}}=\frac{10^{10}\del{\text{eV}}^2\cdot10^{-7}\text{eV$\cdot$ m}}{1\del{\text{eV}}^2}\del{2n+1}\pi = \del{2n+1}\pi\cdot10^3\text{m}
+\end{align*}
 
 \section{Atomspringbrunnen}
 
