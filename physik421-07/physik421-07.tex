@@ -155,11 +155,99 @@ $P_{\nu_{\mu}}$ ist maximal für:
 
 \section{Atomspringbrunnen}
 
+\subsection{}
+
+	Wir berechnen $|\psi(T)\rangle$ in drei Schritten:
+	\begin{itemize}
+	\item Wir haben gegeben: $|\psi(0)\rangle=|1\rangle$. Dies geht zuerst durch den Resonator:
+		\begin{align*}
+			|\psi(\varepsilon)\rangle&=\frac{1}{\sqrt{2}} \begin{pmatrix}1 &-i\cdot 1 \\ -i\cdot 1 & 1 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
+					&= \frac{1}{\sqrt{2}} |1\rangle -i\frac{1}{\sqrt{2}}   |2\rangle \\
+		\end{align*}	
+	
+	\item  Nun verwenden wir den Zeitentwicklungsoperator, um $|\psi(T-\varepsilon)\rangle$ zu berechnen:
+		\begin{align*}
+			|\psi(T-\varepsilon)\rangle&= \hat{U}(T-\varepsilon,\varepsilon)|\psi(\varepsilon)\rangle \\
+				&= \frac{1}{\sqrt{2}}e^{-i\frac{E_1(T-2\varepsilon)}{\hbar}}|1\rangle-i\frac{1}{\sqrt{2}}e^{-i\frac{E_2(T-2\varepsilon)}{\hbar}}|2\rangle
+		\end{align*}
+	\item Im letzten Zeitabschnitt geht die Welle ein weiteres Mal durch den Resonator:
+		\begin{align*}
+			|\psi(T)\rangle=&\frac{1}{\sqrt{2}}(\frac{1}{\sqrt{2}}e^{-i\frac{E_1(T-2\varepsilon)}{\hbar}} - \frac{1}{\sqrt{2}} e^{-i\omega (T-\varepsilon)}e^{-i\frac{E_2(T-2\varepsilon)}{\hbar}})|1\rangle  \\
+			&+ \frac{1}{\sqrt{2}} (-i\frac{1}{\sqrt{2}}e^{-i\frac{E_1(T-2\varepsilon)}{\hbar}}e^{i\omega(T-\varepsilon)}-i\frac{1}{\sqrt{2}}e^{-i\frac{E_2(T-2\varepsilon)}{\hbar}})|2\rangle \\
+			=&\frac{1}{2}(e^{-i\frac{E_1(T-2\varepsilon)}{\hbar}} -  e^{-i\omega (T-\varepsilon)}e^{-i\frac{E_2(T-2\varepsilon)}{\hbar}})|1\rangle \\
+			&-i\frac{1}{2}(e^{-i\frac{E_1(T-2\varepsilon)}{\hbar}}e^{i\omega(T-\varepsilon)}+e^{-i\frac{E_2(T-2\varepsilon)}{\hbar}})|2\rangle
+		\end{align*}
+	\item Nun betrachten wir den Grenzfall $\varepsilon \rightarrow 0$ mit $E_1=\frac{\hbar\omega_0}{2}$ und $E_2=-\frac{\hbar\omega_0}{2}$:
+		\begin{align*}
+			\lim_{\varepsilon\rightarrow 0}|\psi(T)\rangle=&
+				\frac{1}{2}(e^{-i\frac{E_1T}{\hbar}} -  e^{-i\omega T}e^{-i\frac{E_2T}{\hbar}})|1\rangle 
+			-i\frac{1}{2}(e^{-i\frac{E_1T}{\hbar}}e^{i\omega T}+e^{-i\frac{E_2T}{\hbar}})|2\rangle \\
+			=& i e^{-i\frac{\omega T}{2}} \frac{1}{2i} (e^{-i\frac{\omega_0T}{2}}e^{i\frac{\omega T}{2}}-e^{i\frac{\omega_0T}{2}}e^{-i\frac{\omega T}{2}})|1\rangle 
+			-ie^{i\frac{\omega T}{2}} \frac{1}{2}(e^{-i\frac{\omega_0T}{2}}e^{i\frac{\omega T}{2}}+e^{i\frac{\omega_0T}{2}}e^{-i\frac{\omega T}{2}})|2\rangle \\
+			=& i e^{-i\frac{\omega T}{2}} \sin((\omega-\omega_0)\frac{T}{2})|1\rangle 
+			-ie^{i\frac{\omega T}{2}} \cos((\omega-\omega_0)\frac{T}{2})|2\rangle
+		\end{align*}
+
+	\end{itemize}
+
+
+\subsection{}
+	Die Wahrscheinlichkeit $P_2(\omega)$ ergibt sich wie folgt (für den Grenzfall $\varepsilon\rightarrow0$):
+	\begin{align*}
+		P_2(\omega)=& |\langle\psi(T)|2\rangle|^2 \\
+				=&\cos^2((\omega_0-\omega)\frac{T}{2})
+	\end{align*}	
+
+	Dadurch erhalten wir als Halbwertsbreite $\Delta\omega$ von $P_2(\omega)$ um $\omega_0$:
+	\begin{eqnarray*}
+		P_2(\Delta\omega)=\frac{1}{2} & \Longleftrightarrow & \cos^2(\Delta\omega)\frac{T}{2})=\frac{1}{2} \\
+		&\Longleftrightarrow & \Delta\omega\frac{T}{2}=\frac{\pi}{2} \\
+		&\Longleftrightarrow & \Delta\omega=\frac{\pi}{T}
+	\end{eqnarray*}
+	
+	Für einen 1Meter hohen Brunnen erhalten wir:
+	\[ T=2\cdot \sqrt{\frac{2\cdot 1m}{g}} =2\cdot\sqrt{\frac{2m}{9,81\frac{m}{s^2}}}=0,90s \]
+	Daraus ergibt sich:
+	\[ \Delta\omega=\frac{\pi}{0,90s}=3,48s^{-1} \]
+
 
 \section{GPS}
 
 
 \section{Stimulierte Emission und Absorption}
+
+\subsection{}
+	Wir machen den Ansatz für $|\psi(t)\rangle=\begin{pmatrix}a(t)\\b(t)\end{pmatrix}$:
+	\begin{align*}
+		a(t)&=e^{-i\frac{(E_0-A)t}{\hbar}}\alpha(t) \\
+		b(t)&=e^{-i\frac{(E_0+A)t}{\hbar}}\beta(t) \\
+	\end{align*}
+ 	Wenn wir dies in die Schrödingergleichung $i\hbar\frac{d}{dt}|\psi(t)\rangle=\hat{H}|\psi(t)\rangle$ einsetzen erhalten wir die Gleichungen:
+	\begin{align*}
+	I.: &&	i\hbar(-i\frac{E_0-A}{\hbar}a(t)+e^{-i\frac{(E_0-A)t}{\hbar}}\dot{\alpha}(t))&=(E_0-A)a(t)-\hbar\omega_1 \cos(\omega t) e^{-i\frac{(E_0+A)t}{\hbar}}\beta(t) \\
+	II.:&&	i\hbar(-i\frac{E_0+A}{\hbar}b(t)+e^{-i\frac{(E_0+A)t}{\hbar}})\dot{\beta}(t)&=-\hbar\omega_1\cos(\omega t) e^{-i\frac{(E_0-A)t}{\hbar}}\alpha(t)+(E_0+A)b(t)
+	\end{align*}
+
+	$I.$ lässt sich umformen wie folgt:
+	\begin{align*}
+		&&	i\hbar e^{-i\frac{(E_0-A)t}{\hbar}}\dot{\alpha}(t)&=-\hbar\omega_1 \cos(\omega t) e^{-i\frac{(E_0+A)t}{\hbar}}\beta(t) \\
+		\Longleftrightarrow && 
+			i\dot{\alpha}(t)&=-\omega_1\frac{e^{i\omega t}+e^{-i\omega t}}{2} e^{-i\frac{(E_0+A-(E_0-A))t}{\hbar}}\beta(t) \\
+		\Longleftrightarrow && 
+			2i\dot{\alpha}(t)&=-\omega_1(e^{i\omega t}+e^{-i\omega t})e^{-i\omega_0 t}\beta(t) \\
+		\Longleftrightarrow &&
+			2i\dot{\alpha}(t)&=-\omega_1\beta(t)(e^{i(\omega-\omega_0) t}+e^{-i(\omega+\omega_0) t})
+	\end{align*}
+
+	$II.$ lässt sich genauso umformen:
+	\begin{align*}
+		&&	i\hbar e^{-i\frac{(E_0+A)t}{\hbar}}\dot{\beta}(t)&=-\hbar\omega_1\cos(\omega t)e^{-i\frac{(E_0-A)t}{\hbar}} \alpha(t) \\
+		\Longleftrightarrow && i\dot{\beta}(t)&=-\omega_1\alpha(t)\frac{e^{i\omega t}+e^{-i\omega t}}{2}e^{-i\frac{E_0-A-(E_0+A)t}{\hbar}} \\
+		\Longleftrightarrow &&
+			2i\dot{\beta}(t)&=-\omega_1\alpha(t)(e^{i\omega t}+e^{-i\omega t})e^{i\omega_0 t} \\
+		\Longleftrightarrow &&
+			2i\dot{\beta}(t)&=-\omega_1\alpha(t)(e^{i(\omega+\omega_0) t}+e^{-i(\omega-\omega_0) t})
+	\end{align*}
 
 
 
