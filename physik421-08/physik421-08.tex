@@ -37,6 +37,44 @@
 
 \section{Kommutatoren}
 
+\subsection{ }
+
+\subsection{ }
+\begin{align*}
+	\sbr{A,B^n} &= B\sbr{A,B^{n-1}} + \sbr{A,B}B^{n-1}\\
+	&= B\del{B\sbr{A,B^{n-2}} + \sbr{A,B}B^{n-2}} + 1\sbr{A,B}B^{n-1}\\
+	&= B^2 \sbr{A,B^{n-2}} + B^1 \sbr{A,B}B^{n-2} + B^0 \sbr{A,B}B^{n-1}\\
+	&= \sum_{s=0}^{n-1} B^s \sbr{A,B} B^{n-s-1}
+\end{align*}
+
+\subsection{ }
+Zu zeigen ist die Baker-Cambell-Hausdorff Formel $\eup^A\eup^B =
+\eup^{A+B}\eup^{\sbr{A,B}/2}$, wenn $\sbr{\sbr{A,B},A} = \sbr{\sbr{A,B},B} = 0$
+gilt.
+
+Sei $F\del t = \eup^{tA}\eup^{tB}$:
+\begin{align*}
+	\od{F}{t} &= A\eup^{tA}\eup^{tB} + \eup^{tA}B\eup^{tB}\\
+	&= A\eup^{tA}\eup^{tB} + \sum_{n=0}^\infty \frac{t^n}{n!}
+	A^n B \eup^{tB}\\
+	&= A\eup^{tA}\eup^{tB} + \sum_{n=0}^\infty \frac{t^n}{n!}\del{BA^n +
+	\sbr{A^n,B}} \eup^{tB}\\
+	&= A\eup^{tA}\eup^{tB} + B\eup^{tA}\eup^{tB} + \sum_{n=0}^\infty
+	\frac{t^n}{n!} n \sbr{A,B} A^{n-1}\eup^{tB}\\
+	&= A\eup^{tA}\eup^{tB} + B\eup^{tA}\eup^{tB} + t\sbr{A,B}\sum_{n=0}^\infty
+	\frac{t^{n-1}}{\del{n-1}!} A^{n-1}\eup^{tB}\\
+	&= A\eup^{tA}\eup^{tB} + B\eup^{tA}\eup^{tB} +
+	t\sbr{A,B}\eup^{tA}\eup^{tB}\\
+	&= \del{A + B + t\sbr{A,B}}\eup^{tA}\eup^{tB}
+\end{align*}
+\begin{align*}
+	\implies &\int_0^1 \dif F = \int_0^1 \del{A + B +
+		t\sbr{A,B}}\eup^{tA}\eup^{tB} \dif t\\
+		\iff &\sbr{\eup^{tA}\eup^{tB}}_0^1 =
+		\sbr{\eup^{tA+tB+\frac{t^2}2 \sbr{A,B}}}_0^1\\
+		\iff &\eup^A\eup^B = \eup^{A+B}\eup^{\frac12\sbr{A,B}}
+\end{align*}
+
 \section{Harmonischer Oszillator in zwei Dimensionen}
 
 \section{Virialtheorem}
