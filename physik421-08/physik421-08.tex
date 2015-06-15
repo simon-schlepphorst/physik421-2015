@@ -39,6 +39,16 @@
 
 \subsection{ }
 
+	$\sbr{H,A}=0$ und $\sbr{H,B}=0$ impliziert, dass Basen $\mathcal{A}$ und $\mathcal{B}$ existieren, wobei $\mathcal{A}$ aus gemeinsamen Eigenvektoren von $H$ und $A$ besteht, $\mathcal{B}$ aus gemeinsamen Eigenvektoren von $H$ und $B$.
+
+	Angenommen die Eigenwerte von $H$ sind nicht entartet, d.h. die Eigenräume von $H$ eindimensional sind. 
+
+	Die Basen $\mathcal{A}$ und $\mathcal{B}$ bestehen somit aus Eigenvektoren von $H$, die sich innerhalb der Eigenräume nur bis auf Skalare Vorfaktoren unterscheiden. Somit sind die Vektoren in $\mathcal{A}$ auch Eigenvektoren von $B$. 
+
+	Somit ist $\mathcal{A}$ eine gemeinsame Basis aus Eigenvektoren von $A$ und $B$. Das impliziert allerdings, dass $A$ und $B$ kommutieren, also $\sbr{A,B}=0$. Das ist ein Widerspruch zur Voraussetzung.
+
+	Somit existiert mindetens ein entarteter Eigenwert von $H$.
+
 \subsection{ }
 \begin{align*}
 	\sbr{A,B^n} &= B\sbr{A,B^{n-1}} + \sbr{A,B}B^{n-1}\\
@@ -81,6 +91,22 @@ Sei $F\del t = \eup^{tA}\eup^{tB}$:
 
 \section{Angeregte Zustände des Harmonischen Oszillators}
 
+	Wir haben gegeben:
+	\[ \psi(X)=(2X^3-3X)e^{-\frac{X^2}{2}} \]
+	\[ \hat{H}=\hat{a}^{\dagger}\hat{a}+\frac{1}{2}=\frac{1}{2}+\frac{1}{2} (\hat{X}-\od{}{X})(\hat{X}+\od{}{X}) \]
+
+	Betrachte nun $\hat{H}\psi$:
+	\begin{align*}
+	\hat{H}\psi(X)&= \frac{1}{2} \psi(X) + \frac{1}{2} (\hat{X}-\od{}{X})(\hat{X}+\od{}{X}) \psi(X) \\
+		&=\frac{1}{2}\psi(X) + \frac{1}{2}(\hat{X}-\od{}{X})(2X^4-3X^2+6X^2-3-2X^4+3X^2)e^{-\frac{X^2}{2}} \\
+		&=\frac{1}{2}\psi(X) + \frac{3}{2}(\hat{X}-\od{}{X})(2X^2-1)e^{-\frac{X^2}{2}} \\
+		&=\frac{1}{2}\psi(X) + \frac{3}{2}(2X^3-X-4X+2X^3-X) e^{-\frac{X^2}{2}} \\
+		&=\frac{1}{2}\psi(X) + 3 (2X^3-3X) e^{-\frac{X^2}{2}} \\
+		&= \frac{7}{2} \psi(X)
+	\end{align*}
+
+	Das heißt, $\psi$ ist ein Eigenvektor des Hamiltonoperators zum Eigenwert $\frac{7}{2}$. Da die Eigenwerte des Hamiltonoperators nicht entartet sind, ist $\psi$ ein Vielfaches des normierten Eigenzustands $|3\rangle$, also $\psi=\lambda |3\rangle$ für ein $\lambda\in\mathbb{C}$ und $|\lambda|=|\psi|$. 
+	$\psi$ hat dann die Energie $|\psi|\cdot E_3=|\psi| \hbar \omega \frac{7}{2}$.
 
 \end{document}
 
