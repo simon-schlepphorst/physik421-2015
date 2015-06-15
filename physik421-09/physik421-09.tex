@@ -14,6 +14,7 @@
 \lstset{
     basicstyle=\small\tt
 }
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 
 %\subject{}
 \title{Quantenmechanik, Blatt 9}
@@ -39,14 +40,483 @@
 
 \section{Der zweidimensionale harmonische Oszillator}
 
+Betrachtet wird der harmonische Oszillator in einer Ebene. Der Hamiltonoperator des Systems ist
+\begin{align*}
+	\hat{H}=-\frac{\hbar^2}{2m}\del{\pdx{2}{}{r}+\frac1r\pd{}{r}+\frac1{r^2}\pdx{2}{}{\varphi}}
+\end{align*}
+
+\subsection{}
+
+	Gezeigt werden soll, dass für die Drehimpulskomponente in $z$-Richtung gilt:
+	\begin{align*}
+		\hat{L}_z=-\iup\hbar\partial_{\varphi}
+	\end{align*}
+	Für die Umrechnung in Kugelkoordinaten:
+	\begin{equation*}
+		\begin{pmatrix} x\\ y\\ z \end{pmatrix} = \begin{pmatrix} 
+			r\cos \varphi \sin \vartheta \\ r\sin\varphi\sin\vartheta \\ r \cos\vartheta\end{pmatrix}
+	\end{equation*}
+	Somit gilt:
+	\begin{align*}
+	r&=\sqrt{x^2+y^2+z^2} & \varphi&=\arctan\frac{y}{x} & \vartheta&=\arccos\frac{z}{\sqrt{x^2+y^2+z^2}} \\
+	\frac{\partial r}{\partial x}&= \frac{1}{2}(x^2+y^2+z^2)^{-\frac{1}{2}} 2x 	&	\frac{\partial  \varphi}{\partial x}&= \frac{1}{1+\frac{y^2}{x^2}} (-\frac{y}{x^2}) &
+	\frac{\partial\vartheta}{\partial x}&=\frac{\cos\varphi\cos\vartheta}{r}\\
+						&=\frac{x}{r} &		&= -\frac{y}{x^2+y^2}\\
+						&=\cos\varphi \sin\vartheta&&=-\frac{\sin\varphi}{r\sin\vartheta} \\
+	\frac{\partial r}{\partial y}&= \sin\varphi\sin\vartheta & 	\frac{\partial  \varphi}{\partial y}&= \frac{\cos\varphi}{r\sin\vartheta} & \frac{\partial\vartheta}{\partial y}&=\frac{\sin\varphi\cos\vartheta}{r} \\
+	\frac{\partial r}{\partial z}&=\cos\vartheta & \frac{\partial  \varphi}{\partial z}&= 0 & 
+	\end{align*}
+
+	Dann gilt:
+	\begin{align*}
+		\partial_x&=\frac{\partial r}{\partial x}\partial_r+\frac{\partial \varphi}{\partial x}\partial_\varphi+\frac{\partial\vartheta}{\partial x} \partial_\vartheta \\
+	\end{align*}
+	(analog für $y$)
+
+	Somit ergibt sich für $\hat{L}_z$:
+	\begin{align*}
+		\hat{L}_z=&-i\hbar(x\partial_y-y\partial_x) \\
+			=& -i\hbar(r\sin\vartheta\cos\varphi(\sin\varphi\sin\vartheta\partial_r+\frac{\cos\varphi}{r\sin\vartheta}\partial_\varphi+\frac{\sin\varphi\cos\vartheta}{r}\partial_\vartheta) \\ 
+			&-r\sin\vartheta\sin\varphi(\cos\varphi\sin\vartheta\partial_r-  \frac{\sin\varphi}{r\sin\vartheta}\partial_\varphi+\frac{\cos\varphi\cos\vartheta}{r}\partial_\vartheta) \\
+			=&- i\hbar(\cos^2\varphi \partial_\varphi+\sin^2\varphi\partial_\varphi) \\
+			=&-i\hbar\partial_\varphi
+	\end{align*}
+
+\subsection{}
+
+Es soll gezeigt werden, dass $\hat{L}_z$ und $\hat{H}$ gemeinsame Eigenfunktionen haben.\\
+Also muss der Kommutator null sein:
+\begin{align*}
+	\sbr{\hat{L}_z,\hat{H}}	&= \sbr{-i\hbar\partial_\varphi,-\frac{\hbar^2}{2m}\del{\partial_r^2+\frac1r\partial_r+\frac1{r^2}\partial_{\varphi}^2}}\\
+							&= \frac{\iup\hbar^3}{2m}\del{\partial_{\varphi}\partial_r^2 + \partial_{\varphi}\frac1r\partial_r + \partial_{\varphi}\frac1{r^2}\partial_{\varphi}^2} - \frac{\iup\hbar^3}{2m}\del{\partial_r^2\partial_{\varphi} + \frac1r\partial_r\partial_{\varphi} + \frac1{r^2}\partial_{\varphi}^3}\\
+							&= \frac{\iup\hbar^3}{2m}\del{\partial_r^2\partial_{\varphi} + \frac1r\partial_r\partial_{\varphi} + \frac1{r^2}\partial_{\varphi}^3} - \frac{\iup\hbar^3}{2m}\del{\partial_r^2\partial_{\varphi} + \frac1r\partial_r\partial_{\varphi} + \frac1{r^2}\partial_{\varphi}^3}\\
+							&= 0
+\end{align*}
+
+\subsection{}
+
+Nun sei ein Eigenzustand $\psi_m\del{r,\varphi}$ mit Eigenwert $\hbar m$ zum Operator $\hat{L}_z$ gegeben. Es soll bestimmt werden, wie $\psi_m\del{r,\varphi}$ von $\varphi$ abhängt und welche Aussagen über $m$ getroffen werden können.\\
+Wenn $\hbar m$ ein Eigenwert zu $\hat{L}_z$ ist, so gilt
+\begin{align*}
+	\hat{L}_z\psi_m\del{r,\varphi}=\hbar m\psi_m\del{r,\varphi}
+\end{align*}
+Einsetzen von $\hat{L}_z$ gibt:
+\begin{align*}
+	&-\iup\hbar\partial_{\varphi}\psi_m\del{r,\varphi}=\hbar m\psi_m\del{r,\varphi}\\
+	\Leftrightarrow&\partial_{\varphi}\psi_m\del{r,\varphi}=\iup m\psi_m\del{r,\varphi}\\
+\end{align*}
+Die Lösung ist:
+\begin{align*}
+	\psi_m\del{r,\varphi}=\psi\del{r}\eup^{\iup m\varphi}
+\end{align*}
+Nun muss aber gelten:
+\begin{align*}
+	&\eup^{\iup m\varphi}\overset{!}{=}\eup^{\iup m\del{\varphi+2\pi}}\\
+	\Rightarrow\;&\eup^{\iup2\pi m}=1\\
+	\Rightarrow\;&m\in\Z
+\end{align*}
+
 \section{Ein Elektron in der Falle}
+
+Betrachtet wir ein Elektron mit magnetischem Moment $\mu_0$, welches in einem eindimensionalen Potenzialtopf gefangen ist und unter dem Einfluss eines homogenen magnetischen Feldes stehe. Der Hamiltonoperator ist
+\begin{align*}
+	\hat{H}=\frac{\hat{p}_x^2}{2m} + V\del{\hat{x}} - B_y\hat{\mu}_y
+\end{align*}
+mit $v\del{x}=0$ für $x\in\sbr{0,L}$ und $+\infty$ sonst, $b_y>0$, $m$ der Elektronenmasse und $\hat{\mu}$ der Operator des magnetischen Moments.
+
+\subsection{}
+
+Es soll der Grundzustand angegeben werden.\\
+Der gegebene Hamiltonoperator besteht zu einem Teil aus Potentialtopf und zum anderen aus dem magnetischen Moment. Beide sind bekannt und wurden ausreichend in anderen Übungen oder der Vorlesung diskutiert. Der Eigenzustand von $\hat{H}$ ist ein Tensorprodukt aus der Lösung für den Potenzialtopf und der Lösung für das magnetische Moment, also
+\begin{align*}
+	\ket{\psi}=\ket{\phi_n}\otimes\mu_0\ket{\phi_{\pm}}_y
+\end{align*}
+wobei
+\begin{align*}
+	\ket{\phi_n}=\sqrt{\frac2D}\sin\del{{\frac{\pi n}Dx}}
+\end{align*}
+die Lösungen des Potenzialtopfproblems mit unendlichen Rändern und $\mu_0\ket{\phi_{\pm}}_y$ die Lösungen des Zwei-Niveau-Systems bezüglich der $y$-Richtung mit
+\begin{align*}
+	&\ket{\phi_+}_y\equiv\ket{+}_y=
+	\begin{pmatrix}
+		1\\
+		-\iup
+	\end{pmatrix}\\
+	&\ket{\phi_-}_y\equiv\ket{-}_y=
+	\begin{pmatrix}
+		1\\
+		\iup
+	\end{pmatrix}
+\end{align*}
+sind.\\
+Im Zusammenhang mit dem Zwei-Niveau-System macht Grundzustand nicht viel Sinn, im Fall des Potentialtopfes allerdings ist der Grundzustand gegeben durch
+\begin{align*}
+	\ket{\phi_1}=\sqrt{\frac2D}\sin\del{{\frac{\pi}Dx}}
+\end{align*}
+Der Grundzustand des gegebenen Hamiltonoperators ist also
+\begin{align*}
+	\ket{\psi}=\ket{\phi_1}\otimes\mu_0\ket{\phi_{\pm}}_y
+\end{align*}
+
+\subsection{}
+
+Nun wird der folgende Anfangszustand betrachtet:
+\begin{align*}
+	\ket{\psi\del{t=0}}=N\del{\ket{\phi_1} + \ket{\phi_2}}\otimes\del{\ket{+}_z + \ket{-}_z}
+\end{align*}
+Es sollen nun $N$, $\ket{\psi\del{t}}$, $\bracket{\hat{\mu}_x\del{t}}$, $\bracket{\hat{\mu}_y\del{t}}$ und $\bracket{\hat{\mu}_z\del{t}}$.\\
+Zuerst die Normierung:
+\begin{align*}
+	N^2\braket{\psi|\psi}	&= N^2\del{\del{\bra{\phi_1} + \bra{\phi_2}}\otimes\del{\bra{+}_z + \bra{-}_z}}\del{\del{\ket{\phi_1} + \ket{\phi_2}}\otimes\del{\ket{+}_z + \ket{-}_z}}\\
+							&= N^2\del{\braket{\phi_1|\phi_1} + \braket{\phi_2|\phi_2}}\otimes\del{\braket{+|+}_z + \braket{-|-}_z}\\
+							&= 4N^2\\
+							&\overset{!}{=}1\\
+							\Rightarrow N=\half
+\end{align*}
+Nun die Zeitentwicklung. Der Zeitentwicklungsoperator ist gegeben durch
+\begin{align*}
+	\hat{u}=\hat{u}_n\otimes\hat{u}_\pm
+\end{align*}
+Es folgt
+\begin{align*}
+	\ket{\psi\del{t}}	&= \hat{u}\ket{\psi\del{t=0}}\\
+						&= \half\del{\hat{u}_n\otimes\hat{u}_\pm}\del{\ket{\phi_1} + \ket{\phi_2}}\otimes\del{\ket{+}_z + \ket{-}_z}\\
+						&= \half\del{\hat{u}_1\ket{\phi_1} + \hat{u}_2\ket{\phi_2}}\otimes\del{\hat{u}_+\ket{+}_z + \hat{u}_-\ket{-}_z}\\
+						&= \half\del{\eup^{-\iup\omega_1t}\ket{\phi_1} + \eup^{-\iup\omega_2t}\ket{\phi_2}}\otimes\del{\eup^{-\iup\omega_+t}\ket{+}_z + \eup^{-\iup\omega_-t}\ket{-}_z}\\
+\end{align*}
+Setze $\ket{n}\equiv\ket{\phi_n}$.
+
+Für die Erwartungswerte nutze ich die lineare Algebra des Zwei-Niveau-Systems:
+\begin{align*}
+	\bracket{\hat{\mu}_x\del{t}}	&= \frac{\mu_0}{4}\del{\bra{1}\hat{u}_1^{\dagger} + \bra{2}\hat{u}_2^{\dagger}}\del{\hat{u}_+^{\dagger},\hat{u}_-^{\dagger}}
+									\begin{pmatrix}
+										0&1\\
+										1&0
+									\end{pmatrix}
+									\begin{pmatrix}
+										\hat{u}_+\\
+										\hat{u}_-
+									\end{pmatrix}
+									\del{\hat{u}_1\ket{1} + \hat{u}_2\ket{2}}\\
+									&= \frac{\mu_0}{2}\del{\hat{u}_+^{\dagger},\hat{u}_-^{\dagger}}
+									\begin{pmatrix}
+										\hat{u}_-\\
+										\hat{u}_+
+									\end{pmatrix}\\
+									&= \frac{\mu_0}{2}\del{\hat{u}_+^{\dagger}\hat{u}_- + \hat{u}_-^{\dagger}\hat{u}_+}\\
+									&= \frac{\mu_0}{2}\del{\eup^{-\iup\del{\omega_+-\omega_-}t} + \eup^{\iup\del{\omega_+-\omega_-}t}}\\
+									&= \mu_0\cos\del{\del{\omega_+-\omega_-}t}
+\end{align*}
+und
+\begin{align*}
+	\bracket{\hat{\mu}_y\del{t}}	&= \frac{\mu_0}{4}\del{\bra{1}\hat{u}_1^{\dagger} + \bra{2}\hat{u}_2^{\dagger}}\del{\hat{u}_+^{\dagger},\hat{u}_-^{\dagger}}
+									\begin{pmatrix}
+										0&\iup\\
+										-\iup&0
+									\end{pmatrix}
+									\begin{pmatrix}
+										\hat{u}_+\\
+										\hat{u}_-
+									\end{pmatrix}
+									\del{\hat{u}_1\ket{1} + \hat{u}_2\ket{2}}\\
+									&= \frac{\mu_0}{2}\del{\hat{u}_+^{\dagger},\hat{u}_-^{\dagger}}
+									\begin{pmatrix}
+										\iup\hat{u}_-\\
+										-\iup\hat{u}_+
+									\end{pmatrix}\\
+									&= \frac{\iup\mu_0}{2}\del{\hat{u}_+^{\dagger}\hat{u}_- - \hat{u}_-^{\dagger}\hat{u}_+}\\
+									&= \frac{\iup\mu_0}{2}\del{\eup^{-\iup\del{\omega_+-\omega_-}t} - \eup^{\iup\del{\omega_+-\omega_-}t}}\\
+									&= \mu_0\sin\del{\del{\omega_+-\omega_-}t}
+\end{align*}
+und
+\begin{align*}
+	\bracket{\hat{\mu}_z\del{t}}	&= \frac{\mu_0}{4}\del{\bra{1}\hat{u}_1^{\dagger} + \bra{2}\hat{u}_2^{\dagger}}\del{\hat{u}_+^{\dagger},\hat{u}_-^{\dagger}}
+									\begin{pmatrix}
+										1&0\\
+										0&-1
+									\end{pmatrix}
+									\begin{pmatrix}
+										\hat{u}_+\\
+										\hat{u}_-
+									\end{pmatrix}
+									\del{\hat{u}_1\ket{1} + \hat{u}_2\ket{2}}\\
+									&= \frac{\mu_0}{2}\del{\hat{u}_+^{\dagger},\hat{u}_-^{\dagger}}
+									\begin{pmatrix}
+										\hat{u}_+\\
+										-\hat{u}_-
+									\end{pmatrix}\\
+									&= \frac{\iup\mu_0}{2}\del{\hat{u}_+^{\dagger}\hat{u}_+ - \hat{u}_-^{\dagger}\hat{u}_-}\\
+									&= \frac{\iup\mu_0}{2}\del{1-1}\\
+									&= 0
+\end{align*}
+Da sich das System in einer Überlagerung von Eigenzuständen von $\hat{\mu}_z$ befindet ist die $z$-Richtung festgelegt (daher ist $\bracket{\hat{\mu}_z\del{t}}=0$). Zusätzlich oszilliert das System in $x$- und $y$-Richtungen hin und her.
 
 \section{Ein geladenes Teilchen im Magnetfeld}
 
+Betrachtet wird ein geladenes Teilchen in einem Magnetfeld der Form $\vec{B}=\nabla\times\vec{A}$. Der Hamiltonoperator ist
+\begin{align*}
+	\hat{H}=\frac1{2m}\del{\hat{\vec{p}}-\frac{e}{c}\hat{\vec{A}}\del{\hat{\vec{r}}}}^2
+\end{align*}
+Dabei sind $e$ die elektrische Ladung, $m$ die Masse, $\hat{\vec{p}}=\del{\hat{p}_x,\hat{p}_y,\hat{p}_z}$ der Impulsoperator und $hat{\vec{r}}$ der Ortsoperator. Es gelte $\hat{\vec{A}}=-B_0\hat{y}\ev_x$
+
+\subsection{}
+
+Es soll gezeigt werden, dass das Vektorpotential einem konstanten Magnetfeld mit $\vec{B}=-B_0\ev_x$ entspricht.\\
+Mit $\vec{B}=\nabla\times\vec{A}$ ergibt sich:
+\begin{align*}
+	\vec{B}=\nabla\times\vec{A}=
+	\begin{pmatrix}
+		\partial_x\\
+		\partial_y\\
+		\partial_z\\
+	\end{pmatrix}
+	\begin{pmatrix}
+		B_0y\\
+		0\\
+		0\\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		0\\
+		0\\
+		-B_0\\
+	\end{pmatrix}
+	=-B_0\ev_z
+\end{align*}
+
+\subsection{}
+
+Es soll gezeigt werden, dass sich die Erwartungswerte für $\hat{p}_x$ und $\hat{p}_z$ zeitlich nicht ändern.\\
+Es gilt (Ehrenfest-Theorem):
+\begin{align*}
+	\od{\braket{\hat{A}}}{t} = \frac{\iup}{\hbar}\braket{\sbr{\hat{H},\hat{A}}} + \pd{\braket{\hat{A}}}{t}
+\end{align*}
+In diesem Fall muss lediglich der Erwartungswert des Kommutators aus Hamiltonoperator und Impulsoperator betrachtet werden, da der Impulsoperator nicht explizit Zeitabhängig ist, also:
+\begin{align*}
+	\od{\braket{\hat{p}_x}}{t} 	&= \frac{\iup}{\hbar}\braket{\sbr{\hat{H},\hat{p}_x}}\\
+\end{align*}
+Es ergibt sich für den Kommutator ($i\in\{x,z\}$):
+\begin{align*}
+	\sbr{\hat{H},\hat{p}_i}	&= \sbr{\frac1{2m}\del{\hat{\vec{p}}-\frac{e}{c}\hat{\vec{A}}\del{\hat{\vec{r}}}}^2,\hat{p}_i}\\
+							&= \frac1{2m}\del{\underbrace{\sbr{\hat{p}_x^2,\hat{p}_i}}_{=0} - \frac{2B_0e}{c}\underbrace{\sbr{y\hat{p}_x,\hat{p}_i}}_{=0} + \underbrace{\frac{B_0^2e^2}{c^2}\sbr{\hat{y}^2,\hat{p}_i}}_{=0}}\\
+							&= 0
+\end{align*}
+
 \section{Der Schwerpunkt und die Relativbewegung}
+
+\subsection{}
+	Es gilt:
+	\begin{align*}
+		\hat{H}_s+\hat{H}_{rel}&= \frac{\hat{P}^2}{2M}+\frac{\hat{p}^2}{2\mu}+V(\hat{r}) \\
+			&= \frac{(\hat{p}_1+\hat{p}_2)^2}{2(m_1+m_2)}+\del{\frac{m_2\hat{p}_1-m_1\hat{p}_2}{m_1+m_2}}^2 \frac{1}{2} \frac{m_1+m_2}{m_1m_2} + V(\hat{r}_1-\hat{r}_2) \\
+			&=\frac{(\hat{p}_1^2+\hat{p}_2^2+2\hat{p}_1\hat{p}_2)m_1m_2+m_2^2\hat{p}_1^2-2\hat{p}_1\hat{p}_2m_1m_2+m_1^2\hat{p}_2^2}{2(m_1+m_2)m_1m_2} + V(\hat{r}_1-\hat{r}_2) \\
+		&=\frac{\hat{p}_1^2(m_1m_2+m_2^2)}{2(m_1+m_2)m_1m_2}+\frac{\hat{p}_2^2(m_1m_2+m_1^2)}{2(m_1+m_2)m_1m_2}+V(\hat{r}_1-\hat{r}_2) \\
+		&= \frac{\hat{p}_1^2}{2m_1}+\frac{\hat{p}_2^2}{2m_2}+V(\hat{r}_1-\hat{r}_2) \\
+		&=\hat{H}
+	\end{align*}
+
+\subsection{}
+	\begin{eqnarray*}
+		[\hat{X}_j,\hat{P}_k]&=&\sbr{\frac{m_1\hat{r}_{1,j}+m_2\hat{r}_{2,j}}{m_1+m_2},(\hat{p}_{1,k}+\hat{p}_{2,k}) }\\
+			&\stackrel{ bilinear, [\hat{r}_1,\hat{p}_2]=0}{=}&\frac{1}{m_1+m_2}(m_1[\hat{r}_{1,j},\hat{p}_{1,k}]+m_2[\hat{r}_{2,j},\hat{p}_{2,k}]) \\
+			&=& \frac{1}{m_1+m_2}(m_1 i\hbar \delta_{jk}+m_2i\hbar\delta_{jk}) \\
+			&=& i\hbar \delta_{jk}
+	\end{eqnarray*}
+	\begin{align*}
+		\sbr{\hat{x}_j,\hat{p}_k}&=\sbr{\hat{r}_{1,j}-\hat{r}_{2,j},\frac{m_2\hat{p}_{1,k}-m_1\hat{p}_{2,k}}{m_1+m_2}} \\
+				&= \frac{1}{m_1+m_2} \del{\sbr{\hat{r}_{1,j},m_2\hat{p}_{1,k}}+\sbr{\hat{r}_{2,j},m_1\hat{p}_{2k}}} \\
+				&= \frac{1}{m_1+m_2} (i\hbar\delta_{jk}m_2+i\hbar\delta_{jk}m_1) \\
+				&= i\hbar \delta_{jk}
+	\end{align*}
+	\begin{align*}
+		\sbr{\hat{X}_j,\hat{p}_k}&= \sbr{\frac{m_1\hat{r}_{1,j}+m_2\hat{r}_{2,j}}{m_1+m_2},\frac{m_2\hat{p}_{1,k}-m_1\hat{p}_{2,k}}{m_1+m_2}} \\
+			&=\frac{1}{(m_1+m_2)^2}\del{\sbr{m_1\hat{r}_{1,j},m_2\hat{p}_{1,k}}-\sbr{m_2\hat{r}_{2j},m_1\hat{p}_{2k}}} \\
+			&=\frac{m_1 m_2}{(m_1+m_2)^2}(i\hbar\delta_{jk}-i\hbar\delta_{jk}) \\
+			&=0
+	\end{align*}
+	\begin{align*}
+		\sbr{\hat{x}_j,\hat{P}_k}&=\sbr{\hat{r}_{1,j}-\hat{r}_{2,j},\hat{p}_{1,k}+\hat{p}_{2,k}} \\
+			&=\sbr{\hat{r}_{1,j},\hat{p}_{1,k}}-\sbr{\hat{r}_{2,j},\hat{p}_{2k}} \\
+			&= i\hbar\delta_{jk}-i\hbar \delta_{jk} \\
+			&=0
+	\end{align*}
+	\begin{eqnarray*}
+		\sbr{\hat{P},\hat{H}_{rel}}&=&\sbr{\hat{p}_1+\hat{p}_2, \del{\frac{m_2\hat{p}_1-m_1\hat{p}_2}{m_1+m_2}}^2 \frac{1}{2} \frac{m_1+m_2}{m_1m_2} + V(\hat{r}_1-\hat{r}_2)} \\
+			&=&\sbr{\hat{p}_1, V(\hat{r}_1-\hat{r}_2)} +\sbr{\hat{p}_2, V(\hat{r}_1-\hat{r}_2)}  \\
+			&\stackrel{\od{V(r_1-r_2)}{r_1}=-\od{V(r_1-r_2)}{r_2}}=& 0
+	\end{eqnarray*}
+	\begin{align*}
+		\sbr{\hat{H}_{rel},\hat{H}_s}&=\sbr{\frac{\hat{p}^2}{2\mu}+V(\hat{r}),\frac{\hat{P}^2}{2M}} \\
+				&=\frac{1}{2M}\sbr{V(\hat{r}),\hat{p}_1+\hat{p}_2} \\
+				&=0
+	\end{align*}
+	\begin{align*}
+		\sbr{\hat{H}_{rel},\hat{H}}&=\sbr{\hat{H}_{rel},\hat{H}_s}+\sbr{\hat{H}_{rel},\hat{H}_{rel}} \\
+			&=0
+	\end{align*}
+	\begin{align*}
+		\sbr{\hat{H}_s,\hat{H}}&=\sbr{\hat{H}_s,\hat{H}_{rel}}+\sbr{\hat{H}_s,\hat{H}_s} \\
+				&=0
+	\end{align*}
+
+\subsection{}
+	\[ \hat{H}_s=\frac{\hat{P}^2}{2M}=\frac{(\hat{p}_1+\hat{p}_2)^2}{2M} \]
+	Für Eigenfunktionen muss gelten:
+	\[ \hat{H}_s|\psi\rangle=\lambda|\psi\rangle \ \ \ \text{für ein} \ \lambda\in\mathbb{C} \]
+	d.h.: 
+	\begin{equation*}
+		\frac{(i\hbar\od{}{r_1}+i\hbar\od{}{r_2})^2}{2M}|\psi\rangle=\lambda|\psi\rangle
+	\end{equation*}
+	Daraus folgt für die Eigenfunktionen:
+	\begin{equation*}
+		|\psi\rangle=|\psi_1(r_1)\rangle\otimes|\psi_2(r_2)\rangle
+	\end{equation*}
+	wobei $\psi_1(r_1)=A\eup^{iK_1r_1}$ und $\psi_2(r_2)=B\eup^{iK_2r_2}$ mit $A,B\in\mathbb{C}$, $K_1,K_2\in\mathbb{R}^3$.
+
+	Aus den obigen Ergebnissen folgt, dass es eine gemeinsame Basis aus Eigenfunktionen von $\hat{H}$, $\hat{H}_s$ und $\hat{H}_{rel}$ gibt. 
 
 \section{Drehimpuls}
 
+Betrachtet wird der Drehimpulsoperator $\hat{\vec{J}}$.
+
+\subsection{}
+
+Zuerst soll gezeigt werden, dass $\hat{\vec{J}}^2$ und dessen $z$-Komponente $\hat{J}_z$ kommutieren. $\hat{\vec{J}}$ erfüllt per Definition
+\begin{align*}
+	\hat{\vec{J}}^2\times\hat{\vec{J}}^2 = -\iup\hbar\hat{\vec{J}}^2
+\end{align*}
+woraus sofort folgt, dass sie kommutieren:
+\begin{align*}
+	\sbr{\hat{J}_i,\hat{J}_j} = \iup\hbar\epsilon_{ijk}\hat{J}_k
+\end{align*}
+gilt.\\
+Für den Kommutator von $\hat{\vec{J}}^2$ und $\hat{J}_z$ ergibt sich somit:
+\begin{align*}
+	\sbr{\hat{\vec{J}}^2,\hat{J}_z}	&= \sbr{\hat{J}_x^2 + \hat{J}_y^2 + \hat{J}_z^2,\hat{J}_z}\\
+									&= \sbr{\hat{J}_x^2,\hat{J}_z} + \sbr{\hat{J}_y^2,\hat{J}_z} + \underbrace{\sbr{\hat{J}_z^2,\hat{J}_z}}_{=0}\\
+									&= \hat{J}_x\sbr{\hat{J}_x,\hat{J}_z} + \sbr{\hat{J}_x,\hat{J}_z}\hat{J}_x + \hat{J}_y\sbr{\hat{J}_y,\hat{J}_z} + \sbr{\hat{J}_y,\hat{J}_z}\hat{J}_y\\
+									&= -\iup\hbar\hat{J}_x\hat{J}_y - \iup\hbar\hat{J}_y\hat{J}_x + \iup\hbar\hat{J}_y\hat{J}_x + \iup\hbar\hat{J}_x\hat{J}_y\\
+									&= 0
+\end{align*}
+Wenn $\ket{\psi}$ also ein Eigenzustand von $\hat{\vec{J}}^2$ und damit auch von $\hat{J}_z$ ist, so muss gelten:
+\begin{align*}
+	\hat{\vec{J}}^2\ket{\psi} &= a\hbar^2\ket{\psi}
+\end{align*}
+und
+\begin{align*}
+	\hat{J}_z\ket{\psi} &= b\hbar\ket{\psi}
+\end{align*}
+Dementsprechend muss gelten:
+\begin{align*}
+	\ket{\psi}	&= \ket{\psi_a}\ket{\psi_b}\\
+	\intertext{%
+		oder einfacher
+	}
+					&= \ket{a}\ket{b}
+					&= \ket{a,b}
+\end{align*}
+$a$ und $b$ werden später durch $j$ und $m$ ersetzt.
+
+\subsection{}
+
+Es soll gezeigt werden, dass für einen Wert $j$ gilt $-j\leq m\leq j$.\\
+Ich habe mich dazu an dem folgenden Skript orientiert: \url{http://www.thphys.uni-heidelberg.de/~weigand/Skript-QM2011/skript.pdf}.\\
+Zuerst drücke ich $\hat{\vec{J}}^2$ durch die Leiteroperatoren $\hat{J}_\pm = \hat{J}_x \pm \iup\hat{J}_y$, mit $\hat{J}_\pm^{\dagger} = \hat{J}_\mp$, aus. Es ist:
+\begin{align*}
+		\hat{J}_+\hat{J}_- + \hat{J}_-\hat{J}_+	&= \hat{J}_x^2 - \iup\hat{J}_x\hat{J}_y + \iup\hat{J}_y\hat{J}_x + \hat{J}_y^2 + \hat{J}_z^2 + \hat{J}_x^2 + \iup\hat{J}_x\hat{J}_y - \iup\hat{J}_y\hat{J}_x + \hat{J}_y^2\\
+												&= 2\hat{J}_x^2 + 2\hat{J}_y^2
+\end{align*}
+Daraus folgt:
+\begin{align*}
+		\hat{\vec{J}}^2 = \half\del{\hat{J}_+\hat{J}_- + \hat{J}_-\hat{J}_+} + \hat{J}_z^2
+\end{align*}
+Jetzt benutze ich, dass $\bra{a,b}\hat{\vec{J}}^2 - \hat{J}_z^2\ket{a,b}\geq0$ gilt, wie folgende Rechnung zeigt:
+\begin{align*}
+	\bra{a,b}\hat{\vec{J}}^2 - \hat{J}_z^2\ket{a,b}	&= \bra{a,b}\hat{J}_+\hat{J}_- + \hat{J}_-\hat{J}_+\ket{a,b}\\
+													&= \bra{a,b}\hat{J}_+\hat{J}_-\ket{a,b} + \bra{a,b}\hat{J}_-\hat{J}_+\ket{a,b}\\
+	\intertext{
+		Wegen $\hat{J}_\pm^{\dagger} = \hat{J}_\mp$ folgt
+	}
+													&= \bra{a,b}\hat{J}_-^{\dagger}\hat{J}_-\ket{a,b} + \bra{a,b}\hat{J}_+^{\dagger}\hat{J}_+\ket{a,b}\\
+													&= \norm{\hat{J}_-\ket{a,b}} + \norm{\hat{J}_+\ket{a,b}}\\
+													&\geq0
+\end{align*}
+Wenn die Eigenwerte von $\hat{\vec{J}}^2$ und $\hat{J}_z$ $a$ und $b$ sind, so folgt:
+\begin{align*}
+	&\bra{a,b}\hat{\vec{J}}^2 - \hat{J}_z^2\ket{a,b}	= a - b^2 \geq 0\\ 
+	&\Rightarrow a \geq b^2
+\end{align*}
+Daraus folgt, dass es ein maximales $b_{\text{max}}$ geben muss, weil sonnst mit den Leiteroperatoren beliebig große $b$ erzeugt werden könnten. Es muss also gelten:
+\begin{align*}
+	\hat{J}_+\ket{a,b_{\text{max}}} \overset{!}{=} 0
+\end{align*}
+Dementsprechend auch
+\begin{align*}
+	0	&= \hat{J}_-\hat{J}_+\ket{a,b_{\text{max}}}\\
+		&= \del{\hat{J}_x - \iup\hat{J}_y}\del{\hat{J}_x + \iup\hat{J}_+}\ket{a,b_{\text{max}}}\\
+		&= \del{\hat{J}_x^2 + \hat{J}_y^2 - \iup\del{\hat{J}_y\hat{J}_x - \hat{J}_x\hat{J}_y}}\ket{a,b_{\text{max}}}\\
+		&= \del{\hat{\vec{J}}^2 - \hat{J}_z^2 - \hbar\hat{J}_z}\ket{a,b_{\text{max}}}\\
+		&= \del{a - b_{\text{max}}^2 - \hbar b_{\text{max}}}\ket{a,b_{\text{max}}}
+\end{align*}
+Also
+\begin{align*}
+	&a - b_{\text{max}}^2 - \hbar b_{\text{max}} = 0\\
+	\Rightarrow &a = b_{\text{max}}\del{b_{\text{max}} + \hbar}
+\end{align*}
+Analog folgt:
+\begin{align*}
+	a = b_{\text{min}}\del{b_{\text{min}} - \hbar}
+\end{align*}
+Und somit:
+\begin{align*}
+	&b_{\text{min}}\del{b_{\text{min}} - \hbar} = b_{\text{max}}\del{b_{\text{max}} + \hbar}\\
+	\Rightarrow & b_{\text{max}} = -b_{\text{min}}
+\end{align*}
+Startet man also bei einem Zustand $\ket{a,b_{\text{max}}}$ und wendet $\hat{J}_-$ an, so muss nach $n,n\in\N$ Anwendungen von $\hat{J}_-$ folgen:
+\begin{align*}
+	\hat{J}_-^{n}\ket{a,b_{\text{max}}} = c^n\ket{a,b_{\text{min}}}
+\end{align*}
+Ziehe ich also $n$-Mal $\hbar$ von $b_{\text{max}}$ ab bekomme ich $b_{\text{min}}$, es folgt
+\begin{align*}
+	&b_{\text{max}} - n\hbar = b_{\text{min}} = -b_{\text{max}}\\
+	\Rightarrow &b_{\text{max}} = \half n\hbar
+\end{align*}
+Definiere nun $\half n\equiv j$. Dann folgt
+\begin{align*}
+	a = \hbar^2j\del{j+1}
+\end{align*}
+und
+\begin{align*}
+	b = \hbar m
+\end{align*}
+mit $\;-j\leq m \leq j$. Nun nenne ich noch die Eigenzustände um in $\ket{j,m}$. Dann gilt:
+\begin{align*}
+	&\hat{\vec{J}}^2\ket{j,m} = \hbar^2j\del{j+1}\ket{j,m}\\
+	&\hat{J}_z\ket{j,m} = \hbar m\ket{j,m}\\
+\end{align*}
+
+\subsection{}
+
+Es soll gezeigt werden, dass für die mittleren quadratischen Abweichungen $\Delta J_x$ und $\Delta J_y$ der folgende Zusammenhang gilt:
+\begin{align*}
+	\Delta J_x = \Delta J_y = \hbar\sqrt{\frac{j\del{j+1}-m^2}{2}}
+\end{align*}
+Betrachte dazu $\Delta J_x^2 + \Delta J_y^2$:
+\begin{align*}
+	\Delta J_x^2 + \Delta J_y^2	&= \braket{J_x^2} - \braket{J_x}^2 + \braket{J_y^2} - \braket{J_y}^2\\
+	\intertext{%
+		Ersetze $\braket{J_x^2}=\braket{\hat{J}^2} - \braket{J_y^2} - \braket{J_z^2}$:
+	}
+								&= \braket{J_x^2} - \braket{J_z^2} - \braket{J_x}^2 - \braket{J_y}^2
+	\intertext{%
+		Aus Symmetrie sind $\braket{J_x} = \braket{J_y} = 0$
+	}
+								&= \hbar^2j\del{j+1} - m^2\\
+\end{align*}
+Wiederum ist aus Symmetrie $\Delta J_x^2 = \Delta J_y^2$, so dass sofort folgt:
+\begin{align*}
+	\Delta J_x = \Delta J_y = \hbar\sqrt{\frac{j\del{j+1}-m^2}{2}}
+\end{align*}
 
 
 \end{document}
