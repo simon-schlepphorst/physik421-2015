@@ -23,6 +23,11 @@
     Frederike Schrödel \and Heike Herr \and Jan Weber \and Simon Schlepphorst
 }
 
+\newcommand\odx[3]{\frac{\dif^{#1} {#2}}{\dif {#3}^{#1}}}
+
+\usepackage{cancel}
+\newcommand{\colorcancel}[2]{\renewcommand{\CancelColor}{\color{#2}}\cancel{#1}}
+
 
 
 \begin{document}
@@ -38,9 +43,225 @@
 
 \section{Bahndrehimpuls eines Elektrons}
 
+\subsection{}
+	Die Eigenfunktionen von dem Bahndrehimpulsoperator $\hat{L}_z$ haben die Form $Y_{lm}(\vartheta,\varphi)\cdot g(r)$ wobei $Y_{lm}(\vartheta,\varphi)$ die Kugelflächenfunktion mit Parametern $l$ und $m$ ist, $g(r)$ eine Funktion.
+	Wir wissen:
+	\begin{align*}
+		Y_{11}(\vartheta,\varphi)&= \sqrt{\frac{3}{8\pi}}\sin(\vartheta)\eup^{i\varphi} \\
+		Y_{10}(\vartheta,\varphi)&=\sqrt{\frac{3}{4\pi}}\cos(\vartheta)
+	\end{align*}
+	Somit können wir den Zustand $\psi$ als Linearkombinationen aus den beiden Eigenfunktionen $Y_{11}(\vartheta,\varphi)g(r)$ zum Eigenwert $\hbar$ und $Y_{10}(\vartheta,\varphi)g(r)$ zum Eigenwert $0$ schreiben:
+	\begin{equation*}
+		\psi=\sqrt{\frac{2}{3}}\cdot Y_{11}(\vartheta,\varphi)g(r) + \frac{1}{\sqrt{3}}\cdot Y_{10}(\vartheta,\varphi)g(r)
+	\end{equation*}
+	Somit sind die möglichen Ergebnisse einer Messung $0$ und $\hbar$.
+	
+\subsection{}
+	Die Wahrscheinlichkeit $0$ zu messen beträgt $\frac{1}{3}=|\langle\psi|Y_{10}\rangle|^2$, die Wahrscheinlichkeit $\hbar$ zu messen beträgt $\frac{2}{3}$.
+	
+
+\subsection{}
+	Daraus ergibt sich als Erwartungswert $\langle\hat{L}_z\rangle$:
+	\begin{equation*}
+		\langle\hat{L}_z\rangle=0\cdot|\langle\psi|Y_{10}\rangle|^2+\hbar\cdot|\langle\psi|Y_{11}\rangle|^2=\frac{2}{3}\hbar
+	\end{equation*}
+
 \section{Das Zweiatomige Molekül: Rotation und Vibration}
 
+Betrachtet wird folgende Schrödingergleichung:
+\begin{align*}
+	\del{-\frac{\hbar^2}{2\mu}\pdx{2}{}{r} + V\del{r} + V_c\del{r}}u_{n,r}\del{r} = E_{n,l}u_{n,l}\del{r}
+\end{align*}
+Dabei sind: $\mu = \frac{m_1m_2}{m_1 + m_2}$, $V_c\del{r} = \frac{l\del{l + 1}\hbar^2}{2\mu r^2}$\\
+
+\subsection{}
+
+Nun sei $l=0$. Es soll $V\del{r}$ quadratisch genähert werden.\\
+Ich setzte:
+\begin{align*}
+	V\del{r} = \half b^2\del{r - r_b}^2 - V_0
+\end{align*}
+Mit $V_0 = konstant$. Damit folgt:
+\begin{align*}
+	\del{-\frac{\hbar^2}{2\mu}\pdx{2}{}{r} + \half b^2\del{r - r_b}^2}u_{n,r}\del{r} = \del{E_{n,l} + V_0}u_{n,l}\del{r}
+\end{align*}
+Dies entspricht der Differentialgleichung für den harmonischen Oszillator. Die Energiewerte sind wohlbekannt:
+\begin{align*}
+	E_n = \hbar b\del{n + \half} - V_0
+\end{align*}
+
+\subsection{}
+
+Sei immer noch $l=0$. Sei $r' = r - r_b$. Es soll die charakteristische Ausdehnung $\del{\Delta r'}_0$ des Grundzustandes $\ket{0}$ berechnet werden:
+\begin{align*}
+	\del{\Delta r'}_0	&= \sqrt{\bracket{r'^2}_0 + \bracket{r'}^2_0}\\
+						&= \sqrt{\bra{0}r'^2\ket{0} + \bra{0}r'\ket{0}^2}\\
+	\intertext{%
+		Sei $a\equiv\sqrt{\frac{\hbar}{\mu b}}$. Dann kann $r'$ durch die Leiteroperatoren wie folgt ausgedrückt werden: $r' = a\del{\hat{a}^{\dagger} + \hat{a}}$. Damit folgt:
+	}
+						&= \sqrt{\bra{0}a^2\del{\hat{a}^{\dagger} + \hat{a}}^2\ket{0} + \underbrace{\bra{0}a\del{\hat{a}^{\dagger} + \hat{a}}\ket{0}^2}_{=0}}\\
+						&= \sqrt{\bra{0}a^2\del{\hat{a}^{\dagger^2} + \hat{a}^2 + \hat{a}^{\dagger}\hat{a} + \hat{a}\hat{a}^{\dagger}}\ket{0}}\\
+						&= a\sqrt{\underbrace{\bra{0}\hat{a}^{\dagger^2}\ket{0}}_{=0} + \underbrace{\bra{0}\hat{a}^2\ket{0}}_{=0} + \bra{0}\underbrace{\hat{a}^{\dagger}\hat{a} + \hat{a}\hat{a}^{\dagger}}_{\hat{N} + 1}\ket{0}}\\
+						&= a\sqrt{\underbrace{\bra{0}\hat{N}\ket{0}}_{=0} + \underbrace{\braket{0|0}}_{=1}}\\
+						&= a
+\end{align*}
+
 \section{Störungen des Wasserstoffatoms}
+
+Betrachtet wird der Hamiltonoperator des Wasserstoffatoms unter Einfluss eines zusätzlichen Störpotentials
+\begin{align*}
+	\hat{H}=-\frac{\hbar^2}{2m}\laplace - \frac{e^2}r + \frac{\tilde{\epsilon}}{r^2}
+\end{align*}
+mit $\tilde{\epsilon}$ konstant.
+
+\subsection{}
+
+Es soll gezeigt werden, dass sich für den radialen Anteil folgende Differentialgleichung ergibt:
+\begin{align*}
+	\del{-\frac{\hbar^2}{2m}\odx{2}{}{r} + \frac1{r^2}\frac{\hbar^2}{2m}\del{l\del{l + 1} + \epsilon} - \frac{e^2}r}R\del{r}=ER\del{r}
+\end{align*}
+Für $\hat{H}$ ergibt sich:
+\begin{align*}
+	\hat{H}	&= -\frac{\hbar^2}{2m}\laplace - \frac{e^2}r + \frac{\tilde{\epsilon}}{r^2}\\
+			&= -\frac{\hbar^2}{2m}\del{\frac1{r^2}\pd{}{r}r^2\pd{}{r} - \frac{\hat{L}^2}{\hbar^2r^2}} - \frac{e^2}r + \frac{\tilde{\epsilon}}{r^2}
+\end{align*}
+Setze nun:
+\begin{align*}
+	\psi\del{r,\theta,\varphi} = Y\del{\theta,\varphi}\frac{R\del{r}}{r}
+\end{align*}
+Anwenden von $\hat{H}$ auf $\psi$ gibt dann:
+\begin{align*}
+	\hat{H}\psi\del{r,\theta,\varphi}	&= \del{-\frac{\hbar^2}{2m}\del{\frac1{r^2}\pd{}{r}r^2\pd{}{r} - \frac{\hat{L}^2}{\hbar^2r^2}} - \frac{e^2}r + \frac{\tilde{\epsilon}}{r^2}}Y\del{\theta,\varphi}\frac{R\del{r}}{r}\\
+										&= \del{-\frac{\hbar^2}{2m}\del{\frac1{r^2}\pd{}{r}\del{rR'\del{r} - R\del{r}} - \frac{\hat{L}^2}{\hbar^2r^3}R\del{r}} - \frac{e^2}{r^2}R\del{r} + \frac{\tilde{\epsilon}R\del{r}}{r^3}}Y\del{\theta,\varphi}\\
+										&= \del{-\frac{\hbar^2}{2m}\del{\frac{R''\del{r}}{r} - \frac{\hat{L}^2}{\hbar^2r^3}R\del{r}} - \frac{e^2}{r^2}R\del{r} + \frac{\tilde{\epsilon}R\del{r}}{r^3}}Y\del{\theta,\varphi}\\
+										&= \del{-\frac{\hbar^2}{2m}\del{\frac{R''\del{r}}{r} - \frac{l\del{l + 1}}{r^3}R\del{r}} - \frac{e^2}{r^2}R\del{r} + \frac{\tilde{\epsilon}R\del{r}}{r^3}}Y\del{\theta,\varphi}
+\end{align*}
+Kürzen von $\frac{Y\del{\theta,\varphi}}{r}$ gibt dann:
+\begin{align}
+	&\del{-\frac{\hbar^2}{2m}\del{\odx{2}{}{r} - \frac{l\del{l + 1}}{r^2}} - \frac{e^2}r + \frac{\tilde{\epsilon}}{r^2}}R\del{r} = ER\del{r}\nonumber\\
+	\Leftrightarrow&\del{-\frac{\hbar^2}{2m}\odx{2}{}{r} + \frac{\hbar^2l\del{l + 1}}{2mr^2} - \frac{e^2}r + \frac{\tilde{\epsilon}}{r^2}}R\del{r} = ER\del{r}\nonumber\\
+	\Leftrightarrow&\del{-\frac{\hbar^2}{2m}\odx{2}{}{r} + \frac{\hbar^2\del{l\del{l + 1} + \frac{2m\tilde{\epsilon}}{\hbar^2}}}{2mr^2} - \frac{e^2}r}R\del{r} = ER\del{r}\nonumber\\
+	\intertext{%
+		Setze $\epsilon\equiv\frac{2m\tilde{\epsilon}}{\hbar^2}$
+	}
+	\Leftrightarrow&\del{-\frac{\hbar^2}{2m}\odx{2}{}{r} + \frac{\hbar^2\del{l\del{l + 1} + \epsilon}}{2mr^2} - \frac{e^2}r}R\del{r} = ER\del{r}
+\end{align}
+
+%Setzte dazu erst mal $\alpha\equiv\frac{\hbar^2}{2m}$ und $\beta\equiv\del{l\del{l + 1} + \epsilon}$.
+
+\subsection{}
+
+Nun soll das Verhalten für $r\to0$ diskutiert werden.\\
+Für $r\to0$ dominiert der quadratisch in $r$ abfallende Term, so dass folgt:
+\begin{align*}
+	\odx{2}{}{r}R\del{r} = \frac{l\del{l + 1} + \epsilon}{r^2}R\del{r}
+\end{align*}
+Setze $R\del{r}\propto r^{\sigma}$:
+\begin{align*}
+	&\odx{2}{}{r}r^{\sigma} = \frac{l\del{l + 1} + \epsilon}{r^2}r^{\sigma}\\
+	\Leftrightarrow&\sigma\del{\sigma + 1}r^{\sigma - 2} = \del{l\del{l + 1} + \epsilon}r^{\sigma - 2}\\
+	\Leftrightarrow&\sigma\del{\sigma + 1} = \del{l\del{l + 1} + \epsilon}\\
+	\Rightarrow&\sigma = \half \pm \sqrt{\frac14 + l\del{l + 1} + \epsilon}\\
+	\Rightarrow&R\del{r}\propto r^{\half + \sqrt{\frac14 + l\del{l + 1} + \epsilon}}
+\end{align*}
+Die negative Lösung für $\sigma$ fällt weg, da wir Normierbarkeit fordern.
+
+\subsection{}
+
+Nun soll der andere Grenzfall für $r\to\infty$ diskutiert werden.\\
+Für $r\to\infty$ dominiert der lineare Term $ER\del{r}$ gegenüber den mit $r$ abfallenden, so dass folgt:
+\begin{align*}
+	&\odx{2}{}{r}R\del{r} = -\frac{2mE}{\hbar^2}R\del{r}
+\end{align*}
+Betrachtet werden gebundene Zustände, also ist die Energie negativ. Setze darum $\kappa\equiv\sqrt{-\frac{2mE}{\hbar^2}}$:
+\begin{align*}
+	&\odx{2}{}{r}R\del{r} = \kappa^2R\del{r}
+\end{align*}
+Es ergibt sich also für $R\del{r}$ 
+\begin{align*}
+	R\del{r} \propto \eup^{-\kappa r} + \eup^{\kappa r}
+\end{align*}
+Wiederum folgt aus der Forderung, dass $R\del{r}$ normierbar sein soll:
+\begin{align*}
+	R\del{r} \propto \eup^{-\kappa r}\\
+\end{align*}
+
+Wir bekommen also:
+\begin{align*}
+	R\del{r} = r^{\sigma}\eup^{-\kappa r}W\del{r}
+\end{align*}
+
+\subsection{}
+
+Nun soll für $W\del{r}$ eine Differentialgleichung hergeleitet werden.\\
+Dazu betrachte ich $\hat{H}R\del{r}$. Da das recht unübersichtlich wird, betrachte ich zuerst $R''\del{r}$:
+\begin{align*}
+	R''\del{r}	&= \odx{2}{}{r}\del{r^{\sigma}\eup^{-\kappa r}W\del{r}}\\
+				&= \od{}{r}\del{\sigma r^{\sigma - 1}\eup^{-\kappa r}W\del{r} - \kappa r^{\sigma}\eup^{-\kappa r}W\del{r} + r^{\sigma}\eup^{-\kappa r}W'\del{r}}\\
+				&= \sigma\del{\sigma - 1}r^{\sigma - 2}\eup^{-\kappa r}W\del{r} - \kappa\sigma r^{\sigma - 1}\eup^{-\kappa r}W\del{r} + \sigma r^{\sigma - 1}\eup^{-\kappa r}W'\del{r}\\
+				&\;\;\;\; - \sigma\kappa r^{\sigma - 1}\eup^{-\kappa r}W\del{r} + \kappa^2r^{\sigma}\eup^{-\kappa r}W\del{r} - \kappa r^{\sigma}\eup^{-\kappa r}W'\del{r}\\
+				&\;\;\;\; + \sigma r^{\sigma - 1}\eup^{-\kappa r}W'\del{r} - \kappa r^{\sigma}\eup^{-\kappa r}W'\del{r} + r^{\sigma}\eup^{-\kappa r}W''\del{r}
+\end{align*}
+Es folgt:
+\begin{align*}
+	R''\del{r}r^{-\sigma}\eup^{\kappa r} &= \frac1{r^2}\sigma\del{\sigma - 1}W\del{r} - \frac1r\kappa\sigma W\del{r} + \frac1r\sigma W'\del{r}\\
+				&\;\;\;\; - \frac1r\sigma\kappa W\del{r} + \kappa^2W\del{r} - \kappa W'\del{r}\\
+				&\;\;\;\; + \frac1r\sigma W'\del{r} - \kappa W'\del{r} + W''\del{r}\\
+				&= \del{\frac{\sigma\del{\sigma - 1}}{r^2} - \frac{2\kappa\sigma}r + \kappa^2}W\del{r} +2 \del{\frac{\sigma}r - \kappa}W'\del{r} + W''\del{r}
+\end{align*}
+Setze $\lambda\equiv\frac{2me^2}{\hbar^2}$. Damit kann (1) wie folgt geschrieben werden:
+\begin{align*}
+	&\del{-\odx{2}{}{r} + \frac{\sigma\del{\sigma - 1}}{r^2} - \frac{\lambda}r}R\del{r} = -\kappa^2R\del{r}\\
+	\Leftrightarrow& -R''\del{r} + \del{\frac{\sigma\del{\sigma - 1}}{r^2} - \frac{\lambda}r}R\del{r} = -\kappa^2R\del{r}\\
+	\Leftrightarrow& -\del{\colorcancel{\frac{\sigma\del{\sigma - 1}}{r^2}}{blue} - \frac{2\kappa\sigma}r + \colorcancel{\kappa^2}{red}}W\del{r} - 2\del{\frac{\sigma}r - \kappa}W'\del{r} - W''\del{r}\\
+	&+ \del{\colorcancel{\frac{\sigma\del{\sigma - 1}}{r^2}}{blue} - \frac{\lambda}r}W\del{r} = \colorcancel{-\kappa^2W\del{r}}{red}\\
+	\Leftrightarrow& \del{\frac{2\kappa\sigma}r - \frac{\lambda}r}W\del{r} - 2\del{\frac{\sigma}r - \kappa}W'\del{r} - W''\del{r} = 0
+\end{align*}
+
+\subsection{}
+
+Nun soll als Ansatz für $W\del{r}$ das Polynom
+\begin{align*}
+	W\del{r}=\sum_sc_sr^s
+\end{align*}
+verwendet werden. Einsetzen gibt:
+\begin{align*}
+	&\del{2\kappa\sigma - \lambda}\sum_sc_sr^{s - 1} - 2\sigma\sum_ssc_sr^{s - 2} - 2\kappa\sum_ssc_sr^{s - 1} - \sum_ss\del{s - 1}c_sr^{s - 2} = 0\\
+	\Leftrightarrow&\del{2\kappa\sigma - \lambda}\sum_sc_sr^{s - 1} - 2\sigma\sum_s\del{s + 1}c_{s + 1}r^{s - 1} + 2\kappa\sum_ssc_sr^{s - 1} - \sum_ss\del{s + 1}c_{s + 1}r^{s - 1} = 0\\
+	\Leftrightarrow&\sum_s\del{\del{2\kappa\sigma - \lambda + 2\kappa s}c_s - \del{2\sigma\del{s + 1} + s\del{s + 1}}c_{s + 1}}r^{s - 1} = 0\\
+	\Leftrightarrow&\sum_s\del{\del{2\kappa\del{\sigma + s} - \lambda}c_s - \del{s + 1}\del{2\sigma + s}c_{s + 1}}r^{s - 1} = 0\\
+	\Leftrightarrow&\del{2\kappa\del{\sigma + s} - \lambda}c_s - \del{s + 1}\del{2\sigma + s}c_{s + 1} = 0\\
+	\Leftrightarrow&c_{s + 1} = c_s\frac{2\kappa\del{\sigma + s} - \lambda}{\del{s + 1}\del{2\sigma + s}}
+\end{align*}
+Nun stellt sich die Frage ob die Summe für $r\to\infty$ verschwindet, also ob die Funktion noch normierbar ist. Dazu betrachte ich folgenden Grenzwert:
+\begin{align*}
+	\lim_{s\to\infty}\frac{c_{s + 1}}{c_s}	&= \lim_{s\to\infty}\frac{2\kappa\del{\sigma + s} - \lambda}{\del{s + 1}\del{2\sigma + s}}\\
+											&= \lim_{s\to\infty}\frac{2\kappa\sigma + 2\kappa s - \lambda}{s^2 + s + 2\sigma s + 2\sigma}\\
+											&\approx 3\kappa + \frac{\kappa}{\sigma} + \frac{2\kappa s - \lambda}{2\sigma}\\
+											&\geq0
+\end{align*}
+Die Grenzwertbetrachtung zeigt, dass das Polynom für große $s$ nicht verschwindet, sondern die Koeffizienten sogar größer werden. Da dies nicht normierbar ist, muss die Rekursionsformel abbrechen, weswegen gelten muss:
+\begin{align*}
+	2\kappa\del{\sigma + s} \overset{!}{=} \lambda
+\end{align*}
+Somit bekommt man die folgende Energie:
+\begin{align*}
+	&\kappa^2 = \frac{\lambda^2}{4\del{\sigma + s}^2}\\
+	\Leftrightarrow& -\frac{2mE}{\hbar^2} = \frac{m^2e^4}{\hbar^4\del{\sigma + s}^2}\\
+	\Leftrightarrow& E = \frac{-me^4}{2\hbar^2\del{\sigma + s}^2}\\
+\end{align*}
+
+\subsection{}
+
+Nun soll die Näherung $\epsilon<<\del{2l + 1}^2$ benutzt werden, was nichts anderes ist, als die Störung zu Vernachlässigen, woraus sofort $\sigma = l+1$ folgt. Dann ist die Energie:
+\begin{align*}
+	E	&= \frac{-me^4}{2\hbar^2\del{\sigma + s}^2}\\
+		&= \frac{-me^4}{2\hbar^2\del{l + 1 + s}^2}\\
+		\intertext{%
+			Setzte $n\equiv l + s + 1$:
+		}
+	E_n	&= \frac{-me^4}{2\hbar^2}\frac1{n^2}
+\end{align*}
 
 
 \end{document}
