@@ -39,9 +39,200 @@
 
 \section{Störungstheorie}
 
+Gegeben ist der Dreidimensionale Oszillator mit Störung:
+\begin{align*}
+	\hat{H} = \frac{\hat{p}^2}{2m} + \half m\omega^2\del{x^2 + y^2 + z^2 + \lambda xy}
+\end{align*}
+Gesucht ist die Grundzustandsenergie, wobei die Störung bis zur zweite Ordnung berechnet werden soll.\\
+Den Hamiltonoperator unterteile ich in den bekannten Teil $\hat{H}_0$ und die Störung $\hat{H}_1$ wie folgt:
+\begin{align*}
+	&\hat{H}_0 = \frac{\hat{p}^2}{2m} + \half m\omega^2\del{x^2 + y^2 + z^2}\\\
+	&\hat{H}_1 = \lambda xy
+\end{align*}
+Für die Grundzustandsenergie von $\hat{H}_0$ gilt:
+\begin{align*}
+	E_{m_xm_ym_z} = \hbar\omega\del{m_x + m_y + m_z + \half}
+\end{align*}
+Da die Störung nur in $x$ und $y$ Richtungen vorliegt, setzte ich $m_z = 0$ und betrachte nur noch $m_x$ und $m_y$. Für die ersten zwei Ordnungen der Störung der Grundzustandsenergie gilt (vgl. Vorlesung):
+\begin{align*}
+	\Delta E_{m_xm_y}^{(1)} = \lambda\bra{00}\hat{H}_1\ket{00}
+\end{align*}
+und
+\begin{align*}
+	\Delta E_{m_xm_y}^{(2)} = \lambda^2\sum_{m_x,m_y}\frac{\abs{\bra{m_xm_y}\hat{H}_1\ket{00}}^2}{E_{m_xm_y} - E_{00}}
+\end{align*}
+Dabei dürfen für $\Delta E_{m_xm_y}^{(2)}$ nicht $m_x$ und $m_y$ beide null sein.\\
+Zur Berechnung drücke ich $\hat{H}_1$ durch die Auf- und Absteigeoperatoren aus:
+\begin{align*}
+	\hat{H}_1	&= \frac14\hbar\omega\del{\hat{a}_x + \hat{a}_x^{\dagger}}\del{\hat{a}_y + \hat{a}_y^\dagger}\\
+				&= \frac14\hbar\omega\del{\hat{a}_x\hat{a}_y + \hat{a}_x\hat{a}_y^{\dagger} + \hat{a}_x^{\dagger}\hat{a}_y + \hat{a}_x^{\dagger}\hat{a}_y^{\dagger}}
+\end{align*}
+Damit ergibt sich für die Energien:
+\begin{align*}
+	\Delta E_{m_xm_y}^{(1)} = \lambda\bra{00}\frac14\hbar\omega\del{\hat{a}_x\hat{a}_y + \hat{a}_x\hat{a}_y^{\dagger} + \hat{a}_x^{\dagger}\hat{a}_y + \hat{a}_x^{\dagger}\hat{a}_y^{\dagger}}\ket{00} = 0
+\end{align*}
+und
+\begin{align*}
+	\Delta E_{m_xm_y}^{(2)} = \lambda^2\sum_{m_x,m_y}\frac{\abs{\bra{m_xm_y}\frac14\hbar\omega\del{\hat{a}_x\hat{a}_y + \hat{a}_x\hat{a}_y^{\dagger} + \hat{a}_x^{\dagger}\hat{a}_y + \hat{a}_x^{\dagger}\hat{a}_y^{\dagger}}\ket{00}}^2}{E_{m_xm_y} - E_{00}}
+\end{align*}
+Bei letzterem Term werde ich nur bis $\ket{11}$ gehen, da danach alle Terme offensichtlich null sind. Diese schaue ich mir getrennt an:
+\begin{align*}
+	\bra{01}\frac14\hbar\omega\del{\hat{a}_x\hat{a}_y + \hat{a}_x\hat{a}_y^{\dagger} + \hat{a}_x^{\dagger}\hat{a}_y + \hat{a}_x^{\dagger}\hat{a}_y^{\dagger}}\ket{00} = 0
+\end{align*}
+\begin{align*}
+	\bra{10}\frac14\hbar\omega\del{\hat{a}_x\hat{a}_y + \hat{a}_x\hat{a}_y^{\dagger} + \hat{a}_x^{\dagger}\hat{a}_y + \hat{a}_x^{\dagger}\hat{a}_y^{\dagger}}\ket{00} = 0
+\end{align*}
+und
+\begin{align*}
+	\bra{11}\frac14\hbar\omega\del{\hat{a}_x\hat{a}_y + \hat{a}_x\hat{a}_y^{\dagger} + \hat{a}_x^{\dagger}\hat{a}_y + \hat{a}_x^{\dagger}\hat{a}_y^{\dagger}}\ket{00} = \frac14\hbar\omega\bra{11}\ket{11} = \frac14\hbar\omega
+\end{align*}
+Damit folgt:
+\begin{align*}
+	\Delta E_{m_xm_y}^{(2)}	&= \lambda^2\frac{\abs{\bra{11}\frac14\hbar\omega\del{\hat{a}_x\hat{a}_y + \hat{a}_x\hat{a}_y^{\dagger} + \hat{a}_x^{\dagger}\hat{a}_y + \hat{a}_x^{\dagger}\hat{a}_y^{\dagger}}\ket{00}}^2}{E_{11} - E_{00}}\\
+							&= \lambda^2\frac{\frac1{16}\hbar^2\omega^2}{2\hbar\omega}\\
+							&= \lambda^2\frac{\hbar\omega}{32}\\
+							&\overset{\wedge}{=} \frac{\lambda^2}{16}E_{00}
+\end{align*}
+
+
 \section{Dissoziierung eines Wasserstoffatoms}
+\subsection{}
+	Aus der Aufgabenstellung entnehmen wir, dass $(\hat{S}_e)_\varphi$ folgende Form hat (bzgl. der Eigenbasis von $\hat{S}_z=(\hat{S}_e)_0$):
+	\begin{equation*}
+		(\hat{S}_e)_\varphi=\frac{\hbar}{2}\begin{pmatrix} \cos\varphi & \sin\varphi \\ \sin\varphi & -\cos\varphi\end{pmatrix}
+	\end{equation*}
+	Das ist eine Spiegelung an der Achse $\frac{\varphi}{2}$ mit Multiplikation mit $\frac{\hbar}{2}$. Somit sind die Eigenwerte von $(\hat{S}_e)_\varphi$ $+\frac{\hbar}{2}$ und $-\frac{\hbar}{2}$.
+
+\subsection{}
+	Da wir wissen, dass $(\hat{S}_e)_\varphi$ einer Spiegelung an $\frac{\varphi}{2}$ entspricht, erhalten wir die Eigenvektoren:
+	\begin{align*}
+		|+,\varphi\rangle_e&=\begin{pmatrix} \cos\frac{\varphi}{2} \\ \sin\frac{\varphi}{2} \end{pmatrix} & |-,\varphi\rangle_e&=\begin{pmatrix} \sin\frac{\varphi}{2} \\ -\cos\frac{\varphi}{2} \end{pmatrix}
+	\end{align*}
+	Dies entspricht:
+	\begin{align*}
+		|+,\varphi\rangle_e&= \cos\left(\frac{\varphi}{2}\right) |+\rangle +\sin\left(\frac{\varphi}{2}\right) |-\rangle & |-,\varphi\rangle_e&= \sin\left(\frac{\varphi}{2}\right) |+\rangle -\cos\left(\frac{\varphi}{2}\right) |-\rangle
+	\end{align*}
+
+\subsection{} \label{pa}
+	Da wir wissen, dass $(\hat{S}_e)_\alpha$ einer Spiegelung an $\frac{\alpha}{2}$ entspricht, und $|+,\varphi\rangle$ der normierte Vektor in $\frac{\varphi}{2}$ Richtung ist, sind die  Skalarprodukte gegeben durch $|\langle+,\alpha|+,\varphi\rangle|^2=\cos^2\frac{\alpha-\varphi}{2}$ und $|\langle-,\alpha|+,\varphi\rangle|^2=\sin^2\frac{\alpha-\varphi}{2}$. Somit erhalten wir:
+	\begin{equation*}
+		P_+(\alpha)=|\langle+,\alpha|+,\varphi\rangle|^2=\cos^2\left(\frac{\alpha-\varphi}{2}\right)
+	\end{equation*}
+	und als Erwartungswert:
+	\begin{equation*}
+		\langle(\hat{S}_e)_\alpha \rangle=\frac{\hbar}{2} \left(\cos^2\left(\frac{\alpha-\varphi}{2}\right)-\sin^2\left(\frac{\alpha-\varphi}{2}\right)\right)
+	\end{equation*}
+
+
 
 \section{Spinkorrelationen}
+\subsection{}
+	Da $|+,\alpha\rangle_e\otimes|-,\varphi\rangle_p$ eine Eigenfunktion zu $(\hat{S}_e)_\alpha$ zum Eigenwert $\frac{\hbar}{2}$ ist, erhalten wir wie in \ref{pa}:
+	\begin{equation*}
+		P_+(\alpha)= \cos^2\left(\frac{\alpha-\varphi}{2}\right)
+	\end{equation*}
+	Wenn $+\frac{\hbar}{2}$ gemessen wurde, befindet sich das Elektron im Zustand $|+,\alpha\rangle_e\otimes|-,\varphi\rangle_p$. Der Spinzustand des Protons ändert sich nicht, da der Operator $(\hat{S}_e)_\alpha$ trivial (wie die Identität) auf die zweite Komponete wirkt.
+
+\subsection{}
+	Analog zu \ref{pa} erhalten wir die Erqartungswerte (da die Operatoren auf eine Komponente trivial und auf die andere wie in \ref{pa} wirkt):
+	\begin{align*}
+		\langle(\hat{S}_e)_\alpha\rangle=&\frac{\hbar}{2}\left(\cos^2\left(\frac{\varphi-\alpha}{2}\right)-\sin^2\left(\frac{\varphi-\alpha}{2}\right)\right) & \langle(\hat{S}_p)_\beta\rangle=& \frac{\hbar}{2}\left(\sin^2\left(\frac{\varphi-\beta}{2}\right)-\cos^2\left(\frac{\varphi-\beta}{2}\right)\right)
+	\end{align*}	
+
+\subsection{}
+	Zur Berechnung von $E(\alpha,\beta)$ berechnen wir den Erwartungswert $\langle(\hat{S}_e)_\alpha\otimes(\hat{S}_p)_\beta\rangle$. Wir betrachten dazu die Eigenbasis:
+	\[ \left\{ |+,\alpha\rangle_e\otimes|+,\beta\rangle_p, |+,\alpha\rangle_e\otimes|-,\beta\rangle_p, |-,\alpha\rangle_e\otimes|+,\beta\rangle_p, |-,\alpha\rangle_e\otimes|-,\beta\rangle_p\right\} \]
+	Es gilt:
+	\begin{align*}
+	 |(\langle+,\alpha|_e\otimes\langle+,\beta|_p)(|+,\varphi\rangle_e\otimes|-,\varphi\rangle_p)|= 	&| \langle+,\alpha|+,\varphi\rangle|\cdot|\langle+,\beta|-,\varphi\rangle| \\
+			=& \left|\cos\left(\frac{\alpha-\varphi}{2}\right)\right|\cdot\left|\sin\left(\frac{\beta-\varphi}{2}\right)\right|
+	\end{align*}
+	Analog für die anderen Basisvektoren. Daraus ergibt sich als Erwartungswert:
+	\begin{align*}
+		\langle(\hat{S}_e)_\alpha\otimes(\hat{S}_p)_\beta\rangle=&
+			\frac{\hbar^2}{4}(\cos^2\left(\frac{\alpha-\varphi}{2}\right)\sin^2\left(\frac{\beta-\varphi}{2}\right) \\ &-\cos^2\left(\frac{\alpha-\varphi}{2}\right)\cos^2\left(\frac{\beta-\varphi}{2}\right) \\& -\sin^2\left(\frac{\alpha-\varphi}{2}\right)\sin^2\left(\frac{\beta-\varphi}{2}\right)\\&+\sin^2\left(\frac{\alpha-\varphi}{2}\right)\cos^2\left(\frac{\beta-\varphi}{2}\right)) \\
+				=& \frac{\hbar}{2}\left(\cos^2\left(\frac{\varphi-\alpha}{2}\right)-\sin^2\left(\frac{\varphi-\alpha}{2}\right)\right) \\ &\cdot\frac{\hbar}{2}\left(\sin^2\left(\frac{\varphi-\beta}{2}\right)-\cos^2\left(\frac{\varphi-\beta}{2}\right)\right)\\
+				=& \langle(\hat{S}_e)_\alpha\rangle\cdot \langle(\hat{S}_p)_\beta\rangle
+	\end{align*}
+	Somit ist der der Zähler von $E(\alpha,\beta)$ gleich 0, also $E(\alpha,\beta)=0$.
+
+\subsection{}
+	Nun betrachten wir den Singulet Zustand:
+	\[ |00\rangle=\frac{1}{\sqrt{2}}(|+\rangle_e\otimes|-\rangle_p-|-\rangle_e\otimes|+\rangle_p) \]
+	Mögliche Resultate sind die Eigenwerte von $(\hat{S}_e)_\alpha$, also $+\frac{\hbar}{2}$ und $-\frac{\hbar}{2}$ mit den Wahrscheinlichkeiten:
+	\begin{align*}
+		P_+=&\frac{1}{2}\left(\langle+,\alpha|_e\otimes\langle-|_p\cdot |+\rangle_e\otimes|-\rangle_p\right)^2+ \frac{1}{2} \left (\langle+,\alpha|_e\otimes\langle+|_p\cdot|-\rangle_e\otimes|+\rangle_p\right)^2 \\
+			=&\frac{1}{2}\left(\cos^2\frac{\alpha}{2}+\sin^2\frac{\alpha}{2}\right) \\
+			=& \frac{1}{2}
+	\end{align*}
+	Daraus ergibt sich: $P_-=\frac{1}{2}$
+
+\subsection{}
+	Nun haben wir $+\frac{\hbar}{2}$ gemessen, somit sind wir mit einer Wahrscheinlichkeit von $\cos^2\frac{\alpha}{2}$ im Zustand $|+,\alpha\rangle_e\otimes|-\rangle_p$ und einer Wahrscheinlichkeit von $\sin^2\frac{\alpha}{2}$ im Zustand $|+,\alpha\rangle_e\otimes|+\rangle_p$.
+	
+	Die möglichen Resultate sind wie zuvor bei einer Messung von $(\hat{S}_p)_\beta$ $+\frac{\hbar}{2}$ und $-\frac{\hbar}{2}$. mit den Warscheinlichkeiten:
+	\begin{align*}
+		P_+=&P(|+,\alpha\rangle_e\otimes|-\rangle_p)\cdot |\langle+,\alpha|_e\otimes\langle-|_p\cdot |+,\alpha\rangle_e\otimes|+,\beta\rangle_p|^2  \\ &+ P(|+,\alpha\rangle_e\otimes|+\rangle_p) \cdot |\langle+,\alpha|_e\otimes\langle+|_p|+,\alpha\rangle_e\otimes|+,\beta\rangle_p|^2 \\
+			=& \cos^2\frac{\alpha}{2} \cdot\sin^2\frac{\beta}{2}+ \sin^2\frac{\alpha}{2}\cdot\cos^2\frac{\beta}{2}
+	\end{align*}
+	und
+	\begin{align*}
+		P_-=\cos^2\frac{\alpha}{2} \cdot\cos^2\frac{\beta}{2}+ \sin^2\frac{\alpha}{2}\cdot\sin^2\frac{\beta}{2}
+	\end{align*}
+
+\subsection{}
+	Wenn man zuerst $(\hat{S}_p)_\beta$ gemessen hätte, hätte man mit jeweils Wahrscheinlichkeit $\frac{1}{2}$ die beiden Eigenwerte gemessen. Dieses Resultate schockierte Einstein, da es somit einen Unterschied macht, ob man vorher den Spin des Elektrons gemessen hat, obwohl das erstmal zwei verschiedene Teilchen sind. Diese sollten, klassisch gesehen, voneinander unabhängig sein.
+
+\subsection{}
+	Wir erhalten die Erwartungswerte (ausgehend vom Singulett Zustand):
+	\begin{align*}
+		\langle(\hat{S}_e)_\alpha\rangle&= \frac{\hbar}{2}\cdot P\left( \frac{\hbar}{2}\right)- \frac{\hbar}{2}\cdot P\left(- \frac{\hbar}{2}\right)=  \frac{\hbar}{2}\cdot\frac{1}{2}- \frac{\hbar}{2}\cdot\frac{1}{2}=0 \\
+		\langle(\hat{S}_p)_\beta\rangle&=0
+	\end{align*}
+	
+\subsection{}
+	Die Erwartungswerte  $\langle(\hat{S}_e)^2_\alpha\rangle$ und $\langle(\hat{S}_p)^2_\beta\rangle$ sind $\frac{\hbar^2}{4}$, da dies der einzige Eigenwert ist und dieser mit einer Warhscheinlichkeit von 1 auftritt bei einer Messung.
+	
+	Es fehlt  also  noch der Erwartungswert  $\langle(\hat{S}_e)_\alpha\otimes(\hat{S}_p)_\beta\rangle$.
+
+	Dazu betrachten wir die Eigenbasis:
+	\[ \left\{ |+,\alpha\rangle_e\otimes|+,\beta\rangle_p, |+,\alpha\rangle_e\otimes|-,\beta\rangle_p, |-,\alpha\rangle_e\otimes|+,\beta\rangle_p, |-,\alpha\rangle_e\otimes|-,\beta\rangle_p\right\} \]
+
+	\begin{align*}
+		\left|\langle00|\cdot |+,\alpha\rangle_e\otimes|+,\beta\rangle_p\right|^2=&
+			\frac{1}{2}\left(\langle+|+,\alpha\rangle\cdot\langle-|+,\beta\rangle-\langle-|+,\alpha\rangle\cdot\langle+|+,\beta\rangle\right)^2 \\
+			=&\frac{1}{2} \left( \cos\frac{\alpha}{2}\cdot\sin\frac{\beta}{2}-\sin\frac{\alpha}{2}\cdot\cos\frac{\beta}{2}\right)^2 \\
+			=& \frac{1}{2}\sin^2\frac{\alpha-\beta}{2} \\
+		\left|\langle00|\cdot |+,\alpha\rangle_e\otimes|-,\beta\rangle_p\right|^2=&
+			\frac{1}{2}\left(\langle+|+,\alpha\rangle\cdot\langle-|-,\beta\rangle-\langle-|+,\alpha\rangle\cdot\langle+|-,\beta\rangle\right)^2 \\
+			=&\frac{1}{2} \left( \cos\frac{\alpha}{2}\cdot\cos\frac{\beta}{2}-\sin\frac{\alpha}{2}\cdot\sin\frac{\beta}{2}\right)^2 \\
+			=& \frac{1}{2}\cos^2\frac{\alpha-\beta}{2} \\
+	\left|\langle00|\cdot |-,\alpha\rangle_e\otimes|+,\beta\rangle_p\right|^2=&
+			\frac{1}{2}\left(\langle+|-,\alpha\rangle\cdot\langle-|+,\beta\rangle-\langle-|-,\alpha\rangle\cdot\langle+|+,\beta\rangle\right)^2 \\
+			=&\frac{1}{2} \left( \sin\frac{\alpha}{2}\cdot\sin\frac{\beta}{2}-\cos\frac{\alpha}{2}\cdot\cos\frac{\beta}{2}\right)^2 \\
+			=& \frac{1}{2}\cos^2\frac{\alpha-\beta}{2} \\
+\left|\langle00|\cdot |-,\alpha\rangle_e\otimes|-,\beta\rangle_p\right|^2=&
+			\frac{1}{2}\left(\langle+|-,\alpha\rangle\cdot\langle-|-,\beta\rangle-\langle-|-,\alpha\rangle\cdot\langle+|-,\beta\rangle\right)^2 \\
+			=&\frac{1}{2} \left( \sin\frac{\alpha}{2}\cdot\cos\frac{\beta}{2}-\cos\frac{\alpha}{2}\cdot\sin\frac{\beta}{2}\right)^2 \\
+			=& \frac{1}{2}\sin^2\frac{\alpha-\beta}{2}
+	\end{align*}
+	
+	Daraus ergeben sich die Wahrscheinlichkeiten:
+	\begin{align*}
+		P\left(\frac{\hbar^2}{4}\right)=&\left|\langle00|\cdot |+,\alpha\rangle_e\otimes|+,\beta\rangle_p\right|^2+\left|\langle00|\cdot |-,\alpha\rangle_e\otimes|-,\beta\rangle_p\right|^2 = \sin^2\frac{\alpha-\beta}{2} \\
+		P\left(-\frac{\hbar^2}{4}\right)=&\left|\langle00|\cdot |+,\alpha\rangle_e\otimes|-,\beta\rangle_p\right|^2+\left|\langle00|\cdot |-,\alpha\rangle_e\otimes|+,\beta\rangle_p\right|^2=\cos^2\frac{\alpha-\beta}{2} 
+	\end{align*}
+	
+	und damit der Erwartungswert:
+	\begin{equation*}
+		\langle(\hat{S}_e)_\alpha\otimes(\hat{S}_p)_\beta\rangle=\frac{\hbar^2}{4}\left(\sin^2\frac{\alpha-\beta}{2}-\cos^2\frac{\alpha-\beta}{2} \right)
+	\end{equation*}
+
+	Wir erhalten:
+	\begin{align*}
+		E(\alpha,\beta)=&\frac{\frac{\hbar^2}{4}\left(\sin^2\frac{\alpha-\beta}{2}-\cos^2\frac{\alpha-\beta}{2} \right)-0}{\frac{\hbar^2}{4}} \\
+			=&\sin^2\frac{\alpha-\beta}{2}-\cos^2\frac{\alpha-\beta}{2}
+	\end{align*}
 
 \section{Versteckte Variablen}
 \end{document}
