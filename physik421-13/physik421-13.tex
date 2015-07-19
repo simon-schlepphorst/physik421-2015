@@ -15,6 +15,7 @@
     basicstyle=\small\tt
 }
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\dup}{\mathrm d}
 
 %\subject{}
 \title{Quantenmechanik, Blatt 13}
@@ -37,8 +38,122 @@
 \end{center}
 
 \section{Variationsansatz}
+\subsection{}
+Es gilt:
+	\begin{align*}
+		[g]&=\frac{kg\ m}{s^2} & [\hbar]&=\frac{kg\ m^2}{s} & [m]&=kg & [E]&=\frac{kg\ m^2}{s^2}
+	\end{align*}
+
+Somit erhalten wir durch Dimensionsanalyse für die Abhängigkeit  der Energie E von $\hbar$, $m$ und $g$:
+	\begin{equation*}
+		E\sim \sqrt[3]{\frac{\hbar^2g^2}{m}}
+	\end{equation*}
+
+\subsection{}
+	Normierung von $\psi_{a,c}$:
+	\begin{align*}
+		1\stackrel{!}{=}&\langle \psi_{a,c}| \psi_{a,c} \rangle \\
+				=&\int c^2 \theta(x+a)\theta(a-x) \left(1-\frac{|x|}{a}\right)^2 \dup x \\
+				=& c^2 \int_{-a}^a \left(1-\frac{|x|}{a}\right)^2 \dup x \\
+				=& 2c^2 \int_0^a \left(1-\frac{x}{a}\right)^2 \dup x \\
+				=& 2c^2\int_0^a \left(1-2\frac{x}{a}+\frac{x^2}{a^2}\right) \dup x \\
+				=& 2c^2\left[x-\frac{x^2}{a}+\frac{x^3}{3a^2} \right]_0^a \\
+				=&2c^2\left(a-a+\frac{a}{3}\right)\\
+				=& \frac{2}{3}c^2a
+	\end{align*}
+	Somit muss gelten: $c= \sqrt{\frac{3}{2a}}$
+	
+	Weiter gilt für die Grundzustandenergie:
+	\begin{align*}
+		E_0\le & \langle \psi_{a,c}|\hat{H}| \psi_{a,c} \rangle, 
+	\end{align*}
+	wobei $\hat{H}=\frac{\hat{p}^2}{2m}+g|\hat{x}|$.
+	Es gilt außerdem $\hat{p}^2|x|=0$. Damit erhalten wir:
+	\begin{align*}
+		\langle \psi_{a,c}|\hat{H}| \psi_{a,c} \rangle=& c^2\int_{-a}^a g |x| \left(1-\frac{|x|}{a}\right)^2 \dup x \\
+			=& \frac{3}{2a} 2g\int_0^a \left(x-2\frac{x^2}{a}+\frac{x^3}{a^2}\right) \dup x \\
+			=& \frac{3g}{a} \left[ \frac{x^2}{2}-\frac{2x^3}{3a}+\frac{x^4}{4a^2}\right]_0^a \\
+			=& \frac{3g}{a} \left(\frac{a^2}{2}-\frac{2a^2}{3}+\frac{a^2}{4}\right) \\
+			=&\frac{3g}{a}\frac{a^2}{12} \\
+			=& \frac{ga}{4}
+	\end{align*}
+	Da $a>0$ (da sonst $\psi$ nicht normierbar bzw. $\psi=0$) erhalten wir $E_0\le 0$ bzw. hier als Approximation $E_0=0$.
 
 \section{Spin-Bahn-Kopplung}
+
+Gegeben ist ein Hamiltonoperator der Form
+\begin{align*}
+	\hat{H}	= a\hat{\vec{L}}\hat{\vec{S}}
+\end{align*}
+mit den Quantenzahlen $l=2$ und $s=1$. Es sollen die Eigenenergien und die zugehörigen Entartungen gefunden werden.\\
+Dazu definiere ich:
+\begin{align*}
+	\hat{\vec{J}} = \hat{\vec{L}} \pm \hat{\vec{S}}
+\end{align*}
+Es folgt:
+\begin{align*}
+	\hat{\vec{L}}\hat{\vec{S}} = \pm\half\del{\hat{\vec{J}}^2 - \hat{\vec{L}}^2 - \hat{\vec{S}}^2}
+\end{align*}
+Und somit:
+\begin{align*}
+	\hat{H}	= \pm\half a\del{\hat{\vec{J}}^2 - \hat{\vec{L}}^2 - \hat{\vec{S}}^2}
+\end{align*}
+Eine Eigenfunktion von $\hat{H}$ muss auch Eigenfunktion von $\hat{\vec{J}}^2$, $\hat{\vec{L}}^2$ und $\hat{\vec{S}}^2$ sein.\\
+Es folgt für die Energie:
+\begin{align*}
+	\hat{H}\ket{\psi}	= \pm\half a\del{\hat{\vec{J}}^2 - \hat{\vec{L}}^2 - \hat{\vec{S}}^2}\ket{\psi} = E_{jls}\ket{\psi}
+\end{align*}
+Mit
+\begin{align*}
+	\hat{\vec{J}}^2\ket{\psi} = \hbar^2j\del{j + 1}\ket{\psi}\\
+	\hat{\vec{L}}^2\ket{\psi} = \hbar^2l\del{l + 1}\ket{\psi}\\
+	\hat{\vec{S}}^2\ket{\psi} = \hbar^2s\del{s + 1}\ket{\psi}\\
+\end{align*}
+folgt
+\begin{align*}
+	E_{jls} = \pm\frac{\hbar^2}{2}a\del{j\del{j + 1} - l\del{l + 1} - s\del{s + 1}}
+\end{align*}
+Für $j$ gilt $j = l \pm s$, so dass $j\in\{1,3\}$.\\
+Für $j = 3$ folgt:
+\begin{align*}
+	E_{jls}	&= \frac{\hbar^2}{2}a\del{3\del{3 + 1} - 2\del{2 + 1} - \del{1 + 1}}\\
+			&= \frac{\hbar^2}{2}a\del{12 - 6 - 2}\\
+			&= 2\hbar^2a
+\end{align*}
+Da für die zu $j$ gehörende Magnetquantenzahl $m_j$ gilt $-j < m_j < j$ ist der Zustand 7-Fach entartet.\\
+Für $j = 1$ folgt:
+\begin{align*}
+	E_{jls}	&= -\frac{\hbar^2}{2}a\del{\del{1 + 1} - 2\del{2 + 1} - \del{1 + 1}}\\
+			&= -\frac{\hbar^2}{2}a\del{2 - 6 - 2}\\
+			&= 3\hbar^2a
+\end{align*}
+Da für die zu $j$ gehörende Magnetquantenzahl $m_j$ gilt $-j < m_j < j$ ist der Zustand 3-Fach entartet.\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
 
